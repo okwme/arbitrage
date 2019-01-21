@@ -1,0 +1,2706 @@
+{
+  "contractName": "DxUpgrade",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "masterCopyCountdown",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "a",
+          "type": "int256"
+        }
+      ],
+      "name": "atleastZero",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "a",
+          "type": "uint256"
+        },
+        {
+          "name": "b",
+          "type": "uint256"
+        }
+      ],
+      "name": "safeToAdd",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "auctioneer",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "newMasterCopy",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "a",
+          "type": "uint256"
+        },
+        {
+          "name": "b",
+          "type": "uint256"
+        }
+      ],
+      "name": "add",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_auctioneer",
+          "type": "address"
+        }
+      ],
+      "name": "updateAuctioneer",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "a",
+          "type": "uint256"
+        },
+        {
+          "name": "b",
+          "type": "uint256"
+        }
+      ],
+      "name": "min",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "masterCopy",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "a",
+          "type": "uint256"
+        },
+        {
+          "name": "b",
+          "type": "uint256"
+        }
+      ],
+      "name": "sub",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "a",
+          "type": "uint256"
+        },
+        {
+          "name": "b",
+          "type": "uint256"
+        }
+      ],
+      "name": "mul",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "a",
+          "type": "uint256"
+        },
+        {
+          "name": "b",
+          "type": "uint256"
+        }
+      ],
+      "name": "safeToMul",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "a",
+          "type": "uint256"
+        },
+        {
+          "name": "b",
+          "type": "uint256"
+        }
+      ],
+      "name": "safeToSub",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "newMasterCopy",
+          "type": "address"
+        }
+      ],
+      "name": "NewMasterCopyProposal",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_masterCopy",
+          "type": "address"
+        }
+      ],
+      "name": "startMasterCopyCountdown",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "updateMasterCopy",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b50610c49806100206000396000f3fe608060405234801561001057600080fd5b5060043610610112576000357c010000000000000000000000000000000000000000000000000000000090048063796a8076116100b4578063c8a4ac9c11610083578063c8a4ac9c146103d7578063cb10fa7614610423578063e31c71c414610473578063f625ee28146104c357610112565b8063796a8076146102b15780637ae2b5c7146102f5578063a619486e14610341578063b67d77c51461038b57610112565b80634e30a66c116100f05780634e30a66c146101815780635ec2c7bf146101d15780636ea683601461021b578063771602f71461026557610112565b80630e7c0f80146101175780632cef4dac14610135578063306904681461013f575b600080fd5b61011f610507565b6040518082815260200191505060405180910390f35b61013d61050d565b005b61016b6004803603602081101561015557600080fd5b81019080803590602001909291905050506106ba565b6040518082815260200191505060405180910390f35b6101b76004803603604081101561019757600080fd5b8101908080359060200190929190803590602001909291905050506106d6565b604051808215151515815260200191505060405180910390f35b6101d96106e6565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b61022361070c565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b61029b6004803603604081101561027b57600080fd5b810190808035906020019092919080359060200190929190505050610732565b6040518082815260200191505060405180910390f35b6102f3600480360360208110156102c757600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610754565b005b61032b6004803603604081101561030b57600080fd5b8101908080359060200190929190803590602001909291905050506108c8565b6040518082815260200191505060405180910390f35b6103496108e4565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6103c1600480360360408110156103a157600080fd5b810190808035906020019092919080359060200190929190505050610909565b6040518082815260200191505060405180910390f35b61040d600480360360408110156103ed57600080fd5b81019080803590602001909291908035906020019092919050505061092b565b6040518082815260200191505060405180910390f35b6104596004803603604081101561043957600080fd5b81019080803590602001909291908035906020019092919050505061094d565b604051808215151515815260200191505060405180910390f35b6104a96004803603604081101561048957600080fd5b810190808035906020019092919080359060200190929190505050610971565b604051808215151515815260200191505060405180910390f35b610505600480360360208110156104d957600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061097f565b005b60035481565b600073ffffffffffffffffffffffffffffffffffffffff16600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16141515156105b7576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602b815260200180610bf3602b913960400191505060405180910390fd5b6003544210151515610614576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526039815260200180610b906039913960400191505060405180910390fd5b600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff166000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000600260006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b6000808212156106cd57600090506106d1565b8190505b919050565b6000828284011015905092915050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600061073e83836106d6565b151561074957600080fd5b818301905092915050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156107fc576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602a815260200180610bc9602a913960400191505060405180910390fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff1614151515610884576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526026815260200180610b6a6026913960400191505060405180910390fd5b80600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b6000818310156108da578290506108de565b8190505b92915050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60006109158383610971565b151561092057600080fd5b818303905092915050565b6000610937838361094d565b151561094257600080fd5b818302905092915050565b6000808214806109695750828283850281151561096657fe5b04145b905092915050565b600081831015905092915050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610a27576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602a815260200180610bc9602a913960400191505060405180910390fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff1614151515610aaf576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602b815260200180610bf3602b913960400191505060405180910390fd5b80600260006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550610afd4262278d00610732565b6003819055507f36dceb79f427eda3edba9ac3c1d4db7a6e4d0b8637d97320847d93fa8e2f7a0481604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a15056fe5468652061756374696f6e656572206d75737420626520612076616c69642061646472657373546865206d617374657220636f6e74726163742063616e6e6f74206265207570646174656420696e20612077616974696e6720706572696f644f6e6c79207468652061756374696f6e6565722063616e206e6f6d696e6174652061206e6577206f6e65546865206e6577206d617374657220636f7079206d75737420626520612076616c69642061646472657373a165627a7a72305820a31c20dfa8d1901b33e5214b8aa9c790ab1cdbffc1bd20285debbfa18978befc0029",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b5060043610610112576000357c010000000000000000000000000000000000000000000000000000000090048063796a8076116100b4578063c8a4ac9c11610083578063c8a4ac9c146103d7578063cb10fa7614610423578063e31c71c414610473578063f625ee28146104c357610112565b8063796a8076146102b15780637ae2b5c7146102f5578063a619486e14610341578063b67d77c51461038b57610112565b80634e30a66c116100f05780634e30a66c146101815780635ec2c7bf146101d15780636ea683601461021b578063771602f71461026557610112565b80630e7c0f80146101175780632cef4dac14610135578063306904681461013f575b600080fd5b61011f610507565b6040518082815260200191505060405180910390f35b61013d61050d565b005b61016b6004803603602081101561015557600080fd5b81019080803590602001909291905050506106ba565b6040518082815260200191505060405180910390f35b6101b76004803603604081101561019757600080fd5b8101908080359060200190929190803590602001909291905050506106d6565b604051808215151515815260200191505060405180910390f35b6101d96106e6565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b61022361070c565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b61029b6004803603604081101561027b57600080fd5b810190808035906020019092919080359060200190929190505050610732565b6040518082815260200191505060405180910390f35b6102f3600480360360208110156102c757600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610754565b005b61032b6004803603604081101561030b57600080fd5b8101908080359060200190929190803590602001909291905050506108c8565b6040518082815260200191505060405180910390f35b6103496108e4565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6103c1600480360360408110156103a157600080fd5b810190808035906020019092919080359060200190929190505050610909565b6040518082815260200191505060405180910390f35b61040d600480360360408110156103ed57600080fd5b81019080803590602001909291908035906020019092919050505061092b565b6040518082815260200191505060405180910390f35b6104596004803603604081101561043957600080fd5b81019080803590602001909291908035906020019092919050505061094d565b604051808215151515815260200191505060405180910390f35b6104a96004803603604081101561048957600080fd5b810190808035906020019092919080359060200190929190505050610971565b604051808215151515815260200191505060405180910390f35b610505600480360360208110156104d957600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff16906020019092919050505061097f565b005b60035481565b600073ffffffffffffffffffffffffffffffffffffffff16600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16141515156105b7576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602b815260200180610bf3602b913960400191505060405180910390fd5b6003544210151515610614576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526039815260200180610b906039913960400191505060405180910390fd5b600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff166000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000600260006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550565b6000808212156106cd57600090506106d1565b8190505b919050565b6000828284011015905092915050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600061073e83836106d6565b151561074957600080fd5b818301905092915050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156107fc576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602a815260200180610bc9602a913960400191505060405180910390fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff1614151515610884576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526026815260200180610b6a6026913960400191505060405180910390fd5b80600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b6000818310156108da578290506108de565b8190505b92915050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60006109158383610971565b151561092057600080fd5b818303905092915050565b6000610937838361094d565b151561094257600080fd5b818302905092915050565b6000808214806109695750828283850281151561096657fe5b04145b905092915050565b600081831015905092915050565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff16141515610a27576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602a815260200180610bc9602a913960400191505060405180910390fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff1614151515610aaf576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602b815260200180610bf3602b913960400191505060405180910390fd5b80600260006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff160217905550610afd4262278d00610732565b6003819055507f36dceb79f427eda3edba9ac3c1d4db7a6e4d0b8637d97320847d93fa8e2f7a0481604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a15056fe5468652061756374696f6e656572206d75737420626520612076616c69642061646472657373546865206d617374657220636f6e74726163742063616e6e6f74206265207570646174656420696e20612077616974696e6720706572696f644f6e6c79207468652061756374696f6e6565722063616e206e6f6d696e6174652061206e6577206f6e65546865206e6577206d617374657220636f7079206d75737420626520612076616c69642061646472657373a165627a7a72305820a31c20dfa8d1901b33e5214b8aa9c790ab1cdbffc1bd20285debbfa18978befc0029",
+  "sourceMap": "140:1051:16:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;140:1051:16;;;;;;;",
+  "deployedSourceMap": "140:1051:16:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;140:1051:16;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;346:31;;;:::i;:::-;;;;;;;;;;;;;;;;;;;833:355;;;:::i;:::-;;227:160:15;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;227:160:15;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;562:96;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;562:96:15;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;116:25:14;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;266:28:16;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1343:119:15;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1343:119:15;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;148:196:14;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;148:196:14;;;;;;;;;;;;;;;;;;;:::i;:::-;;66:155:15;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;66:155:15;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;196:25:23;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1604:119:15;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1604:119:15;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;1867;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1867:119:15;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;1097:110;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1097:110:15;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;830:92;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;830:92:15;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;441:386:16;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;441:386:16;;;;;;;;;;;;;;;;;;;:::i;:::-;;346:31;;;;:::o;833:355::-;911:1;886:27;;:13;;;;;;;;;;;:27;;;;878:83;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;998:19;;979:15;:38;;971:108;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1132:13;;;;;;;;;;;1119:10;;:26;;;;;;;;;;;;;;;;;;1179:1;1155:13;;:26;;;;;;;;;;;;;;;;;;833:355::o;227:160:15:-;276:4;300:1;296;:5;292:89;;;324:1;317:8;;;;292:89;368:1;356:14;;227:160;;;;:::o;562:96::-;618:4;650:1;645;641;:5;:10;;634:17;;562:96;;;;:::o;116:25:14:-;;;;;;;;;;;;;:::o;266:28:16:-;;;;;;;;;;;;;:::o;1343:119:15:-;1393:4;1417:15;1427:1;1430;1417:9;:15::i;:::-;1409:24;;;;;;;;1454:1;1450;:5;1443:12;;1343:119;;;;:::o;148:196:14:-;578:10;;;;;;;;;;;564:24;;:10;:24;;;556:79;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;258:1;235:25;;:11;:25;;;;227:76;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;326:11;313:10;;:24;;;;;;;;;;;;;;;;;;148:196;:::o;66:155:15:-;116:4;140:1;136;:5;132:83;;;164:1;157:8;;;;132:83;203:1;196:8;;66:155;;;;;:::o;196:25:23:-;;;;;;;;;;;;;:::o;1604:119:15:-;1654:4;1678:15;1688:1;1691;1678:9;:15::i;:::-;1670:24;;;;;;;;1715:1;1711;:5;1704:12;;1604:119;;;;:::o;1867:::-;1917:4;1941:15;1951:1;1954;1941:9;:15::i;:::-;1933:24;;;;;;;;1978:1;1974;:5;1967:12;;1867:119;;;;:::o;1097:110::-;1153:4;1181:1;1176;:6;:24;;;;1199:1;1194;1190;1186;:5;:9;;;;;;;;:14;1176:24;1169:31;;1097:110;;;;:::o;830:92::-;886:4;914:1;909;:6;;902:13;;830:92;;;;:::o;441:386:16:-;578:10:14;;;;;;;;;;;564:24;;:10;:24;;;556:79;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;559:1:16;536:25;;:11;:25;;;;528:81;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;674:11;658:13;;:27;;;;;;;;;;;;;;;;;;717:54;721:15;252:7;717:3;:54::i;:::-;695:19;:76;;;;786:34;808:11;786:34;;;;;;;;;;;;;;;;;;;;;;441:386;:::o",
+  "source": "pragma solidity ^0.5.2;\n\nimport \"./DxMath.sol\";\nimport \"./AuctioneerManaged.sol\";\nimport \"@gnosis.pm/util-contracts/contracts/Proxy.sol\";\n\n\ncontract DxUpgrade is Proxied, AuctioneerManaged, DxMath {\n    uint constant WAITING_PERIOD_CHANGE_MASTERCOPY = 30 days;\n\n    address public newMasterCopy;\n    // Time when new masterCopy is updatabale\n    uint public masterCopyCountdown;\n\n    event NewMasterCopyProposal(address newMasterCopy);\n\n    function startMasterCopyCountdown(address _masterCopy) public onlyAuctioneer {\n        require(_masterCopy != address(0), \"The new master copy must be a valid address\");\n\n        // Update masterCopyCountdown\n        newMasterCopy = _masterCopy;\n        masterCopyCountdown = add(block.timestamp, WAITING_PERIOD_CHANGE_MASTERCOPY);\n        emit NewMasterCopyProposal(_masterCopy);\n    }\n\n    function updateMasterCopy() public {\n        require(newMasterCopy != address(0), \"The new master copy must be a valid address\");\n        require(block.timestamp >= masterCopyCountdown, \"The master contract cannot be updated in a waiting period\");\n\n        // Update masterCopy\n        masterCopy = newMasterCopy;\n        newMasterCopy = address(0);\n    }\n\n}\n",
+  "sourcePath": "/Users/billy/sol/arbitrage/node_modules/@gnosis.pm/dx-contracts/contracts/base/DxUpgrade.sol",
+  "ast": {
+    "absolutePath": "/Users/billy/sol/arbitrage/node_modules/@gnosis.pm/dx-contracts/contracts/base/DxUpgrade.sol",
+    "exportedSymbols": {
+      "DxUpgrade": [
+        6790
+      ]
+    },
+    "id": 6791,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6705,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:16"
+      },
+      {
+        "absolutePath": "/Users/billy/sol/arbitrage/node_modules/@gnosis.pm/dx-contracts/contracts/base/DxMath.sol",
+        "file": "./DxMath.sol",
+        "id": 6706,
+        "nodeType": "ImportDirective",
+        "scope": 6791,
+        "sourceUnit": 6704,
+        "src": "25:22:16",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/billy/sol/arbitrage/node_modules/@gnosis.pm/dx-contracts/contracts/base/AuctioneerManaged.sol",
+        "file": "./AuctioneerManaged.sol",
+        "id": 6707,
+        "nodeType": "ImportDirective",
+        "scope": 6791,
+        "sourceUnit": 6546,
+        "src": "48:33:16",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "@gnosis.pm/util-contracts/contracts/Proxy.sol",
+        "file": "@gnosis.pm/util-contracts/contracts/Proxy.sol",
+        "id": 6708,
+        "nodeType": "ImportDirective",
+        "scope": 6791,
+        "sourceUnit": 8678,
+        "src": "82:55:16",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 6709,
+              "name": "Proxied",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 8646,
+              "src": "162:7:16",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Proxied_$8646",
+                "typeString": "contract Proxied"
+              }
+            },
+            "id": 6710,
+            "nodeType": "InheritanceSpecifier",
+            "src": "162:7:16"
+          },
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 6711,
+              "name": "AuctioneerManaged",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 6545,
+              "src": "171:17:16",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_AuctioneerManaged_$6545",
+                "typeString": "contract AuctioneerManaged"
+              }
+            },
+            "id": 6712,
+            "nodeType": "InheritanceSpecifier",
+            "src": "171:17:16"
+          },
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 6713,
+              "name": "DxMath",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 6703,
+              "src": "190:6:16",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_DxMath_$6703",
+                "typeString": "contract DxMath"
+              }
+            },
+            "id": 6714,
+            "nodeType": "InheritanceSpecifier",
+            "src": "190:6:16"
+          }
+        ],
+        "contractDependencies": [
+          6545,
+          6703,
+          8646
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 6790,
+        "linearizedBaseContracts": [
+          6790,
+          6703,
+          6545,
+          8646
+        ],
+        "name": "DxUpgrade",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "id": 6717,
+            "name": "WAITING_PERIOD_CHANGE_MASTERCOPY",
+            "nodeType": "VariableDeclaration",
+            "scope": 6790,
+            "src": "203:56:16",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 6715,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "203:4:16",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3330",
+              "id": 6716,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "252:7:16",
+              "subdenomination": "days",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_2592000_by_1",
+                "typeString": "int_const 2592000"
+              },
+              "value": "30"
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 6719,
+            "name": "newMasterCopy",
+            "nodeType": "VariableDeclaration",
+            "scope": 6790,
+            "src": "266:28:16",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 6718,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "266:7:16",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 6721,
+            "name": "masterCopyCountdown",
+            "nodeType": "VariableDeclaration",
+            "scope": 6790,
+            "src": "346:31:16",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 6720,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "346:4:16",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 6725,
+            "name": "NewMasterCopyProposal",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 6724,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6723,
+                  "indexed": false,
+                  "name": "newMasterCopy",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6725,
+                  "src": "412:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6722,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "412:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "411:23:16"
+            },
+            "src": "384:51:16"
+          },
+          {
+            "body": {
+              "id": 6757,
+              "nodeType": "Block",
+              "src": "518:309:16",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 6737,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "id": 6733,
+                          "name": "_masterCopy",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6727,
+                          "src": "536:11:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "!=",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "hexValue": "30",
+                              "id": 6735,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "number",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "559:1:16",
+                              "subdenomination": null,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              },
+                              "value": "0"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              }
+                            ],
+                            "id": 6734,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "551:7:16",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_address_$",
+                              "typeString": "type(address)"
+                            },
+                            "typeName": "address"
+                          },
+                          "id": 6736,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "551:10:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address_payable",
+                            "typeString": "address payable"
+                          }
+                        },
+                        "src": "536:25:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "546865206e6577206d617374657220636f7079206d75737420626520612076616c69642061646472657373",
+                        "id": 6738,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "563:45:16",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_b4f9384a4dbe1122a33f2375adc2caf2e41a8affb2bd23b5a834a1f46c15ffd7",
+                          "typeString": "literal_string \"The new master copy must be a valid address\""
+                        },
+                        "value": "The new master copy must be a valid address"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_b4f9384a4dbe1122a33f2375adc2caf2e41a8affb2bd23b5a834a1f46c15ffd7",
+                          "typeString": "literal_string \"The new master copy must be a valid address\""
+                        }
+                      ],
+                      "id": 6732,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        8764,
+                        8765
+                      ],
+                      "referencedDeclaration": 8765,
+                      "src": "528:7:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 6739,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "528:81:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6740,
+                  "nodeType": "ExpressionStatement",
+                  "src": "528:81:16"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6743,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6741,
+                      "name": "newMasterCopy",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6719,
+                      "src": "658:13:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 6742,
+                      "name": "_masterCopy",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6727,
+                      "src": "674:11:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "658:27:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 6744,
+                  "nodeType": "ExpressionStatement",
+                  "src": "658:27:16"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6751,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6745,
+                      "name": "masterCopyCountdown",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6721,
+                      "src": "695:19:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 6747,
+                            "name": "block",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 8751,
+                            "src": "721:5:16",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_block",
+                              "typeString": "block"
+                            }
+                          },
+                          "id": 6748,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "timestamp",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "721:15:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 6749,
+                          "name": "WAITING_PERIOD_CHANGE_MASTERCOPY",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6717,
+                          "src": "738:32:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 6746,
+                        "name": "add",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6660,
+                        "src": "717:3:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
+                          "typeString": "function (uint256,uint256) pure returns (uint256)"
+                        }
+                      },
+                      "id": 6750,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "717:54:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "695:76:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 6752,
+                  "nodeType": "ExpressionStatement",
+                  "src": "695:76:16"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 6754,
+                        "name": "_masterCopy",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6727,
+                        "src": "808:11:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 6753,
+                      "name": "NewMasterCopyProposal",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6725,
+                      "src": "786:21:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 6755,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "786:34:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6756,
+                  "nodeType": "EmitStatement",
+                  "src": "781:39:16"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6758,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 6730,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 6729,
+                  "name": "onlyAuctioneer",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 6544,
+                  "src": "503:14:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "503:14:16"
+              }
+            ],
+            "name": "startMasterCopyCountdown",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6728,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6727,
+                  "name": "_masterCopy",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6758,
+                  "src": "475:19:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6726,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "475:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "474:21:16"
+            },
+            "returnParameters": {
+              "id": 6731,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "518:0:16"
+            },
+            "scope": 6790,
+            "src": "441:386:16",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 6788,
+              "nodeType": "Block",
+              "src": "868:320:16",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 6766,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "id": 6762,
+                          "name": "newMasterCopy",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6719,
+                          "src": "886:13:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "!=",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "hexValue": "30",
+                              "id": 6764,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "number",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "911:1:16",
+                              "subdenomination": null,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              },
+                              "value": "0"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              }
+                            ],
+                            "id": 6763,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "903:7:16",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_address_$",
+                              "typeString": "type(address)"
+                            },
+                            "typeName": "address"
+                          },
+                          "id": 6765,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "903:10:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address_payable",
+                            "typeString": "address payable"
+                          }
+                        },
+                        "src": "886:27:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "546865206e6577206d617374657220636f7079206d75737420626520612076616c69642061646472657373",
+                        "id": 6767,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "915:45:16",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_b4f9384a4dbe1122a33f2375adc2caf2e41a8affb2bd23b5a834a1f46c15ffd7",
+                          "typeString": "literal_string \"The new master copy must be a valid address\""
+                        },
+                        "value": "The new master copy must be a valid address"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_b4f9384a4dbe1122a33f2375adc2caf2e41a8affb2bd23b5a834a1f46c15ffd7",
+                          "typeString": "literal_string \"The new master copy must be a valid address\""
+                        }
+                      ],
+                      "id": 6761,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        8764,
+                        8765
+                      ],
+                      "referencedDeclaration": 8765,
+                      "src": "878:7:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 6768,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "878:83:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6769,
+                  "nodeType": "ExpressionStatement",
+                  "src": "878:83:16"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 6774,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 6771,
+                            "name": "block",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 8751,
+                            "src": "979:5:16",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_block",
+                              "typeString": "block"
+                            }
+                          },
+                          "id": 6772,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "timestamp",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "979:15:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": ">=",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "id": 6773,
+                          "name": "masterCopyCountdown",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6721,
+                          "src": "998:19:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "src": "979:38:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "546865206d617374657220636f6e74726163742063616e6e6f74206265207570646174656420696e20612077616974696e6720706572696f64",
+                        "id": 6775,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1019:59:16",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_a03c19070962d3e17e8a3ed7cddd899a9e889ba48f158adaf8da7950882c7289",
+                          "typeString": "literal_string \"The master contract cannot be updated in a waiting period\""
+                        },
+                        "value": "The master contract cannot be updated in a waiting period"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_a03c19070962d3e17e8a3ed7cddd899a9e889ba48f158adaf8da7950882c7289",
+                          "typeString": "literal_string \"The master contract cannot be updated in a waiting period\""
+                        }
+                      ],
+                      "id": 6770,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        8764,
+                        8765
+                      ],
+                      "referencedDeclaration": 8765,
+                      "src": "971:7:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 6776,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "971:108:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6777,
+                  "nodeType": "ExpressionStatement",
+                  "src": "971:108:16"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6780,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6778,
+                      "name": "masterCopy",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 8645,
+                      "src": "1119:10:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 6779,
+                      "name": "newMasterCopy",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6719,
+                      "src": "1132:13:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1119:26:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 6781,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1119:26:16"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6786,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6782,
+                      "name": "newMasterCopy",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6719,
+                      "src": "1155:13:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "hexValue": "30",
+                          "id": 6784,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "1179:1:16",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          "value": "0"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          }
+                        ],
+                        "id": 6783,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "1171:7:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_address_$",
+                          "typeString": "type(address)"
+                        },
+                        "typeName": "address"
+                      },
+                      "id": 6785,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1171:10:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "src": "1155:26:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 6787,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1155:26:16"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6789,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "updateMasterCopy",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6759,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "858:2:16"
+            },
+            "returnParameters": {
+              "id": 6760,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "868:0:16"
+            },
+            "scope": 6790,
+            "src": "833:355:16",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 6791,
+        "src": "140:1051:16"
+      }
+    ],
+    "src": "0:1192:16"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/billy/sol/arbitrage/node_modules/@gnosis.pm/dx-contracts/contracts/base/DxUpgrade.sol",
+    "exportedSymbols": {
+      "DxUpgrade": [
+        6790
+      ]
+    },
+    "id": 6791,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6705,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:16"
+      },
+      {
+        "absolutePath": "/Users/billy/sol/arbitrage/node_modules/@gnosis.pm/dx-contracts/contracts/base/DxMath.sol",
+        "file": "./DxMath.sol",
+        "id": 6706,
+        "nodeType": "ImportDirective",
+        "scope": 6791,
+        "sourceUnit": 6704,
+        "src": "25:22:16",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/billy/sol/arbitrage/node_modules/@gnosis.pm/dx-contracts/contracts/base/AuctioneerManaged.sol",
+        "file": "./AuctioneerManaged.sol",
+        "id": 6707,
+        "nodeType": "ImportDirective",
+        "scope": 6791,
+        "sourceUnit": 6546,
+        "src": "48:33:16",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "@gnosis.pm/util-contracts/contracts/Proxy.sol",
+        "file": "@gnosis.pm/util-contracts/contracts/Proxy.sol",
+        "id": 6708,
+        "nodeType": "ImportDirective",
+        "scope": 6791,
+        "sourceUnit": 8678,
+        "src": "82:55:16",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 6709,
+              "name": "Proxied",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 8646,
+              "src": "162:7:16",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Proxied_$8646",
+                "typeString": "contract Proxied"
+              }
+            },
+            "id": 6710,
+            "nodeType": "InheritanceSpecifier",
+            "src": "162:7:16"
+          },
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 6711,
+              "name": "AuctioneerManaged",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 6545,
+              "src": "171:17:16",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_AuctioneerManaged_$6545",
+                "typeString": "contract AuctioneerManaged"
+              }
+            },
+            "id": 6712,
+            "nodeType": "InheritanceSpecifier",
+            "src": "171:17:16"
+          },
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 6713,
+              "name": "DxMath",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 6703,
+              "src": "190:6:16",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_DxMath_$6703",
+                "typeString": "contract DxMath"
+              }
+            },
+            "id": 6714,
+            "nodeType": "InheritanceSpecifier",
+            "src": "190:6:16"
+          }
+        ],
+        "contractDependencies": [
+          6545,
+          6703,
+          8646
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 6790,
+        "linearizedBaseContracts": [
+          6790,
+          6703,
+          6545,
+          8646
+        ],
+        "name": "DxUpgrade",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "id": 6717,
+            "name": "WAITING_PERIOD_CHANGE_MASTERCOPY",
+            "nodeType": "VariableDeclaration",
+            "scope": 6790,
+            "src": "203:56:16",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 6715,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "203:4:16",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3330",
+              "id": 6716,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "252:7:16",
+              "subdenomination": "days",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_2592000_by_1",
+                "typeString": "int_const 2592000"
+              },
+              "value": "30"
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 6719,
+            "name": "newMasterCopy",
+            "nodeType": "VariableDeclaration",
+            "scope": 6790,
+            "src": "266:28:16",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 6718,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "266:7:16",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 6721,
+            "name": "masterCopyCountdown",
+            "nodeType": "VariableDeclaration",
+            "scope": 6790,
+            "src": "346:31:16",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 6720,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "346:4:16",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 6725,
+            "name": "NewMasterCopyProposal",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 6724,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6723,
+                  "indexed": false,
+                  "name": "newMasterCopy",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6725,
+                  "src": "412:21:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6722,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "412:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "411:23:16"
+            },
+            "src": "384:51:16"
+          },
+          {
+            "body": {
+              "id": 6757,
+              "nodeType": "Block",
+              "src": "518:309:16",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 6737,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "id": 6733,
+                          "name": "_masterCopy",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6727,
+                          "src": "536:11:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "!=",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "hexValue": "30",
+                              "id": 6735,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "number",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "559:1:16",
+                              "subdenomination": null,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              },
+                              "value": "0"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              }
+                            ],
+                            "id": 6734,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "551:7:16",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_address_$",
+                              "typeString": "type(address)"
+                            },
+                            "typeName": "address"
+                          },
+                          "id": 6736,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "551:10:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address_payable",
+                            "typeString": "address payable"
+                          }
+                        },
+                        "src": "536:25:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "546865206e6577206d617374657220636f7079206d75737420626520612076616c69642061646472657373",
+                        "id": 6738,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "563:45:16",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_b4f9384a4dbe1122a33f2375adc2caf2e41a8affb2bd23b5a834a1f46c15ffd7",
+                          "typeString": "literal_string \"The new master copy must be a valid address\""
+                        },
+                        "value": "The new master copy must be a valid address"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_b4f9384a4dbe1122a33f2375adc2caf2e41a8affb2bd23b5a834a1f46c15ffd7",
+                          "typeString": "literal_string \"The new master copy must be a valid address\""
+                        }
+                      ],
+                      "id": 6732,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        8764,
+                        8765
+                      ],
+                      "referencedDeclaration": 8765,
+                      "src": "528:7:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 6739,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "528:81:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6740,
+                  "nodeType": "ExpressionStatement",
+                  "src": "528:81:16"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6743,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6741,
+                      "name": "newMasterCopy",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6719,
+                      "src": "658:13:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 6742,
+                      "name": "_masterCopy",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6727,
+                      "src": "674:11:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "658:27:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 6744,
+                  "nodeType": "ExpressionStatement",
+                  "src": "658:27:16"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6751,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6745,
+                      "name": "masterCopyCountdown",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6721,
+                      "src": "695:19:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 6747,
+                            "name": "block",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 8751,
+                            "src": "721:5:16",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_block",
+                              "typeString": "block"
+                            }
+                          },
+                          "id": 6748,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "timestamp",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "721:15:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 6749,
+                          "name": "WAITING_PERIOD_CHANGE_MASTERCOPY",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6717,
+                          "src": "738:32:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 6746,
+                        "name": "add",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6660,
+                        "src": "717:3:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
+                          "typeString": "function (uint256,uint256) pure returns (uint256)"
+                        }
+                      },
+                      "id": 6750,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "717:54:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "695:76:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 6752,
+                  "nodeType": "ExpressionStatement",
+                  "src": "695:76:16"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 6754,
+                        "name": "_masterCopy",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6727,
+                        "src": "808:11:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 6753,
+                      "name": "NewMasterCopyProposal",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6725,
+                      "src": "786:21:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 6755,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "786:34:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6756,
+                  "nodeType": "EmitStatement",
+                  "src": "781:39:16"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6758,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 6730,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 6729,
+                  "name": "onlyAuctioneer",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 6544,
+                  "src": "503:14:16",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "503:14:16"
+              }
+            ],
+            "name": "startMasterCopyCountdown",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6728,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6727,
+                  "name": "_masterCopy",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6758,
+                  "src": "475:19:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6726,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "475:7:16",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "474:21:16"
+            },
+            "returnParameters": {
+              "id": 6731,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "518:0:16"
+            },
+            "scope": 6790,
+            "src": "441:386:16",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 6788,
+              "nodeType": "Block",
+              "src": "868:320:16",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 6766,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "id": 6762,
+                          "name": "newMasterCopy",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6719,
+                          "src": "886:13:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "!=",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "hexValue": "30",
+                              "id": 6764,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "number",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "911:1:16",
+                              "subdenomination": null,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              },
+                              "value": "0"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              }
+                            ],
+                            "id": 6763,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "903:7:16",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_address_$",
+                              "typeString": "type(address)"
+                            },
+                            "typeName": "address"
+                          },
+                          "id": 6765,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "903:10:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address_payable",
+                            "typeString": "address payable"
+                          }
+                        },
+                        "src": "886:27:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "546865206e6577206d617374657220636f7079206d75737420626520612076616c69642061646472657373",
+                        "id": 6767,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "915:45:16",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_b4f9384a4dbe1122a33f2375adc2caf2e41a8affb2bd23b5a834a1f46c15ffd7",
+                          "typeString": "literal_string \"The new master copy must be a valid address\""
+                        },
+                        "value": "The new master copy must be a valid address"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_b4f9384a4dbe1122a33f2375adc2caf2e41a8affb2bd23b5a834a1f46c15ffd7",
+                          "typeString": "literal_string \"The new master copy must be a valid address\""
+                        }
+                      ],
+                      "id": 6761,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        8764,
+                        8765
+                      ],
+                      "referencedDeclaration": 8765,
+                      "src": "878:7:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 6768,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "878:83:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6769,
+                  "nodeType": "ExpressionStatement",
+                  "src": "878:83:16"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 6774,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 6771,
+                            "name": "block",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 8751,
+                            "src": "979:5:16",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_block",
+                              "typeString": "block"
+                            }
+                          },
+                          "id": 6772,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "timestamp",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "979:15:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": ">=",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "id": 6773,
+                          "name": "masterCopyCountdown",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6721,
+                          "src": "998:19:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "src": "979:38:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "546865206d617374657220636f6e74726163742063616e6e6f74206265207570646174656420696e20612077616974696e6720706572696f64",
+                        "id": 6775,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1019:59:16",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_a03c19070962d3e17e8a3ed7cddd899a9e889ba48f158adaf8da7950882c7289",
+                          "typeString": "literal_string \"The master contract cannot be updated in a waiting period\""
+                        },
+                        "value": "The master contract cannot be updated in a waiting period"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_a03c19070962d3e17e8a3ed7cddd899a9e889ba48f158adaf8da7950882c7289",
+                          "typeString": "literal_string \"The master contract cannot be updated in a waiting period\""
+                        }
+                      ],
+                      "id": 6770,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        8764,
+                        8765
+                      ],
+                      "referencedDeclaration": 8765,
+                      "src": "971:7:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 6776,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "971:108:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6777,
+                  "nodeType": "ExpressionStatement",
+                  "src": "971:108:16"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6780,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6778,
+                      "name": "masterCopy",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 8645,
+                      "src": "1119:10:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 6779,
+                      "name": "newMasterCopy",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6719,
+                      "src": "1132:13:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1119:26:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 6781,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1119:26:16"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6786,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6782,
+                      "name": "newMasterCopy",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6719,
+                      "src": "1155:13:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "hexValue": "30",
+                          "id": 6784,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "1179:1:16",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          "value": "0"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          }
+                        ],
+                        "id": 6783,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "1171:7:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_address_$",
+                          "typeString": "type(address)"
+                        },
+                        "typeName": "address"
+                      },
+                      "id": 6785,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1171:10:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "src": "1155:26:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 6787,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1155:26:16"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6789,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "updateMasterCopy",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6759,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "858:2:16"
+            },
+            "returnParameters": {
+              "id": 6760,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "868:0:16"
+            },
+            "scope": 6790,
+            "src": "833:355:16",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 6791,
+        "src": "140:1051:16"
+      }
+    ],
+    "src": "0:1192:16"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.2+commit.1df8f40c.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.1",
+  "updatedAt": "2019-01-21T21:38:20.758Z",
+  "devdoc": {
+    "methods": {
+      "add(uint256,uint256)": {
+        "details": "Returns sum if no overflow occurred",
+        "params": {
+          "a": "First addend",
+          "b": "Second addend"
+        },
+        "return": "Sum"
+      },
+      "mul(uint256,uint256)": {
+        "details": "Returns product if no overflow occurred",
+        "params": {
+          "a": "First factor",
+          "b": "Second factor"
+        },
+        "return": "Product"
+      },
+      "safeToAdd(uint256,uint256)": {
+        "details": "Returns whether an add operation causes an overflow",
+        "params": {
+          "a": "First addend",
+          "b": "Second addend"
+        },
+        "return": "Did no overflow occur?"
+      },
+      "safeToMul(uint256,uint256)": {
+        "details": "Returns whether a multiply operation causes an overflow",
+        "params": {
+          "a": "First factor",
+          "b": "Second factor"
+        },
+        "return": "Did no overflow occur?"
+      },
+      "safeToSub(uint256,uint256)": {
+        "details": "Returns whether a subtraction operation causes an underflow",
+        "params": {
+          "a": "Minuend",
+          "b": "Subtrahend"
+        },
+        "return": "Did no underflow occur?"
+      },
+      "sub(uint256,uint256)": {
+        "details": "Returns difference if no overflow occurred",
+        "params": {
+          "a": "Minuend",
+          "b": "Subtrahend"
+        },
+        "return": "Difference"
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

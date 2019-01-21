@@ -1,0 +1,2876 @@
+{
+  "contractName": "EthOracle",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "a",
+          "type": "int256"
+        }
+      ],
+      "name": "atleastZero",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "a",
+          "type": "uint256"
+        },
+        {
+          "name": "b",
+          "type": "uint256"
+        }
+      ],
+      "name": "safeToAdd",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "auctioneer",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "ethUSDOracle",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "a",
+          "type": "uint256"
+        },
+        {
+          "name": "b",
+          "type": "uint256"
+        }
+      ],
+      "name": "add",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_auctioneer",
+          "type": "address"
+        }
+      ],
+      "name": "updateAuctioneer",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "a",
+          "type": "uint256"
+        },
+        {
+          "name": "b",
+          "type": "uint256"
+        }
+      ],
+      "name": "min",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "oracleInterfaceCountdown",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "a",
+          "type": "uint256"
+        },
+        {
+          "name": "b",
+          "type": "uint256"
+        }
+      ],
+      "name": "sub",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "a",
+          "type": "uint256"
+        },
+        {
+          "name": "b",
+          "type": "uint256"
+        }
+      ],
+      "name": "mul",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "a",
+          "type": "uint256"
+        },
+        {
+          "name": "b",
+          "type": "uint256"
+        }
+      ],
+      "name": "safeToMul",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "newProposalEthUSDOracle",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "a",
+          "type": "uint256"
+        },
+        {
+          "name": "b",
+          "type": "uint256"
+        }
+      ],
+      "name": "safeToSub",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "priceOracleInterface",
+          "type": "address"
+        }
+      ],
+      "name": "NewOracleProposal",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_ethUSDOracle",
+          "type": "address"
+        }
+      ],
+      "name": "initiateEthUsdOracleUpdate",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "updateEthUSDOracle",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b50610c66806100206000396000f3fe608060405234801561001057600080fd5b5060043610610112576000357c0100000000000000000000000000000000000000000000000000000000900480637ae2b5c7116100b4578063cb10fa7611610083578063cb10fa7614610413578063cd04ccfc14610463578063e31c71c4146104ad578063f4279d1f146104fd57610112565b80637ae2b5c714610311578063a48cef4a1461035d578063b67d77c51461037b578063c8a4ac9c146103c757610112565b80635ec2c7bf116100f05780635ec2c7bf146101ed578063706eb3ab14610237578063771602f714610281578063796a8076146102cd57610112565b80633069046814610117578063403fbf54146101595780634e30a66c1461019d575b600080fd5b6101436004803603602081101561012d57600080fd5b8101908080359060200190929190505050610507565b6040518082815260200191505060405180910390f35b61019b6004803603602081101561016f57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610523565b005b6101d3600480360360408110156101b357600080fd5b810190808035906020019092919080359060200190929190505050610729565b604051808215151515815260200191505060405180910390f35b6101f5610739565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b61023f61075e565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6102b76004803603604081101561029757600080fd5b810190808035906020019092919080359060200190929190505050610784565b6040518082815260200191505060405180910390f35b61030f600480360360208110156102e357600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506107a6565b005b6103476004803603604081101561032757600080fd5b810190808035906020019092919080359060200190929190505050610918565b6040518082815260200191505060405180910390f35b610365610934565b6040518082815260200191505060405180910390f35b6103b16004803603604081101561039157600080fd5b81019080803590602001909291908035906020019092919050505061093a565b6040518082815260200191505060405180910390f35b6103fd600480360360408110156103dd57600080fd5b81019080803590602001909291908035906020019092919050505061095c565b6040518082815260200191505060405180910390f35b6104496004803603604081101561042957600080fd5b81019080803590602001909291908035906020019092919050505061097e565b604051808215151515815260200191505060405180910390f35b61046b6109a2565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6104e3600480360360408110156104c357600080fd5b8101908080359060200190929190803590602001909291905050506109c8565b604051808215151515815260200191505060405180910390f35b6105056109d6565b005b60008082121561051a576000905061051e565b8190505b919050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156105ca576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602a815260200180610bd1602a913960400191505060405180910390fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561066f576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f546865206f7261636c652061646472657373206d7573742062652076616c696481525060200191505060405180910390fd5b80600260006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506106bd4262278d00610784565b6003819055507f3f174cfd713408ca6e4620d1efcc241b23fc39aa7d4694bd98610d3384dc001c81604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a150565b6000828284011015905092915050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60006107908383610729565b151561079b57600080fd5b818301905092915050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561084d576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602a815260200180610bd1602a913960400191505060405180910390fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16141515156108d5576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526026815260200180610bab6026913960400191505060405180910390fd5b806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b60008183101561092a5782905061092e565b8190505b92915050565b60035481565b600061094683836109c8565b151561095157600080fd5b818303905092915050565b6000610968838361097e565b151561097357600080fd5b818302905092915050565b60008082148061099a5750828283850281151561099757fe5b04145b905092915050565b600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600081831015905092915050565b600073ffffffffffffffffffffffffffffffffffffffff16600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614151515610a80576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526027815260200180610b846027913960400191505060405180910390fd5b42600354101515610adc576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526040815260200180610bfb6040913960400191505060405180910390fd5b600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000600260006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555056fe546865206e65772070726f706f73616c206d75737420626520612076616c6964206164647265735468652061756374696f6e656572206d75737420626520612076616c696420616464726573734f6e6c79207468652061756374696f6e6565722063616e206e6f6d696e6174652061206e6577206f6e6549742773206e6f7420706f737369626c6520746f2075706461746520746865206f7261636c6520647572696e67207468652077616974696e6720706572696f64a165627a7a723058207bb2e6c0f7786724599b46246c1c39459733c4a29aa77afdb898c544e3867a010029",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b5060043610610112576000357c0100000000000000000000000000000000000000000000000000000000900480637ae2b5c7116100b4578063cb10fa7611610083578063cb10fa7614610413578063cd04ccfc14610463578063e31c71c4146104ad578063f4279d1f146104fd57610112565b80637ae2b5c714610311578063a48cef4a1461035d578063b67d77c51461037b578063c8a4ac9c146103c757610112565b80635ec2c7bf116100f05780635ec2c7bf146101ed578063706eb3ab14610237578063771602f714610281578063796a8076146102cd57610112565b80633069046814610117578063403fbf54146101595780634e30a66c1461019d575b600080fd5b6101436004803603602081101561012d57600080fd5b8101908080359060200190929190505050610507565b6040518082815260200191505060405180910390f35b61019b6004803603602081101561016f57600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff169060200190929190505050610523565b005b6101d3600480360360408110156101b357600080fd5b810190808035906020019092919080359060200190929190505050610729565b604051808215151515815260200191505060405180910390f35b6101f5610739565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b61023f61075e565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6102b76004803603604081101561029757600080fd5b810190808035906020019092919080359060200190929190505050610784565b6040518082815260200191505060405180910390f35b61030f600480360360208110156102e357600080fd5b81019080803573ffffffffffffffffffffffffffffffffffffffff1690602001909291905050506107a6565b005b6103476004803603604081101561032757600080fd5b810190808035906020019092919080359060200190929190505050610918565b6040518082815260200191505060405180910390f35b610365610934565b6040518082815260200191505060405180910390f35b6103b16004803603604081101561039157600080fd5b81019080803590602001909291908035906020019092919050505061093a565b6040518082815260200191505060405180910390f35b6103fd600480360360408110156103dd57600080fd5b81019080803590602001909291908035906020019092919050505061095c565b6040518082815260200191505060405180910390f35b6104496004803603604081101561042957600080fd5b81019080803590602001909291908035906020019092919050505061097e565b604051808215151515815260200191505060405180910390f35b61046b6109a2565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6104e3600480360360408110156104c357600080fd5b8101908080359060200190929190803590602001909291905050506109c8565b604051808215151515815260200191505060405180910390f35b6105056109d6565b005b60008082121561051a576000905061051e565b8190505b919050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff161415156105ca576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602a815260200180610bd1602a913960400191505060405180910390fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff161415151561066f576040517f08c379a00000000000000000000000000000000000000000000000000000000081526004018080602001828103825260208152602001807f546865206f7261636c652061646472657373206d7573742062652076616c696481525060200191505060405180910390fd5b80600260006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506106bd4262278d00610784565b6003819055507f3f174cfd713408ca6e4620d1efcc241b23fc39aa7d4694bd98610d3384dc001c81604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390a150565b6000828284011015905092915050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600160009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b60006107908383610729565b151561079b57600080fd5b818301905092915050565b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff163373ffffffffffffffffffffffffffffffffffffffff1614151561084d576040517f08c379a000000000000000000000000000000000000000000000000000000000815260040180806020018281038252602a815260200180610bd1602a913960400191505060405180910390fd5b600073ffffffffffffffffffffffffffffffffffffffff168173ffffffffffffffffffffffffffffffffffffffff16141515156108d5576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526026815260200180610bab6026913960400191505060405180910390fd5b806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050565b60008183101561092a5782905061092e565b8190505b92915050565b60035481565b600061094683836109c8565b151561095157600080fd5b818303905092915050565b6000610968838361097e565b151561097357600080fd5b818302905092915050565b60008082148061099a5750828283850281151561099757fe5b04145b905092915050565b600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1681565b600081831015905092915050565b600073ffffffffffffffffffffffffffffffffffffffff16600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff1614151515610a80576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526027815260200180610b846027913960400191505060405180910390fd5b42600354101515610adc576040517f08c379a0000000000000000000000000000000000000000000000000000000008152600401808060200182810382526040815260200180610bfb6040913960400191505060405180910390fd5b600260009054906101000a900473ffffffffffffffffffffffffffffffffffffffff16600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055506000600260006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555056fe546865206e65772070726f706f73616c206d75737420626520612076616c6964206164647265735468652061756374696f6e656572206d75737420626520612076616c696420616464726573734f6e6c79207468652061756374696f6e6565722063616e206e6f6d696e6174652061206e6577206f6e6549742773206e6f7420706f737369626c6520746f2075706461746520746865206f7261636c6520647572696e67207468652077616974696e6720706572696f64a165627a7a723058207bb2e6c0f7786724599b46246c1c39459733c4a29aa77afdb898c544e3867a010029",
+  "sourceMap": "129:1230:17:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;129:1230:17;;;;;;;",
+  "deployedSourceMap": "129:1230:17:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;129:1230:17;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;227:160:15;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;227:160:15;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;554:375:17;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;554:375:17;;;;;;;;;;;;;;;;;;;:::i;:::-;;562:96:15;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;562:96:15;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;116:25:14;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;272:40:17;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;1343:119:15;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1343:119:15;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;148:196:14;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;148:196:14;;;;;;;;;;;;;;;;;;;:::i;:::-;;66:155:15;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;66:155:15;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;438:36:17;;;:::i;:::-;;;;;;;;;;;;;;;;;;;1604:119:15;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1604:119:15;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;1867;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1867:119:15;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;1097:110;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;1097:110:15;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;380:51:17;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;830:92:15;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;830:92:15;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;935:422:17;;;:::i;:::-;;227:160:15;276:4;300:1;296;:5;292:89;;;324:1;317:8;;;;292:89;368:1;356:14;;227:160;;;;:::o;554:375:17:-;578:10:14;;;;;;;;;;;564:24;;:10;:24;;;556:79;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;700:1:17;666:36;;674:13;666:36;;;;658:81;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;775:13;749:23;;:39;;;;;;;;;;;;;;;;;;825:50;829:15;228:7;825:3;:50::i;:::-;798:24;:77;;;;890:32;908:13;890:32;;;;;;;;;;;;;;;;;;;;;;554:375;:::o;562:96:15:-;618:4;650:1;645;641;:5;:10;;634:17;;562:96;;;;:::o;116:25:14:-;;;;;;;;;;;;;:::o;272:40:17:-;;;;;;;;;;;;;:::o;1343:119:15:-;1393:4;1417:15;1427:1;1430;1417:9;:15::i;:::-;1409:24;;;;;;;;1454:1;1450;:5;1443:12;;1343:119;;;;:::o;148:196:14:-;578:10;;;;;;;;;;;564:24;;:10;:24;;;556:79;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;258:1;235:25;;:11;:25;;;;227:76;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;326:11;313:10;;:24;;;;;;;;;;;;;;;;;;148:196;:::o;66:155:15:-;116:4;140:1;136;:5;132:83;;;164:1;157:8;;;;132:83;203:1;196:8;;66:155;;;;;:::o;438:36:17:-;;;;:::o;1604:119:15:-;1654:4;1678:15;1688:1;1691;1678:9;:15::i;:::-;1670:24;;;;;;;;1715:1;1711;:5;1704:12;;1604:119;;;;:::o;1867:::-;1917:4;1941:15;1951:1;1954;1941:9;:15::i;:::-;1933:24;;;;;;;;1978:1;1974;:5;1967:12;;1867:119;;;;:::o;1097:110::-;1153:4;1181:1;1176;:6;:24;;;;1199:1;1194;1190;1186;:5;:9;;;;;;;;:14;1176:24;1169:31;;1097:110;;;;:::o;380:51:17:-;;;;;;;;;;;;;:::o;830:92:15:-;886:4;914:1;909;:6;;902:13;;830:92;;;;:::o;935:422:17:-;1034:1;990:46;;998:23;;;;;;;;;;;990:46;;;;982:98;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1138:15;1111:24;;:42;1090:153;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1268:23;;;;;;;;;;;1253:12;;:38;;;;;;;;;;;;;;;;;;1348:1;1301:23;;:49;;;;;;;;;;;;;;;;;;935:422::o",
+  "source": "pragma solidity ^0.5.2;\n\nimport \"../Oracle/PriceOracleInterface.sol\";\nimport \"./AuctioneerManaged.sol\";\nimport \"./DxMath.sol\";\n\n\ncontract EthOracle is AuctioneerManaged, DxMath {\n    uint constant WAITING_PERIOD_CHANGE_ORACLE = 30 days;\n\n    // Price Oracle interface\n    PriceOracleInterface public ethUSDOracle;\n    // Price Oracle interface proposals during update process\n    PriceOracleInterface public newProposalEthUSDOracle;\n\n    uint public oracleInterfaceCountdown;\n\n    event NewOracleProposal(PriceOracleInterface priceOracleInterface);\n\n    function initiateEthUsdOracleUpdate(PriceOracleInterface _ethUSDOracle) public onlyAuctioneer {\n        require(address(_ethUSDOracle) != address(0), \"The oracle address must be valid\");\n        newProposalEthUSDOracle = _ethUSDOracle;\n        oracleInterfaceCountdown = add(block.timestamp, WAITING_PERIOD_CHANGE_ORACLE);\n        emit NewOracleProposal(_ethUSDOracle);\n    }\n\n    function updateEthUSDOracle() public {\n        require(address(newProposalEthUSDOracle) != address(0), \"The new proposal must be a valid addres\");\n        require(\n            oracleInterfaceCountdown < block.timestamp,\n            \"It's not possible to update the oracle during the waiting period\"\n        );\n        ethUSDOracle = newProposalEthUSDOracle;\n        newProposalEthUSDOracle = PriceOracleInterface(0);\n    }\n}\n",
+  "sourcePath": "/Users/billy/sol/arbitrage/node_modules/@gnosis.pm/dx-contracts/contracts/base/EthOracle.sol",
+  "ast": {
+    "absolutePath": "/Users/billy/sol/arbitrage/node_modules/@gnosis.pm/dx-contracts/contracts/base/EthOracle.sol",
+    "exportedSymbols": {
+      "EthOracle": [
+        6881
+      ]
+    },
+    "id": 6882,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6792,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:17"
+      },
+      {
+        "absolutePath": "/Users/billy/sol/arbitrage/node_modules/@gnosis.pm/dx-contracts/contracts/Oracle/PriceOracleInterface.sol",
+        "file": "../Oracle/PriceOracleInterface.sol",
+        "id": 6793,
+        "nodeType": "ImportDirective",
+        "scope": 6882,
+        "sourceUnit": 6126,
+        "src": "25:44:17",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/billy/sol/arbitrage/node_modules/@gnosis.pm/dx-contracts/contracts/base/AuctioneerManaged.sol",
+        "file": "./AuctioneerManaged.sol",
+        "id": 6794,
+        "nodeType": "ImportDirective",
+        "scope": 6882,
+        "sourceUnit": 6546,
+        "src": "70:33:17",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/billy/sol/arbitrage/node_modules/@gnosis.pm/dx-contracts/contracts/base/DxMath.sol",
+        "file": "./DxMath.sol",
+        "id": 6795,
+        "nodeType": "ImportDirective",
+        "scope": 6882,
+        "sourceUnit": 6704,
+        "src": "104:22:17",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 6796,
+              "name": "AuctioneerManaged",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 6545,
+              "src": "151:17:17",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_AuctioneerManaged_$6545",
+                "typeString": "contract AuctioneerManaged"
+              }
+            },
+            "id": 6797,
+            "nodeType": "InheritanceSpecifier",
+            "src": "151:17:17"
+          },
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 6798,
+              "name": "DxMath",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 6703,
+              "src": "170:6:17",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_DxMath_$6703",
+                "typeString": "contract DxMath"
+              }
+            },
+            "id": 6799,
+            "nodeType": "InheritanceSpecifier",
+            "src": "170:6:17"
+          }
+        ],
+        "contractDependencies": [
+          6545,
+          6703
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 6881,
+        "linearizedBaseContracts": [
+          6881,
+          6703,
+          6545
+        ],
+        "name": "EthOracle",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "id": 6802,
+            "name": "WAITING_PERIOD_CHANGE_ORACLE",
+            "nodeType": "VariableDeclaration",
+            "scope": 6881,
+            "src": "183:52:17",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 6800,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "183:4:17",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3330",
+              "id": 6801,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "228:7:17",
+              "subdenomination": "days",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_2592000_by_1",
+                "typeString": "int_const 2592000"
+              },
+              "value": "30"
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 6804,
+            "name": "ethUSDOracle",
+            "nodeType": "VariableDeclaration",
+            "scope": 6881,
+            "src": "272:40:17",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+              "typeString": "contract PriceOracleInterface"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 6803,
+              "name": "PriceOracleInterface",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 6125,
+              "src": "272:20:17",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                "typeString": "contract PriceOracleInterface"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 6806,
+            "name": "newProposalEthUSDOracle",
+            "nodeType": "VariableDeclaration",
+            "scope": 6881,
+            "src": "380:51:17",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+              "typeString": "contract PriceOracleInterface"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 6805,
+              "name": "PriceOracleInterface",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 6125,
+              "src": "380:20:17",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                "typeString": "contract PriceOracleInterface"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 6808,
+            "name": "oracleInterfaceCountdown",
+            "nodeType": "VariableDeclaration",
+            "scope": 6881,
+            "src": "438:36:17",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 6807,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "438:4:17",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 6812,
+            "name": "NewOracleProposal",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 6811,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6810,
+                  "indexed": false,
+                  "name": "priceOracleInterface",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6812,
+                  "src": "505:41:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                    "typeString": "contract PriceOracleInterface"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 6809,
+                    "name": "PriceOracleInterface",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 6125,
+                    "src": "505:20:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                      "typeString": "contract PriceOracleInterface"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "504:43:17"
+            },
+            "src": "481:67:17"
+          },
+          {
+            "body": {
+              "id": 6846,
+              "nodeType": "Block",
+              "src": "648:281:17",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 6826,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "id": 6821,
+                              "name": "_ethUSDOracle",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 6814,
+                              "src": "674:13:17",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                                "typeString": "contract PriceOracleInterface"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                                "typeString": "contract PriceOracleInterface"
+                              }
+                            ],
+                            "id": 6820,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "666:7:17",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_address_$",
+                              "typeString": "type(address)"
+                            },
+                            "typeName": "address"
+                          },
+                          "id": 6822,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "666:22:17",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "!=",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "hexValue": "30",
+                              "id": 6824,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "number",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "700:1:17",
+                              "subdenomination": null,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              },
+                              "value": "0"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              }
+                            ],
+                            "id": 6823,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "692:7:17",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_address_$",
+                              "typeString": "type(address)"
+                            },
+                            "typeName": "address"
+                          },
+                          "id": 6825,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "692:10:17",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address_payable",
+                            "typeString": "address payable"
+                          }
+                        },
+                        "src": "666:36:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "546865206f7261636c652061646472657373206d7573742062652076616c6964",
+                        "id": 6827,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "704:34:17",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_49c098d4f4567bbe6221c68cc836c93cdc24281823054b3afcfd49a4db13ed89",
+                          "typeString": "literal_string \"The oracle address must be valid\""
+                        },
+                        "value": "The oracle address must be valid"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_49c098d4f4567bbe6221c68cc836c93cdc24281823054b3afcfd49a4db13ed89",
+                          "typeString": "literal_string \"The oracle address must be valid\""
+                        }
+                      ],
+                      "id": 6819,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        8764,
+                        8765
+                      ],
+                      "referencedDeclaration": 8765,
+                      "src": "658:7:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 6828,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "658:81:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6829,
+                  "nodeType": "ExpressionStatement",
+                  "src": "658:81:17"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6832,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6830,
+                      "name": "newProposalEthUSDOracle",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6806,
+                      "src": "749:23:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                        "typeString": "contract PriceOracleInterface"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 6831,
+                      "name": "_ethUSDOracle",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6814,
+                      "src": "775:13:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                        "typeString": "contract PriceOracleInterface"
+                      }
+                    },
+                    "src": "749:39:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                      "typeString": "contract PriceOracleInterface"
+                    }
+                  },
+                  "id": 6833,
+                  "nodeType": "ExpressionStatement",
+                  "src": "749:39:17"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6840,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6834,
+                      "name": "oracleInterfaceCountdown",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6808,
+                      "src": "798:24:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 6836,
+                            "name": "block",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 8751,
+                            "src": "829:5:17",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_block",
+                              "typeString": "block"
+                            }
+                          },
+                          "id": 6837,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "timestamp",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "829:15:17",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 6838,
+                          "name": "WAITING_PERIOD_CHANGE_ORACLE",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6802,
+                          "src": "846:28:17",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 6835,
+                        "name": "add",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6660,
+                        "src": "825:3:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
+                          "typeString": "function (uint256,uint256) pure returns (uint256)"
+                        }
+                      },
+                      "id": 6839,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "825:50:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "798:77:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 6841,
+                  "nodeType": "ExpressionStatement",
+                  "src": "798:77:17"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 6843,
+                        "name": "_ethUSDOracle",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6814,
+                        "src": "908:13:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                          "typeString": "contract PriceOracleInterface"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                          "typeString": "contract PriceOracleInterface"
+                        }
+                      ],
+                      "id": 6842,
+                      "name": "NewOracleProposal",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6812,
+                      "src": "890:17:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_contract$_PriceOracleInterface_$6125_$returns$__$",
+                        "typeString": "function (contract PriceOracleInterface)"
+                      }
+                    },
+                    "id": 6844,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "890:32:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6845,
+                  "nodeType": "EmitStatement",
+                  "src": "885:37:17"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6847,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 6817,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 6816,
+                  "name": "onlyAuctioneer",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 6544,
+                  "src": "633:14:17",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "633:14:17"
+              }
+            ],
+            "name": "initiateEthUsdOracleUpdate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6815,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6814,
+                  "name": "_ethUSDOracle",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6847,
+                  "src": "590:34:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                    "typeString": "contract PriceOracleInterface"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 6813,
+                    "name": "PriceOracleInterface",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 6125,
+                    "src": "590:20:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                      "typeString": "contract PriceOracleInterface"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "589:36:17"
+            },
+            "returnParameters": {
+              "id": 6818,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "648:0:17"
+            },
+            "scope": 6881,
+            "src": "554:375:17",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 6879,
+              "nodeType": "Block",
+              "src": "972:385:17",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 6857,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "id": 6852,
+                              "name": "newProposalEthUSDOracle",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 6806,
+                              "src": "998:23:17",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                                "typeString": "contract PriceOracleInterface"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                                "typeString": "contract PriceOracleInterface"
+                              }
+                            ],
+                            "id": 6851,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "990:7:17",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_address_$",
+                              "typeString": "type(address)"
+                            },
+                            "typeName": "address"
+                          },
+                          "id": 6853,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "990:32:17",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "!=",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "hexValue": "30",
+                              "id": 6855,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "number",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "1034:1:17",
+                              "subdenomination": null,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              },
+                              "value": "0"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              }
+                            ],
+                            "id": 6854,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "1026:7:17",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_address_$",
+                              "typeString": "type(address)"
+                            },
+                            "typeName": "address"
+                          },
+                          "id": 6856,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1026:10:17",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address_payable",
+                            "typeString": "address payable"
+                          }
+                        },
+                        "src": "990:46:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "546865206e65772070726f706f73616c206d75737420626520612076616c696420616464726573",
+                        "id": 6858,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1038:41:17",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_7be0dd363b5c105b6af4ab0ed60841896ea6771fa635736e246402e9f29efa04",
+                          "typeString": "literal_string \"The new proposal must be a valid addres\""
+                        },
+                        "value": "The new proposal must be a valid addres"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_7be0dd363b5c105b6af4ab0ed60841896ea6771fa635736e246402e9f29efa04",
+                          "typeString": "literal_string \"The new proposal must be a valid addres\""
+                        }
+                      ],
+                      "id": 6850,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        8764,
+                        8765
+                      ],
+                      "referencedDeclaration": 8765,
+                      "src": "982:7:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 6859,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "982:98:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6860,
+                  "nodeType": "ExpressionStatement",
+                  "src": "982:98:17"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 6865,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "id": 6862,
+                          "name": "oracleInterfaceCountdown",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6808,
+                          "src": "1111:24:17",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "<",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 6863,
+                            "name": "block",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 8751,
+                            "src": "1138:5:17",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_block",
+                              "typeString": "block"
+                            }
+                          },
+                          "id": 6864,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "timestamp",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "1138:15:17",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "src": "1111:42:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "49742773206e6f7420706f737369626c6520746f2075706461746520746865206f7261636c6520647572696e67207468652077616974696e6720706572696f64",
+                        "id": 6866,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1167:66:17",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_bde401d170dc389622a0357fbb74bf2352fb0e052b1dc17dc824cff9729b55af",
+                          "typeString": "literal_string \"It's not possible to update the oracle during the waiting period\""
+                        },
+                        "value": "It's not possible to update the oracle during the waiting period"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_bde401d170dc389622a0357fbb74bf2352fb0e052b1dc17dc824cff9729b55af",
+                          "typeString": "literal_string \"It's not possible to update the oracle during the waiting period\""
+                        }
+                      ],
+                      "id": 6861,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        8764,
+                        8765
+                      ],
+                      "referencedDeclaration": 8765,
+                      "src": "1090:7:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 6867,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1090:153:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6868,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1090:153:17"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6871,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6869,
+                      "name": "ethUSDOracle",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6804,
+                      "src": "1253:12:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                        "typeString": "contract PriceOracleInterface"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 6870,
+                      "name": "newProposalEthUSDOracle",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6806,
+                      "src": "1268:23:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                        "typeString": "contract PriceOracleInterface"
+                      }
+                    },
+                    "src": "1253:38:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                      "typeString": "contract PriceOracleInterface"
+                    }
+                  },
+                  "id": 6872,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1253:38:17"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6877,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6873,
+                      "name": "newProposalEthUSDOracle",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6806,
+                      "src": "1301:23:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                        "typeString": "contract PriceOracleInterface"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "hexValue": "30",
+                          "id": 6875,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "1348:1:17",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          "value": "0"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          }
+                        ],
+                        "id": 6874,
+                        "name": "PriceOracleInterface",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6125,
+                        "src": "1327:20:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_PriceOracleInterface_$6125_$",
+                          "typeString": "type(contract PriceOracleInterface)"
+                        }
+                      },
+                      "id": 6876,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1327:23:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                        "typeString": "contract PriceOracleInterface"
+                      }
+                    },
+                    "src": "1301:49:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                      "typeString": "contract PriceOracleInterface"
+                    }
+                  },
+                  "id": 6878,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1301:49:17"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6880,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "updateEthUSDOracle",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6848,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "962:2:17"
+            },
+            "returnParameters": {
+              "id": 6849,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "972:0:17"
+            },
+            "scope": 6881,
+            "src": "935:422:17",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 6882,
+        "src": "129:1230:17"
+      }
+    ],
+    "src": "0:1360:17"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/billy/sol/arbitrage/node_modules/@gnosis.pm/dx-contracts/contracts/base/EthOracle.sol",
+    "exportedSymbols": {
+      "EthOracle": [
+        6881
+      ]
+    },
+    "id": 6882,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6792,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:17"
+      },
+      {
+        "absolutePath": "/Users/billy/sol/arbitrage/node_modules/@gnosis.pm/dx-contracts/contracts/Oracle/PriceOracleInterface.sol",
+        "file": "../Oracle/PriceOracleInterface.sol",
+        "id": 6793,
+        "nodeType": "ImportDirective",
+        "scope": 6882,
+        "sourceUnit": 6126,
+        "src": "25:44:17",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/billy/sol/arbitrage/node_modules/@gnosis.pm/dx-contracts/contracts/base/AuctioneerManaged.sol",
+        "file": "./AuctioneerManaged.sol",
+        "id": 6794,
+        "nodeType": "ImportDirective",
+        "scope": 6882,
+        "sourceUnit": 6546,
+        "src": "70:33:17",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "/Users/billy/sol/arbitrage/node_modules/@gnosis.pm/dx-contracts/contracts/base/DxMath.sol",
+        "file": "./DxMath.sol",
+        "id": 6795,
+        "nodeType": "ImportDirective",
+        "scope": 6882,
+        "sourceUnit": 6704,
+        "src": "104:22:17",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 6796,
+              "name": "AuctioneerManaged",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 6545,
+              "src": "151:17:17",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_AuctioneerManaged_$6545",
+                "typeString": "contract AuctioneerManaged"
+              }
+            },
+            "id": 6797,
+            "nodeType": "InheritanceSpecifier",
+            "src": "151:17:17"
+          },
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 6798,
+              "name": "DxMath",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 6703,
+              "src": "170:6:17",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_DxMath_$6703",
+                "typeString": "contract DxMath"
+              }
+            },
+            "id": 6799,
+            "nodeType": "InheritanceSpecifier",
+            "src": "170:6:17"
+          }
+        ],
+        "contractDependencies": [
+          6545,
+          6703
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 6881,
+        "linearizedBaseContracts": [
+          6881,
+          6703,
+          6545
+        ],
+        "name": "EthOracle",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "id": 6802,
+            "name": "WAITING_PERIOD_CHANGE_ORACLE",
+            "nodeType": "VariableDeclaration",
+            "scope": 6881,
+            "src": "183:52:17",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 6800,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "183:4:17",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "3330",
+              "id": 6801,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "228:7:17",
+              "subdenomination": "days",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_2592000_by_1",
+                "typeString": "int_const 2592000"
+              },
+              "value": "30"
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": false,
+            "id": 6804,
+            "name": "ethUSDOracle",
+            "nodeType": "VariableDeclaration",
+            "scope": 6881,
+            "src": "272:40:17",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+              "typeString": "contract PriceOracleInterface"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 6803,
+              "name": "PriceOracleInterface",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 6125,
+              "src": "272:20:17",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                "typeString": "contract PriceOracleInterface"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 6806,
+            "name": "newProposalEthUSDOracle",
+            "nodeType": "VariableDeclaration",
+            "scope": 6881,
+            "src": "380:51:17",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+              "typeString": "contract PriceOracleInterface"
+            },
+            "typeName": {
+              "contractScope": null,
+              "id": 6805,
+              "name": "PriceOracleInterface",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 6125,
+              "src": "380:20:17",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                "typeString": "contract PriceOracleInterface"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 6808,
+            "name": "oracleInterfaceCountdown",
+            "nodeType": "VariableDeclaration",
+            "scope": 6881,
+            "src": "438:36:17",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 6807,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "438:4:17",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 6812,
+            "name": "NewOracleProposal",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 6811,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6810,
+                  "indexed": false,
+                  "name": "priceOracleInterface",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6812,
+                  "src": "505:41:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                    "typeString": "contract PriceOracleInterface"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 6809,
+                    "name": "PriceOracleInterface",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 6125,
+                    "src": "505:20:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                      "typeString": "contract PriceOracleInterface"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "504:43:17"
+            },
+            "src": "481:67:17"
+          },
+          {
+            "body": {
+              "id": 6846,
+              "nodeType": "Block",
+              "src": "648:281:17",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 6826,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "id": 6821,
+                              "name": "_ethUSDOracle",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 6814,
+                              "src": "674:13:17",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                                "typeString": "contract PriceOracleInterface"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                                "typeString": "contract PriceOracleInterface"
+                              }
+                            ],
+                            "id": 6820,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "666:7:17",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_address_$",
+                              "typeString": "type(address)"
+                            },
+                            "typeName": "address"
+                          },
+                          "id": 6822,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "666:22:17",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "!=",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "hexValue": "30",
+                              "id": 6824,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "number",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "700:1:17",
+                              "subdenomination": null,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              },
+                              "value": "0"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              }
+                            ],
+                            "id": 6823,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "692:7:17",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_address_$",
+                              "typeString": "type(address)"
+                            },
+                            "typeName": "address"
+                          },
+                          "id": 6825,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "692:10:17",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address_payable",
+                            "typeString": "address payable"
+                          }
+                        },
+                        "src": "666:36:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "546865206f7261636c652061646472657373206d7573742062652076616c6964",
+                        "id": 6827,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "704:34:17",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_49c098d4f4567bbe6221c68cc836c93cdc24281823054b3afcfd49a4db13ed89",
+                          "typeString": "literal_string \"The oracle address must be valid\""
+                        },
+                        "value": "The oracle address must be valid"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_49c098d4f4567bbe6221c68cc836c93cdc24281823054b3afcfd49a4db13ed89",
+                          "typeString": "literal_string \"The oracle address must be valid\""
+                        }
+                      ],
+                      "id": 6819,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        8764,
+                        8765
+                      ],
+                      "referencedDeclaration": 8765,
+                      "src": "658:7:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 6828,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "658:81:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6829,
+                  "nodeType": "ExpressionStatement",
+                  "src": "658:81:17"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6832,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6830,
+                      "name": "newProposalEthUSDOracle",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6806,
+                      "src": "749:23:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                        "typeString": "contract PriceOracleInterface"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 6831,
+                      "name": "_ethUSDOracle",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6814,
+                      "src": "775:13:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                        "typeString": "contract PriceOracleInterface"
+                      }
+                    },
+                    "src": "749:39:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                      "typeString": "contract PriceOracleInterface"
+                    }
+                  },
+                  "id": 6833,
+                  "nodeType": "ExpressionStatement",
+                  "src": "749:39:17"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6840,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6834,
+                      "name": "oracleInterfaceCountdown",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6808,
+                      "src": "798:24:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 6836,
+                            "name": "block",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 8751,
+                            "src": "829:5:17",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_block",
+                              "typeString": "block"
+                            }
+                          },
+                          "id": 6837,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "timestamp",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "829:15:17",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        {
+                          "argumentTypes": null,
+                          "id": 6838,
+                          "name": "WAITING_PERIOD_CHANGE_ORACLE",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6802,
+                          "src": "846:28:17",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          },
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "id": 6835,
+                        "name": "add",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6660,
+                        "src": "825:3:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_pure$_t_uint256_$_t_uint256_$returns$_t_uint256_$",
+                          "typeString": "function (uint256,uint256) pure returns (uint256)"
+                        }
+                      },
+                      "id": 6839,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "825:50:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "798:77:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 6841,
+                  "nodeType": "ExpressionStatement",
+                  "src": "798:77:17"
+                },
+                {
+                  "eventCall": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 6843,
+                        "name": "_ethUSDOracle",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6814,
+                        "src": "908:13:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                          "typeString": "contract PriceOracleInterface"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                          "typeString": "contract PriceOracleInterface"
+                        }
+                      ],
+                      "id": 6842,
+                      "name": "NewOracleProposal",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6812,
+                      "src": "890:17:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_contract$_PriceOracleInterface_$6125_$returns$__$",
+                        "typeString": "function (contract PriceOracleInterface)"
+                      }
+                    },
+                    "id": 6844,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "890:32:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6845,
+                  "nodeType": "EmitStatement",
+                  "src": "885:37:17"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6847,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "arguments": null,
+                "id": 6817,
+                "modifierName": {
+                  "argumentTypes": null,
+                  "id": 6816,
+                  "name": "onlyAuctioneer",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 6544,
+                  "src": "633:14:17",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "633:14:17"
+              }
+            ],
+            "name": "initiateEthUsdOracleUpdate",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6815,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6814,
+                  "name": "_ethUSDOracle",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6847,
+                  "src": "590:34:17",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                    "typeString": "contract PriceOracleInterface"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 6813,
+                    "name": "PriceOracleInterface",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 6125,
+                    "src": "590:20:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                      "typeString": "contract PriceOracleInterface"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "589:36:17"
+            },
+            "returnParameters": {
+              "id": 6818,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "648:0:17"
+            },
+            "scope": 6881,
+            "src": "554:375:17",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 6879,
+              "nodeType": "Block",
+              "src": "972:385:17",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 6857,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "id": 6852,
+                              "name": "newProposalEthUSDOracle",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 6806,
+                              "src": "998:23:17",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                                "typeString": "contract PriceOracleInterface"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                                "typeString": "contract PriceOracleInterface"
+                              }
+                            ],
+                            "id": 6851,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "990:7:17",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_address_$",
+                              "typeString": "type(address)"
+                            },
+                            "typeName": "address"
+                          },
+                          "id": 6853,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "990:32:17",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "!=",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "hexValue": "30",
+                              "id": 6855,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "number",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "1034:1:17",
+                              "subdenomination": null,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              },
+                              "value": "0"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                              }
+                            ],
+                            "id": 6854,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "1026:7:17",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_address_$",
+                              "typeString": "type(address)"
+                            },
+                            "typeName": "address"
+                          },
+                          "id": 6856,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1026:10:17",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address_payable",
+                            "typeString": "address payable"
+                          }
+                        },
+                        "src": "990:46:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "546865206e65772070726f706f73616c206d75737420626520612076616c696420616464726573",
+                        "id": 6858,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1038:41:17",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_7be0dd363b5c105b6af4ab0ed60841896ea6771fa635736e246402e9f29efa04",
+                          "typeString": "literal_string \"The new proposal must be a valid addres\""
+                        },
+                        "value": "The new proposal must be a valid addres"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_7be0dd363b5c105b6af4ab0ed60841896ea6771fa635736e246402e9f29efa04",
+                          "typeString": "literal_string \"The new proposal must be a valid addres\""
+                        }
+                      ],
+                      "id": 6850,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        8764,
+                        8765
+                      ],
+                      "referencedDeclaration": 8765,
+                      "src": "982:7:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 6859,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "982:98:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6860,
+                  "nodeType": "ExpressionStatement",
+                  "src": "982:98:17"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 6865,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "argumentTypes": null,
+                          "id": 6862,
+                          "name": "oracleInterfaceCountdown",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6808,
+                          "src": "1111:24:17",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "<",
+                        "rightExpression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 6863,
+                            "name": "block",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 8751,
+                            "src": "1138:5:17",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_block",
+                              "typeString": "block"
+                            }
+                          },
+                          "id": 6864,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "timestamp",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "1138:15:17",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "src": "1111:42:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "49742773206e6f7420706f737369626c6520746f2075706461746520746865206f7261636c6520647572696e67207468652077616974696e6720706572696f64",
+                        "id": 6866,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "string",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1167:66:17",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_stringliteral_bde401d170dc389622a0357fbb74bf2352fb0e052b1dc17dc824cff9729b55af",
+                          "typeString": "literal_string \"It's not possible to update the oracle during the waiting period\""
+                        },
+                        "value": "It's not possible to update the oracle during the waiting period"
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        {
+                          "typeIdentifier": "t_stringliteral_bde401d170dc389622a0357fbb74bf2352fb0e052b1dc17dc824cff9729b55af",
+                          "typeString": "literal_string \"It's not possible to update the oracle during the waiting period\""
+                        }
+                      ],
+                      "id": 6861,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        8764,
+                        8765
+                      ],
+                      "referencedDeclaration": 8765,
+                      "src": "1090:7:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
+                        "typeString": "function (bool,string memory) pure"
+                      }
+                    },
+                    "id": 6867,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1090:153:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6868,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1090:153:17"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6871,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6869,
+                      "name": "ethUSDOracle",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6804,
+                      "src": "1253:12:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                        "typeString": "contract PriceOracleInterface"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 6870,
+                      "name": "newProposalEthUSDOracle",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6806,
+                      "src": "1268:23:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                        "typeString": "contract PriceOracleInterface"
+                      }
+                    },
+                    "src": "1253:38:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                      "typeString": "contract PriceOracleInterface"
+                    }
+                  },
+                  "id": 6872,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1253:38:17"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 6877,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 6873,
+                      "name": "newProposalEthUSDOracle",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6806,
+                      "src": "1301:23:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                        "typeString": "contract PriceOracleInterface"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "hexValue": "30",
+                          "id": 6875,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "1348:1:17",
+                          "subdenomination": null,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          "value": "0"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          }
+                        ],
+                        "id": 6874,
+                        "name": "PriceOracleInterface",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6125,
+                        "src": "1327:20:17",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_contract$_PriceOracleInterface_$6125_$",
+                          "typeString": "type(contract PriceOracleInterface)"
+                        }
+                      },
+                      "id": 6876,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1327:23:17",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                        "typeString": "contract PriceOracleInterface"
+                      }
+                    },
+                    "src": "1301:49:17",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_PriceOracleInterface_$6125",
+                      "typeString": "contract PriceOracleInterface"
+                    }
+                  },
+                  "id": 6878,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1301:49:17"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 6880,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "updateEthUSDOracle",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6848,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "962:2:17"
+            },
+            "returnParameters": {
+              "id": 6849,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "972:0:17"
+            },
+            "scope": 6881,
+            "src": "935:422:17",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 6882,
+        "src": "129:1230:17"
+      }
+    ],
+    "src": "0:1360:17"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.2+commit.1df8f40c.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.1",
+  "updatedAt": "2019-01-21T21:38:20.758Z",
+  "devdoc": {
+    "methods": {
+      "add(uint256,uint256)": {
+        "details": "Returns sum if no overflow occurred",
+        "params": {
+          "a": "First addend",
+          "b": "Second addend"
+        },
+        "return": "Sum"
+      },
+      "mul(uint256,uint256)": {
+        "details": "Returns product if no overflow occurred",
+        "params": {
+          "a": "First factor",
+          "b": "Second factor"
+        },
+        "return": "Product"
+      },
+      "safeToAdd(uint256,uint256)": {
+        "details": "Returns whether an add operation causes an overflow",
+        "params": {
+          "a": "First addend",
+          "b": "Second addend"
+        },
+        "return": "Did no overflow occur?"
+      },
+      "safeToMul(uint256,uint256)": {
+        "details": "Returns whether a multiply operation causes an overflow",
+        "params": {
+          "a": "First factor",
+          "b": "Second factor"
+        },
+        "return": "Did no overflow occur?"
+      },
+      "safeToSub(uint256,uint256)": {
+        "details": "Returns whether a subtraction operation causes an underflow",
+        "params": {
+          "a": "Minuend",
+          "b": "Subtrahend"
+        },
+        "return": "Did no underflow occur?"
+      },
+      "sub(uint256,uint256)": {
+        "details": "Returns difference if no overflow occurred",
+        "params": {
+          "a": "Minuend",
+          "b": "Subtrahend"
+        },
+        "return": "Difference"
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
