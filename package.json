@@ -24,9 +24,7 @@
     "truffle": "^5.0.2",
     "truffle-hdwallet-provider": "^1.0.0-web3one.3"
   },
-  "dependencies": {
-    "@gnosis.pm/dx-contracts": "^2.0.0-RC13"
-  },
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/okwme/truffle-boilerplate.git"

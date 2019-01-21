@@ -2,8 +2,7 @@ pragma solidity ^0.5.0;
 
 import "./UniswapExchangeInterface.sol";
 import "./UniswapFactoryInterface.sol";
-
-import "../node_modules/@gnosis.pm/dx-contracts/contracts/DutchExchange.sol";
+import "./DutchExchangeInterface.sol";
 
 /**
  * The Arbitrage contract
@@ -13,16 +12,15 @@ contract Arbitrage {
     enum Network {Mainnet, Rinkeby}
 
     UniswapFactoryInterface uniFactory;
-    DutchExchange dutchXProxy;
+    DutchExchangeInterface dutchXProxy;
     
-
     constructor(Network _network) public {
         if (_network == Network.Mainnet) {
             uniFactory = UniswapFactoryInterface(0xc0a47dFe034B400B47bDaD5FecDa2621de6c4d95);
-            dutchXProxy = DutchExchange(0xaf1745c0f8117384Dfa5FFf40f824057c70F2ed3);
+            dutchXProxy = DutchExchangeInterface(0xaf1745c0f8117384Dfa5FFf40f824057c70F2ed3);
         } else {
             uniFactory = UniswapFactoryInterface(0xf5D915570BC477f9B8D6C0E980aA81757A3AaC36);
-            dutchXProxy = DutchExchange(0x4e69969D9270fF55fc7c5043B074d4e45F795587);
+            dutchXProxy = DutchExchangeInterface(0x4e69969D9270fF55fc7c5043B074d4e45F795587);
         }
     }
 
@@ -53,17 +51,12 @@ contract Arbitrage {
         require((etherReturned - gasUsed) >= amount, "no profit");
     }
 
-
-
-
-
     // this will assume that all dutchX tokens relative to the arbitrage will have already been deposited
     // this will assume that all tokens have been given the proper transfer allowances
     // this will also assume that any Ether to be spent on uniswap will be included with the tx as msg.value
     // in order to save gas costs on transferring Ether token to and from Eth
     function preCheck(address token, uint256 amount) public payable returns (uint256) {
         require(token != address(0), "why no token?");
-
 
         address uniswapExchangeToken = uniFactory.getExchange(token);
         uint256 uniswapTokensReturned = UniswapExchangeInterface(uniswapExchangeToken).getEthToTokenInputPrice(amount);
@@ -80,7 +73,6 @@ contract Arbitrage {
         // if (dutchPrice < uniswapPrice) {
         // if ((num1 * den2) < (num2 * den1)) {
         if ((dutchTokenResult * amount) < (uniswapTokensReturned * dutchEtherResult)) {
-            
             
             // calculating the result of buy including fees is maybe unnecessary
             // if we have a lot of mag they will be very minimal?
@@ -99,7 +91,6 @@ contract Arbitrage {
             //     amountAfterFee = outstandingVolume;
             // }
             // //
-
 
             uint256 tokensBought = dutchXProxy.postBuyOrder(dutchEther, token, dutchAuctionIndex, amount);
             uint256 etherReturned = UniswapExchangeInterface(uniswapExchangeToken).tokenToEthSwapInput(tokensBought, amount, block.timestamp);
