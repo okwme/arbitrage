@@ -2,7 +2,7 @@ pragma solidity ^0.5.0;
 
 // Solidity Interface
 
-contract UniswapExchangeInterface {
+contract IUniswapExchange {
     // Address of ERC20 token sold on this exchange
     function tokenAddress() external view returns (address token);
     // Address of Uniswap Factory

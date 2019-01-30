@@ -2,7 +2,7 @@ pragma solidity ^0.5.0;
 
 // Solidity Interface
 
-contract UniswapFactoryInterface {
+contract IUniswapFactory {
     // Public Variables
     address public exchangeTemplate;
     uint256 public tokenCount;
