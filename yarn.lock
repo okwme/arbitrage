@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@gnosis.pm/util-contracts@^2.0.0-RC4":
+  version "2.0.0-RC4"
+  resolved "https://registry.yarnpkg.com/@gnosis.pm/util-contracts/-/util-contracts-2.0.0-RC4.tgz#4f4eb5dafa6fea925600bc5e7f08728be7845d90"
+  integrity sha512-41CqHMy3eZ8zu+uHVK/oK+n+zsUcLR/lpCZybQtcFaIZ8fcRK/gt+PcFDDNN6bB65Xrg64UKvcQ4kfkg206Uww==
+
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"

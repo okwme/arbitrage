@@ -19,12 +19,12 @@ contract Arbitrage is Ownable {
         dutchXProxy = _dutchXProxy;
     }
 
-
     function() external payable {
         // depositEther();
     }
 
     function depositEther() public payable {
+        require(address(this).balance > 0);
         uint balance = address(this).balance;
 
         // deposit balance to weth
@@ -43,17 +43,24 @@ contract Arbitrage is Ownable {
         require(newBalance >= balance, "deposit didn't work");
     }
 
+    function withdrawTransferEther(address payable recepient, uint amount) public onlyOwner {
+        _withdrawEther(amount);
+        recepient.transfer(amount);
+    }
+
+    function transferEther(address payable recepient, uint amount) public onlyOwner {
+        amount = amount == 0 ? address(this).balance : amount;
+        recepient.transfer(amount);
+    }
+
     function _withdrawEther(uint amount) internal {
         address weth = dutchXProxy.ethToken();
+        dutchXProxy.withdraw(weth, amount);
         bytes memory  payload = abi.encodeWithSignature("withdraw(uint)", amount);
         (bool success, bytes memory returnData) = weth.call.value(0).gas(200000)(payload);
         require(success, "withdraw didn't work");
     }
 
-    function transferEther(address payable recepient, uint amount) public onlyOwner {
-        _withdrawEther(amount);
-        recepient.transfer(amount);
-    }
 
     function depositToken(address token, uint amount) public onlyOwner {
 
@@ -73,7 +80,6 @@ contract Arbitrage is Ownable {
     }
 
     function dutchOpportunity(address token1, uint256 amount) public {
-
         address token2 = dutchXProxy.ethToken();
         uniFactory.getExchange(token1);
         address uniswapExchange = uniFactory.getExchange(token1);
@@ -88,13 +94,10 @@ contract Arbitrage is Ownable {
     function uniswapOpportunity(address token1, uint256 amount) public {
         _withdrawEther(amount);
         require(address(this).balance == amount, "buying from uniswap takes real Ether");
-
         address token2 = dutchXProxy.ethToken();
         address uniswapExchange = uniFactory.getExchange(token1);
         uint256 dutchAuctionIndex = dutchXProxy.getAuctionIndex(token1, token2);
-
         uint256 tokensBought = IUniswapExchange(uniswapExchange).ethToTokenSwapInput.value(amount)(0, block.timestamp);
-
         uint256 etherReturned;
         (dutchAuctionIndex, etherReturned) = dutchXProxy.postSellOrder(token1, token2, dutchAuctionIndex, tokensBought);
         require(etherReturned >= amount, "no profit");

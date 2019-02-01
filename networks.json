@@ -1,0 +1,18 @@
+{
+  "Arbitrage": {
+    "4": {
+      "events": {},
+      "links": {},
+      "address": "0x0f2118a619c67dB408a9BAD730D6826be924109B",
+      "transactionHash": "0xe5b1caca7e367faaadee08b4d471a250b473ccd5600c3c689c9fddf45515c971"
+    }
+  },
+  "Migrations": {
+    "4": {
+      "events": {},
+      "links": {},
+      "address": "0x2D6687Ec8612a4F91bD4daB9f0FffD7aF1b79A04",
+      "transactionHash": "0xefe634f16b9afd814f91d5970f816766f3359f8e7ab24d4f68e70108c3e6689d"
+    }
+  }
+}

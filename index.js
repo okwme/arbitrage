@@ -1,5 +1,5 @@
-var Sample = require('./build/contracts/Sample.json')
+var Arbitrage = require('./build/contracts/Arbitrage.json')
 
 module.exports = {
-  Sample: Sample
+  Arbitrage: Arbitrage
 }

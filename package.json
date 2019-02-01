@@ -8,13 +8,18 @@
     "lint": "solium --dir contracts/",
     "lint:watch": "solium --watch --dir contracts/",
     "lint:fix": "solium  --dir contracts/ --fix",
-    "prettier": "prettier --write --tab-width 4 --print-width 140 'contracts/**/*.sol'"
+    "prettier": "prettier --write --tab-width 4 --print-width 140 'contracts/**/*.sol'",
+    "networks-extract": "node src/extract_network_info.js",
+    "networks-inject": "node src/inject_network_info.js",
+    "networks-reset": "mkdir -p build/contracts && npx truffle networks --clean && npm run networks-inject",
+    "networks": "npx truffle networks"
   },
   "main": "index.js",
   "directories": {
     "test": "test"
   },
   "devDependencies": {
+    "@gnosis.pm/util-contracts": "^2.0.0-RC4",
     "bignumber.js": "^8.0.1",
     "dotenv": "^5.0.1",
     "openzeppelin-solidity": "^2.1.1",
@@ -24,7 +29,8 @@
     "truffle": "^5.0.2",
     "truffle-hdwallet-provider": "^1.0.0-web3one.3"
   },
-  "dependencies": {},
+  "dependencies": {
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/okwme/truffle-boilerplate.git"
