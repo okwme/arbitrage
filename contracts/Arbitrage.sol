@@ -5,103 +5,214 @@ import "./IUniswapFactory.sol";
 import "./IDutchExchange.sol";
 import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
-/**
- * The Arbitrage contract
- */
-
+/// @title Uniswap Arbitrage Module - Executes arbitrage transactions between Uniswap and DutchX.
+/// @author Billy Rennekamp - <billy@gnosis.pm>
 contract Arbitrage is Ownable {
     
+    uint constant max = uint(-1);
+
     IUniswapFactory uniFactory;
     IDutchExchange dutchXProxy;
 
+    /// @dev Constructor function sets initial storage of contract.
+    /// @param _uniFactory The uniswap factory deployed address.
+    /// @param _dutchXProxy The dutchX proxy deployed address.
     constructor(IUniswapFactory _uniFactory, IDutchExchange _dutchXProxy) public {
         uniFactory = _uniFactory;
         dutchXProxy = _dutchXProxy;
     }
 
-    function() external payable {
-        // depositEther();
-    }
+    /// @dev Payable fallback function has nothing inside so it won't run out of gas with gas limited transfers
+    function() external payable {}
 
-    function depositEther() public payable {
+    /// @dev Only owner can deposit contract Ether into the DutchX as WETH
+    function depositEther() public payable onlyOwner {
+
         require(address(this).balance > 0);
         uint balance = address(this).balance;
 
-        // deposit balance to weth
+        // Deposit balance to WETH
         address weth = dutchXProxy.ethToken();
         (bool success, bytes memory returnData) = weth.call.value(balance).gas(200000)("");
-        require(success, "sending ether didn't work");
+        require(success, "Converting Ether to WETH didn't work.");
 
-        // approve max to weth for dutchX
-        uint256 max = 0;
-        bytes memory  payload = abi.encodeWithSignature("approve(address,uint)",address(dutchXProxy), max - 1);
+        // Approve max amount of WETH to be transferred by dutchX
+        // Keeping it max will have same or similar costs to making it exact over and over again
+        // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
+        // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
+        bytes memory payload = abi.encodeWithSignature("approve(address,uint)", address(dutchXProxy), max);
         (success,returnData) = weth.call.value(0).gas(200000)(payload);
-        require(success, "approve ether didn't work");
+        require(success, "Approve WETH to be transferred by DutchX didn't work.");
 
-        // trigger deposit on dutchX, make sure there's at least the amount we deposited
+        // Deposit new amount on dutchX, confirm there's at least the amount we just deposited
         uint newBalance = dutchXProxy.deposit(weth, balance);
-        require(newBalance >= balance, "deposit didn't work");
+        require(newBalance >= balance, "Deposit WETH to DutchX didn't work.");
     }
 
-    function withdrawTransferEther(address payable recepient, uint amount) public onlyOwner {
+    /// @dev Only owner can withdraw WETH from DutchX, convert to Ether and transfer to recepient
+    /// @param recepient The payable recepient of the Ether.
+    /// @param amount The amount of Ether to withdraw
+   function withdrawTransferEther(address payable recepient, uint amount) public onlyOwner {
         _withdrawEther(amount);
         recepient.transfer(amount);
     }
 
+    /// @dev Only owner can transfer any Ether currently in the contract to some recepient.
+    /// @param recepient The payable recepient of the Ether.
+    /// @param amount The amount of Ether to withdraw
     function transferEther(address payable recepient, uint amount) public onlyOwner {
+        // If amount is zero, deposit the entire contract balance.
         amount = amount == 0 ? address(this).balance : amount;
         recepient.transfer(amount);
     }
 
+    /// @dev Internal function to withdraw WETH from the DutchX, convert it to Ether and keep it in contract
+    /// @param amount The amount of WETH to withdraw and convert.
     function _withdrawEther(uint amount) internal {
+
         address weth = dutchXProxy.ethToken();
         dutchXProxy.withdraw(weth, amount);
-        bytes memory  payload = abi.encodeWithSignature("withdraw(uint)", amount);
+
+        // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
+        // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
+        bytes memory payload = abi.encodeWithSignature("withdraw(uint)", amount);
         (bool success, bytes memory returnData) = weth.call.value(0).gas(200000)(payload);
-        require(success, "withdraw didn't work");
+
+        require(success, "Withdraw of Ether from WETH didn't work.");
     }
 
+    /// @dev Only owner can withdraw a token from the DutchX
+    /// @param token The token address that is being withdrawn.
+    /// @param amount The amount of token to withdraw. Can be larger than available balance and maximum will be withdrawn.
+    /// @return Returns the amount actually withdrawn from the DutchX
+    function withdrawToken(address token, uint amount) public onlyOwner returns (uint) {
+        return dutchXProxy.withdraw(token, amount);
+    }
 
-    function depositToken(address token, uint amount) public onlyOwner {
+    /// @dev Only owner can transfer tokens that belong to this contract
+    /// @param token The token address that is being transferred.
+    /// @param amount The amount of token to transfer.
+    function transferToken(address token, address recepient, uint amount) public onlyOwner {
 
-        uint256 max = 0;
-        bytes memory  payload = abi.encodeWithSignature("approve(address,uint)",address(dutchXProxy), max - 1);
+        // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
+        // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
+        bytes memory payload = abi.encodeWithSignature("transfer(address,uint)", recepient, amount);
         (bool success, bytes memory returnData) = token.call.value(0).gas(200000)(payload);
-        require(success, "approve didn't work");
 
+        require(success, "Transfer token didn't work.");
+    }
+
+    /// @dev Only owner can deposit token to the DutchX
+    /// @param token The token address that is being deposited.
+    /// @param amount The amount of token to deposit.
+    function depositToken(address token, uint amount) public onlyOwner {
+        _depositToken(token, amount);
+    }
+
+    /// @dev Internal function to deposit token to the DutchX
+    /// @param token The token address that is being deposited.
+    /// @param amount The amount of token to deposit.
+    function _depositToken(address token, uint amount) internal {
+
+        // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
+        // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
+        bytes memory payload = abi.encodeWithSignature("approve(address,uint)",address(dutchXProxy), max);
+        (bool success, bytes memory returnData) = token.call.value(0).gas(200000)(payload);
+        require(success, "Approve token to be transferred by DutchX didn't work.");
+
+        // Confirm that the balance of the token on the DutchX is at least how much was deposited
         uint newBalance = dutchXProxy.deposit(token, amount);
         require(newBalance >= amount, "deposit didn't work");
     }
 
-    function transferToken(address token, address recepient, uint amount) public onlyOwner {
-        bytes memory  payload = abi.encodeWithSignature("transfer(address,uint)", recepient, amount);
-        (bool success, bytes memory returnData) = token.call.value(0).gas(200000)(payload);
-        require(success, "transfer didn't work");
-    }
+    /// @dev Executes a trade opportunity on dutchX. Assumes that there is a balance of WETH already on the dutchX 
+    /// @param arbToken Address of the token that should be arbitraged.
+    /// @param amount Amount of Ether to use in arbitrage.
+    /// @return Returns if transaction can be executed.
+    function dutchOpportunity(address arbToken, uint256 amount) public {
 
-    function dutchOpportunity(address token1, uint256 amount) public {
-        address token2 = dutchXProxy.ethToken();
-        uniFactory.getExchange(token1);
-        address uniswapExchange = uniFactory.getExchange(token1);
-        uint256 dutchAuctionIndex = dutchXProxy.getAuctionIndex(token1, token2);
-        uint256 tokensBought = dutchXProxy.postBuyOrder(token2, token1, dutchAuctionIndex, amount);
-        uint256 etherReturned = IUniswapExchange(uniswapExchange).tokenToEthSwapInput(tokensBought, amount, block.timestamp);
+        address etherToken = dutchXProxy.ethToken();
+
+        address uniswapExchange = uniFactory.getExchange(arbToken);
+
+        // The order of parameters for getAuctionIndex don't matter
+        uint256 dutchAuctionIndex = dutchXProxy.getAuctionIndex(arbToken, etherToken);
+
+        // postBuyOrder(sellToken, buyToken, amount)
+        // results in a decrease of the amount the user owns of the second token
+        // which means the buyToken is what the buyer wants to get rid of.
+        // "The buy token is what the buyer provides, the seller token is what the seller provides."
+        dutchXProxy.postBuyOrder(arbToken, etherToken, dutchAuctionIndex, amount);
+
+        // claimAndWithdrawTokensFromSeveralAuctionsAsBuyers(sellTokens, buyTokens, indexes)
+        // This function combines the claimBuyerFunds with the withdraw function.
+        // Thought it would be cheaper than using both, but with requirements of so many var declarations it might not be...
+
+        address[] memory arbTokenArray = new address[](1);
+        arbTokenArray[0] = arbToken;
+        address[] memory etherTokenArray = new address[](1);
+        etherTokenArray[0] = etherToken;
+        uint[] memory indexArray = new uint[](1);
+        indexArray[0] = dutchAuctionIndex;
+
+        (uint[] memory tokensBought, uint256 magnolia) = dutchXProxy.claimAndWithdrawTokensFromSeveralAuctionsAsBuyer(arbTokenArray, etherTokenArray, indexArray);
+
+        // Approve Uniswap to transfer arbToken on user's behalf
+        // Keeping it max will have same or similar costs to making it exact over and over again
+        // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
+        // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
+        bytes memory payload = abi.encodeWithSignature("approve(address,uint)", address(uniswapExchange), max);
+        (bool success, bytes memory returnData) = arbToken.call.value(0).gas(200000)(payload);
+        require(success, "Approve arbToken to be transferred by Uniswap didn't work");
+
+        // tokenToEthSwapInput(inputToken, minimumReturn, timeToLive)
+        // minimumReturn is enough to make a profit (excluding gas)
+        // timeToLive is now because transaction is atomic
+        uint256 etherReturned = IUniswapExchange(uniswapExchange).tokenToEthSwapInput(tokensBought[0], amount, block.timestamp);
+
+        // gas costs were excluded because worse case scenario the tx fails and gas costs were spent up to here anyway
+        // best worst case scenario the profit from the trade alleviates part of the gas costs even if still no total profit
         require(etherReturned >= amount, "no profit");
+
+        // Ether is deposited as WETH
         depositEther();
     }
 
+    /// @dev Executes a trade opportunity on uniswap.
+    /// @param arbToken Address of the token that should be arbitraged.
+    /// @param amount Amount of Ether to use in arbitrage.
+    /// @return Returns if transaction can be executed.
+    function uniswapOpportunity(address arbToken, uint256 amount) public {
 
-    function uniswapOpportunity(address token1, uint256 amount) public {
+        // WETH must be converted to Eth for Uniswap trade
+        // (Uniswap allows ERC20:ERC20 but most liquidity is on ETH:ERC20 markets)
         _withdrawEther(amount);
-        require(address(this).balance == amount, "buying from uniswap takes real Ether");
-        address token2 = dutchXProxy.ethToken();
-        address uniswapExchange = uniFactory.getExchange(token1);
-        uint256 dutchAuctionIndex = dutchXProxy.getAuctionIndex(token1, token2);
-        uint256 tokensBought = IUniswapExchange(uniswapExchange).ethToTokenSwapInput.value(amount)(0, block.timestamp);
-        uint256 etherReturned;
-        (dutchAuctionIndex, etherReturned) = dutchXProxy.postSellOrder(token1, token2, dutchAuctionIndex, tokensBought);
+        require(address(this).balance >= amount, "buying from uniswap takes real Ether");
+
+        address etherToken = dutchXProxy.ethToken();
+        
+        // The order of parameters for getAuctionIndex don't matter
+        uint256 dutchAuctionIndex = dutchXProxy.getAuctionIndex(arbToken, etherToken);
+
+        // ethToTokenSwapInput(minTokens, deadline)
+        // minTokens is 0 because it will revert without a profit regardless
+        // deadline is now since trade is atomic
+        uint256 tokensBought = IUniswapExchange(uniFactory.getExchange(arbToken)).ethToTokenSwapInput.value(amount)(0, block.timestamp);
+        
+        // tokens need to be approved for the dutchX before they are deposited
+        _depositToken(arbToken, tokensBought);
+
+        // spend max amount of tokens currently on the dutch x (might be combined from previous remainders)
+        // max is automatically reduced to maximum available tokens because there may be
+        // token remainders from previous auctions which closed after previous arbitrage opportunities
+        dutchXProxy.postBuyOrder(etherToken, arbToken, dutchAuctionIndex, max);
+        (uint etherReturned, uint frtsIssued) = dutchXProxy.claimBuyerFunds(etherToken, arbToken, address(this), dutchAuctionIndex);
+        
+        // gas costs were excluded because worse case scenario the tx fails and gas costs were spent up to here anyway
+        // best worst case scenario the profit from the trade alleviates part of the gas costs even if still no total profit
         require(etherReturned >= amount, "no profit");
-        depositEther();
+
+        // Ether returned is already in dutchX balance where Ether is assumed to be stored when not being used.
     }
     
 }
