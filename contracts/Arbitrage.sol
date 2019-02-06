@@ -28,11 +28,12 @@ contract Arbitrage is Ownable {
     /// @dev Only owner can deposit contract Ether into the DutchX as WETH
     function depositEther() public payable onlyOwner {
 
-        require(address(this).balance > 0);
+        require(address(this).balance > 0, "Balance must be greater than 0 to deposit");
         uint balance = address(this).balance;
 
         // Deposit balance to WETH
         address weth = dutchXProxy.ethToken();
+        // solium-disable-next-line security/no-call-value
         (bool success, bytes memory returnData) = weth.call.value(balance).gas(200000)("");
         require(success, "Converting Ether to WETH didn't work.");
 
@@ -41,29 +42,35 @@ contract Arbitrage is Ownable {
         // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
         // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
         bytes memory payload = abi.encodeWithSignature("approve(address,uint)", address(dutchXProxy), max);
+        // solium-disable-next-line security/no-call-value
         (success,returnData) = weth.call.value(0).gas(200000)(payload);
         require(success, "Approve WETH to be transferred by DutchX didn't work.");
+        require(returnData.length == 0 || (returnData.length == 32 && (returnData[31] != 0)), "Approve WETH to be transferred by DutchX didn't return true.");
 
         // Deposit new amount on dutchX, confirm there's at least the amount we just deposited
         uint newBalance = dutchXProxy.deposit(weth, balance);
         require(newBalance >= balance, "Deposit WETH to DutchX didn't work.");
     }
 
-    /// @dev Only owner can withdraw WETH from DutchX, convert to Ether and transfer to recepient
-    /// @param recepient The payable recepient of the Ether.
+    /// @dev Only owner can withdraw WETH from DutchX, convert to Ether and transfer to owner
     /// @param amount The amount of Ether to withdraw
-   function withdrawTransferEther(address payable recepient, uint amount) public onlyOwner {
+    function withdrawEtherThenTransfer(uint amount) public onlyOwner {
         _withdrawEther(amount);
-        recepient.transfer(amount);
+        address(uint160(owner())).transfer(amount);
     }
 
-    /// @dev Only owner can transfer any Ether currently in the contract to some recepient.
-    /// @param recepient The payable recepient of the Ether.
+    /// @dev Only owner can transfer any Ether currently in the contract to the owner address.
     /// @param amount The amount of Ether to withdraw
-    function transferEther(address payable recepient, uint amount) public onlyOwner {
+    function transferEther(uint amount) public onlyOwner {
         // If amount is zero, deposit the entire contract balance.
-        amount = amount == 0 ? address(this).balance : amount;
-        recepient.transfer(amount);
+        address(uint160(owner())).transfer(amount == 0 ? address(this).balance : amount);
+    }
+
+    
+    /// @dev Only owner function to withdraw WETH from the DutchX, convert it to Ether and keep it in contract
+    /// @param amount The amount of WETH to withdraw and convert.
+    function withdrawEther(uint amount) public onlyOwner {
+        _withdrawEther(amount);
     }
 
     /// @dev Internal function to withdraw WETH from the DutchX, convert it to Ether and keep it in contract
@@ -76,8 +83,8 @@ contract Arbitrage is Ownable {
         // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
         // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
         bytes memory payload = abi.encodeWithSignature("withdraw(uint)", amount);
+        // solium-disable-next-line security/no-call-value
         (bool success, bytes memory returnData) = weth.call.value(0).gas(200000)(payload);
-
         require(success, "Withdraw of Ether from WETH didn't work.");
     }
 
@@ -89,17 +96,18 @@ contract Arbitrage is Ownable {
         return dutchXProxy.withdraw(token, amount);
     }
 
-    /// @dev Only owner can transfer tokens that belong to this contract
+    /// @dev Only owner can transfer tokens to the owner that belong to this contract
     /// @param token The token address that is being transferred.
     /// @param amount The amount of token to transfer.
-    function transferToken(address token, address recepient, uint amount) public onlyOwner {
+    function transferToken(address token, uint amount) public onlyOwner {
 
         // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
         // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
-        bytes memory payload = abi.encodeWithSignature("transfer(address,uint)", recepient, amount);
+        bytes memory payload = abi.encodeWithSignature("transfer(address,uint)", owner(), amount);
+        // solium-disable-next-line security/no-call-value
         (bool success, bytes memory returnData) = token.call.value(0).gas(200000)(payload);
-
         require(success, "Transfer token didn't work.");
+        require(returnData.length == 0 || (returnData.length == 32 && (returnData[31] != 0)), "Transfer token return true.");
     }
 
     /// @dev Only owner can deposit token to the DutchX
@@ -117,8 +125,10 @@ contract Arbitrage is Ownable {
         // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
         // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
         bytes memory payload = abi.encodeWithSignature("approve(address,uint)",address(dutchXProxy), max);
+        // solium-disable-next-line security/no-call-value
         (bool success, bytes memory returnData) = token.call.value(0).gas(200000)(payload);
         require(success, "Approve token to be transferred by DutchX didn't work.");
+        require(returnData.length == 0 || (returnData.length == 32 && (returnData[31] != 0)), "Approve token to be transferred by DutchX didn't return true.");
 
         // Confirm that the balance of the token on the DutchX is at least how much was deposited
         uint newBalance = dutchXProxy.deposit(token, amount);
@@ -155,6 +165,7 @@ contract Arbitrage is Ownable {
         uint[] memory indexArray = new uint[](1);
         indexArray[0] = dutchAuctionIndex;
 
+        // solium-disable-next-line no-unused-vars
         (uint[] memory tokensBought, uint256 magnolia) = dutchXProxy.claimAndWithdrawTokensFromSeveralAuctionsAsBuyer(arbTokenArray, etherTokenArray, indexArray);
 
         // Approve Uniswap to transfer arbToken on user's behalf
@@ -162,8 +173,10 @@ contract Arbitrage is Ownable {
         // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
         // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
         bytes memory payload = abi.encodeWithSignature("approve(address,uint)", address(uniswapExchange), max);
+        // solium-disable-next-line security/no-call-value
         (bool success, bytes memory returnData) = arbToken.call.value(0).gas(200000)(payload);
         require(success, "Approve arbToken to be transferred by Uniswap didn't work");
+        require(returnData.length == 0 || (returnData.length == 32 && (returnData[31] != 0)), "Approve arbToken to be transferred by Uniswap didn't return true");
 
         // tokenToEthSwapInput(inputToken, minimumReturn, timeToLive)
         // minimumReturn is enough to make a profit (excluding gas)
@@ -197,6 +210,7 @@ contract Arbitrage is Ownable {
         // ethToTokenSwapInput(minTokens, deadline)
         // minTokens is 0 because it will revert without a profit regardless
         // deadline is now since trade is atomic
+        // solium-disable-next-line security/no-block-members
         uint256 tokensBought = IUniswapExchange(uniFactory.getExchange(arbToken)).ethToTokenSwapInput.value(amount)(0, block.timestamp);
         
         // tokens need to be approved for the dutchX before they are deposited
@@ -206,6 +220,7 @@ contract Arbitrage is Ownable {
         // max is automatically reduced to maximum available tokens because there may be
         // token remainders from previous auctions which closed after previous arbitrage opportunities
         dutchXProxy.postBuyOrder(etherToken, arbToken, dutchAuctionIndex, max);
+        // solium-disable-next-line no-unused-vars
         (uint etherReturned, uint frtsIssued) = dutchXProxy.claimBuyerFunds(etherToken, arbToken, address(this), dutchAuctionIndex);
         
         // gas costs were excluded because worse case scenario the tx fails and gas costs were spent up to here anyway
