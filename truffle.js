@@ -2,16 +2,16 @@ require('dotenv').config()
 const HDWalletProvider = require('truffle-hdwallet-provider')
 module.exports = {
   networks: {
-    develop: {
+    development: {
       provider() {
         return new HDWalletProvider(
           process.env.TRUFFLE_MNEMONIC,
-          'http://localhost:9545/'
+          'http://localhost:8545/'
         )
       },
       host: 'localhost',
-      port: 9545,
-      network_id: 4447
+      port: 8545,
+      network_id: '*'
     },
     ganache: {
       provider() {
