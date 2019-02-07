@@ -84,7 +84,7 @@ contract Arbitrage is Ownable {
 
         // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
         // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
-        bytes memory payload = abi.encodeWithSignature("withdraw(uint)", amount);
+        bytes memory payload = abi.encodeWithSignature("withdraw(uint256)", amount);
         // solium-disable-next-line security/no-call-value
         (bool success, bytes memory returnData) = weth.call.value(0).gas(200000)(payload);
         require(success, "Withdraw of Ether from WETH didn't work.");
@@ -105,7 +105,7 @@ contract Arbitrage is Ownable {
 
         // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
         // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
-        bytes memory payload = abi.encodeWithSignature("transfer(address,uint)", owner(), amount);
+        bytes memory payload = abi.encodeWithSignature("transfer(address,uint256)", owner(), amount);
         // solium-disable-next-line security/no-call-value
         (bool success, bytes memory returnData) = token.call.value(0).gas(200000)(payload);
         require(success, "Transfer token didn't work.");
@@ -126,7 +126,7 @@ contract Arbitrage is Ownable {
 
         // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
         // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
-        bytes memory payload = abi.encodeWithSignature("approve(address,uint)", address(dutchXProxy), max);
+        bytes memory payload = abi.encodeWithSignature("approve(address,uint256)", address(dutchXProxy), max);
         // solium-disable-next-line security/no-call-value
         (bool success, bytes memory returnData) = token.call.value(0).gas(200000)(payload);
         require(success, "Approve token to be transferred by DutchX didn't work.");
@@ -174,7 +174,7 @@ contract Arbitrage is Ownable {
         // Keeping it max will have same or similar costs to making it exact over and over again
         // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
         // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
-        bytes memory payload = abi.encodeWithSignature("approve(address,uint)", address(uniswapExchange), max);
+        bytes memory payload = abi.encodeWithSignature("approve(address,uint256)", address(uniswapExchange), max);
         // solium-disable-next-line security/no-call-value
         (bool success, bytes memory returnData) = arbToken.call.value(0).gas(200000)(payload);
         require(success, "Approve arbToken to be transferred by Uniswap didn't work");
