@@ -20627,10 +20627,16 @@
       "links": {},
       "address": "0x9F544a3Fc3D1045e6ec49D4ecEF6dCD700457165",
       "transactionHash": "0x7fb87c81ba30ad35e4aaf45c749b04e22321f9ee0203f64cb5601b5ee22bc92a"
+    },
+    "1549557742966": {
+      "events": {},
+      "links": {},
+      "address": "0x9F544a3Fc3D1045e6ec49D4ecEF6dCD700457165",
+      "transactionHash": "0x7fb87c81ba30ad35e4aaf45c749b04e22321f9ee0203f64cb5601b5ee22bc92a"
     }
   },
   "schemaVersion": "3.0.1",
-  "updatedAt": "2019-02-07T10:42:25.370Z",
+  "updatedAt": "2019-02-07T19:55:48.318Z",
   "devdoc": {
     "author": "Billy Rennekamp - <billy@gnosis.pm>",
     "methods": {
