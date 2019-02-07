@@ -13,6 +13,8 @@ module.exports = (deployer, network, accounts) => {
       tx = await web3.eth.sendTransaction({from: accounts[0], data: uniswapFactoryCode})
       txReceipt = await web3.eth.getTransactionReceipt(tx.transactionHash);
       let uniswapFactoryAddress = txReceipt.contractAddress
+      
+      console.log(_ + 'uniswapFactoryAddress deployed at: ' + uniswapFactoryAddress)
 
       let uniswapFactory = await IUniswapFactory.at(uniswapFactoryAddress)
       await uniswapFactory.initializeFactory(uniswapTemplateAddress)

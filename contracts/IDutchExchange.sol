@@ -1,8 +1,8 @@
 pragma solidity ^0.5.0;
 
 contract IDutchExchange {
-    function claimBuyerFunds(address, address, address, uint) public returns(uint, uint);
     function ethToken() public returns(address);
+    function claimBuyerFunds(address, address, address, uint) public returns(uint, uint);
     function deposit(address tokenAddress, uint amount) public returns (uint);
     function withdraw(address tokenAddress, uint amount) public returns (uint);
     function getAuctionIndex(address token1, address token2) public returns(uint256);

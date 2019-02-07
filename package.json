@@ -30,6 +30,8 @@
     "truffle-hdwallet-provider": "^1.0.0-web3one.3"
   },
   "dependencies": {
+    "@gnosis.pm/mock-contract": "^3.0.7",
+    "solc": "^0.5.2"
   },
   "repository": {
     "type": "git",

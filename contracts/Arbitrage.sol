@@ -4,6 +4,7 @@ import "./IUniswapExchange.sol";
 import "./IUniswapFactory.sol";
 import "./IDutchExchange.sol";
 import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
+import "../node_modules/@gnosis.pm/mock-contract/contracts/MockContract.sol";
 
 /// @title Uniswap Arbitrage Module - Executes arbitrage transactions between Uniswap and DutchX.
 /// @author Billy Rennekamp - <billy@gnosis.pm>
@@ -33,17 +34,18 @@ contract Arbitrage is Ownable {
 
         // Deposit balance to WETH
         address weth = dutchXProxy.ethToken();
+        bytes memory payload = abi.encodeWithSignature("deposit()");
         // solium-disable-next-line security/no-call-value
-        (bool success, bytes memory returnData) = weth.call.value(balance).gas(200000)("");
+        (bool success, bytes memory returnData) = weth.call.value(balance).gas(200000)(payload);
         require(success, "Converting Ether to WETH didn't work.");
 
         // Approve max amount of WETH to be transferred by dutchX
         // Keeping it max will have same or similar costs to making it exact over and over again
         // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
         // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
-        bytes memory payload = abi.encodeWithSignature("approve(address,uint)", address(dutchXProxy), max);
+        payload = abi.encodeWithSignature("approve(address,uint256)", address(dutchXProxy), max);
         // solium-disable-next-line security/no-call-value
-        (success,returnData) = weth.call.value(0).gas(200000)(payload);
+        (success, returnData) = weth.call.value(0).gas(200000)(payload);
         require(success, "Approve WETH to be transferred by DutchX didn't work.");
         require(returnData.length == 0 || (returnData.length == 32 && (returnData[31] != 0)), "Approve WETH to be transferred by DutchX didn't return true.");
 
@@ -124,7 +126,7 @@ contract Arbitrage is Ownable {
 
         // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
         // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
-        bytes memory payload = abi.encodeWithSignature("approve(address,uint)",address(dutchXProxy), max);
+        bytes memory payload = abi.encodeWithSignature("approve(address,uint)", address(dutchXProxy), max);
         // solium-disable-next-line security/no-call-value
         (bool success, bytes memory returnData) = token.call.value(0).gas(200000)(payload);
         require(success, "Approve token to be transferred by DutchX didn't work.");
