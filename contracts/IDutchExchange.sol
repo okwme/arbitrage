@@ -1,6 +1,19 @@
 pragma solidity ^0.5.0;
 
 contract IDutchExchange {
+
+
+    mapping(address => mapping(address => uint)) public balances;
+
+    // Token => Token => auctionIndex => amount
+    mapping(address => mapping(address => mapping(uint => uint))) public extraTokens;
+
+    // Token => Token =>  auctionIndex => user => amount
+    mapping(address => mapping(address => mapping(uint => mapping(address => uint)))) public sellerBalances;
+    mapping(address => mapping(address => mapping(uint => mapping(address => uint)))) public buyerBalances;
+    mapping(address => mapping(address => mapping(uint => mapping(address => uint)))) public claimedAmounts;
+
+    
     function ethToken() public returns(address);
     function claimBuyerFunds(address, address, address, uint) public returns(uint, uint);
     function deposit(address tokenAddress, uint amount) public returns (uint);

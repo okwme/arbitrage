@@ -24,8 +24,8 @@ contract('Debug', function(accounts) {
     console.log("Deposit Ether ...")
     await arbitrage.depositEther({ value:1e18 })
     console.log("Execute opportunity ...")
-    tx = await arbitrage.dutchOpportunity('0x8273e4B8ED6c78e252a9fCa5563Adfcc75C91b2A', '990000000000001')
-    console.log(tx)
+    tx = await arbitrage.uniswapOpportunity('0x8273e4B8ED6c78e252a9fCa5563Adfcc75C91b2A', '990000000000001')
+    console.log(tx.receipt.rawLogs)
 
     // We force failure to print events
     assert(false)
