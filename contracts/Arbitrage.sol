@@ -137,7 +137,8 @@ contract Arbitrage is Ownable {
         require(newBalance >= amount, "deposit didn't work");
     }
 
-    event Debug(uint num);
+    event Debug(uint);
+    event DebugAdd(address);
 
     /// @dev Executes a trade opportunity on dutchX. Assumes that there is a balance of WETH already on the dutchX 
     /// @param arbToken Address of the token that should be arbitraged.
@@ -152,14 +153,16 @@ contract Arbitrage is Ownable {
 
         // The order of parameters for getAuctionIndex don't matter
         uint256 dutchAuctionIndex = dutchXProxy.getAuctionIndex(arbToken, etherToken);
-        emit Debug(2);
-
+        emit DebugAdd(arbToken);
+        emit DebugAdd(etherToken);
+        emit Debug(dutchAuctionIndex);
+        emit Debug(amount);
         // postBuyOrder(sellToken, buyToken, amount)
         // results in a decrease of the amount the user owns of the second token
         // which means the buyToken is what the buyer wants to get rid of.
         // "The buy token is what the buyer provides, the seller token is what the seller provides."
         dutchXProxy.postBuyOrder(arbToken, etherToken, dutchAuctionIndex, amount);
-        emit Debug(3);
+        emit Debug(2);
 
         // claimAndWithdrawTokensFromSeveralAuctionsAsBuyers(sellTokens, buyTokens, indexes)
         // This function combines the claimBuyerFunds with the withdraw function.
@@ -167,40 +170,47 @@ contract Arbitrage is Ownable {
 
         address[] memory arbTokenArray = new address[](1);
         arbTokenArray[0] = arbToken;
+
         address[] memory etherTokenArray = new address[](1);
         etherTokenArray[0] = etherToken;
+
         uint[] memory indexArray = new uint[](1);
         indexArray[0] = dutchAuctionIndex;
+        
+        emit DebugAdd(arbTokenArray[0]);
+        emit DebugAdd(etherTokenArray[0]);
+        emit Debug(indexArray[0]);
+
 
         // solium-disable-next-line no-unused-vars
-        (uint[] memory tokensBought, uint256 magnolia) = dutchXProxy.claimAndWithdrawTokensFromSeveralAuctionsAsBuyer(arbTokenArray, etherTokenArray, indexArray);
-        emit Debug(4);
-        // Approve Uniswap to transfer arbToken on user's behalf
-        // Keeping it max will have same or similar costs to making it exact over and over again
-        // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
-        // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
-        bytes memory payload = abi.encodeWithSignature("approve(address,uint256)", address(uniswapExchange), max);
-        // solium-disable-next-line security/no-call-value
-        (bool success, bytes memory returnData) = arbToken.call.value(0).gas(200000)(payload);
-        emit Debug(5);
-        require(success, "Approve arbToken to be transferred by Uniswap didn't work");
-        require(returnData.length == 0 || (returnData.length == 32 && (returnData[31] != 0)), "Approve arbToken to be transferred by Uniswap didn't return true");
-        emit Debug(6);
+        (uint[] memory tokensBought, ) = dutchXProxy.claimAndWithdrawTokensFromSeveralAuctionsAsBuyer(arbTokenArray, etherTokenArray, indexArray);
+        emit Debug(3);
+        // // Approve Uniswap to transfer arbToken on user's behalf
+        // // Keeping it max will have same or similar costs to making it exact over and over again
+        // // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
+        // // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
+        // bytes memory payload = abi.encodeWithSignature("approve(address,uint256)", address(uniswapExchange), max);
+        // // solium-disable-next-line security/no-call-value
+        // (bool success, bytes memory returnData) = arbToken.call.value(0).gas(200000)(payload);
+        // emit Debug(5);
+        // require(success, "Approve arbToken to be transferred by Uniswap didn't work");
+        // require(returnData.length == 0 || (returnData.length == 32 && (returnData[31] != 0)), "Approve arbToken to be transferred by Uniswap didn't return true");
+        // emit Debug(6);
 
-        // tokenToEthSwapInput(inputToken, minimumReturn, timeToLive)
-        // minimumReturn is enough to make a profit (excluding gas)
-        // timeToLive is now because transaction is atomic
-        uint256 etherReturned = IUniswapExchange(uniswapExchange).tokenToEthSwapInput(tokensBought[0], 1, block.timestamp);
-        emit Debug(7);
+        // // tokenToEthSwapInput(inputToken, minimumReturn, timeToLive)
+        // // minimumReturn is enough to make a profit (excluding gas)
+        // // timeToLive is now because transaction is atomic
+        // uint256 etherReturned = IUniswapExchange(uniswapExchange).tokenToEthSwapInput(tokensBought[0], 1, block.timestamp);
+        // emit Debug(7);
 
-        // gas costs were excluded because worse case scenario the tx fails and gas costs were spent up to here anyway
-        // best worst case scenario the profit from the trade alleviates part of the gas costs even if still no total profit
-        require(etherReturned >= amount, "no profit");
-        emit Debug(8);
+        // // gas costs were excluded because worse case scenario the tx fails and gas costs were spent up to here anyway
+        // // best worst case scenario the profit from the trade alleviates part of the gas costs even if still no total profit
+        // require(etherReturned >= amount, "no profit");
+        // emit Debug(8);
 
-        // Ether is deposited as WETH
-        depositEther();
-        emit Debug(9);
+        // // Ether is deposited as WETH
+        // depositEther();
+        // emit Debug(9);
     }
 
     /// @dev Executes a trade opportunity on uniswap.

@@ -19,7 +19,7 @@ module.exports = (deployer, network, accounts) => {
       let uniswapFactory = await IUniswapFactory.at(uniswapFactoryAddress)
       await uniswapFactory.initializeFactory(uniswapTemplateAddress)
 
-      params = [uniswapFactory.address, '0xb529f14aa8096f943177c09ca294ad66d2e08b1f']
+      params = [uniswapFactory.address, '0xa4392264a2d8c998901d10c154c91725b1bf0158']
       // params = deployer.network_id === 4 ? [
       //   '0xf5D915570BC477f9B8D6C0E980aA81757A3AaC36', // _uniFactory rinkeby
       //   '0x4e69969d9270ff55fc7c5043b074d4e45f795587' //_dutchXProxy rinkeby
