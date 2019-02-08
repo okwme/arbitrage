@@ -38,7 +38,9 @@ module.exports = (deployer, network, accounts) => {
       // console.log(_ + 'tokensBought:' + tokensBought.toString())
       // function getEthToTokenInputPrice(uint256 eth_sold) external view returns (uint256 tokens_bought);
 
-      tx = await uniswapExchange.ethToTokenSwapInput('1', deadline, {value: (1e18 / 2).toString(10)})
+      await iToken.deposit({value:1e18, from})
+
+      // tx = await uniswapExchange.ethToTokenSwapInput('1', deadline, {value: (1e18 / 2).toString(10)})
       // console.log({tx})
       // function ethToTokenSwapInput(uint256 min_tokens, uint256 deadline) external payable returns (uint256  tokens_bought);
 
