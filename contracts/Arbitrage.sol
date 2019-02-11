@@ -144,7 +144,7 @@ contract Arbitrage is Ownable {
     /// @param arbToken Address of the token that should be arbitraged.
     /// @param amount Amount of Ether to use in arbitrage.
     /// @return Returns if transaction can be executed.
-    function dutchOpportunity(address arbToken, uint256 amount) public {
+    function dutchOpportunity(address arbToken, uint256 amount) public returns (uint){
 
         address etherToken = dutchXProxy.ethToken();
 
@@ -180,10 +180,11 @@ contract Arbitrage is Ownable {
 
         // gas costs were excluded because worse case scenario the tx fails and gas costs were spent up to here anyway
         // best worst case scenario the profit from the trade alleviates part of the gas costs even if still no total profit
-        require(etherReturned >= amount, "no profit");
+        // require(etherReturned >= amount, "no profit");
 
         // Ether is deposited as WETH
         depositEther();
+        return tokensBought;
     }
 
     /// @dev Executes a trade opportunity on uniswap.
