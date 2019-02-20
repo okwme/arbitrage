@@ -1,17 +1,12 @@
-## Truffle Shavings
-
-![](https://github.com/okwme/truffle-shavings/blob/master/box-img-lg.png?raw=true)
-### Truffle Boilerplate with solium, linguist, zeppelin, migrations, tests &tc
+## Arbitrage DutchX/Uniswap
 
 ## Install
 ```
-git clone git@github.com:okwme/truffle-shavings.git
-cd truffle shavings
+git clone git@github.com:okwme/arbitrage.git
+cd arbitrage
 yarn
 
 or 
-
-npx truffle unbox okwme/truffle-shavings
 
 // then create a .env file that looks like this:
 
@@ -35,8 +30,11 @@ yarn test
 
 ## Deploy
 ```
-truffle develop
-yarn deploy --network develop
-
-// this just runs truffle migrate --reset --compile-all
+yarn migrate
+or
+yarn local
+or
+yarn rinkeby
+or
+yarn mainnet
 ```
