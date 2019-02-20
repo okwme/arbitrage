@@ -64,7 +64,7 @@ module.exports = {
       },
       network_id: 4,
       // gas: 4700000,
-      gasPrice: 200000000000 // 200 GWEI
+      gasPrice: 20000000000 // 20 GWEI
     },
     ropsten: {
       provider() {

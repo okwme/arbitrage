@@ -1,4 +1,4 @@
-var Arbitrage = artifacts.require('./Arbitrage.sol')
+
 var IToken = artifacts.require('./IToken.sol')
 var IUniswapFactory = artifacts.require('./IUniswapFactory.sol')
 var IUniswapExchange = artifacts.require('./IUniswapExchange.sol')
@@ -10,7 +10,10 @@ module.exports = (deployer, network, accounts) => {
 
   deployer.then(async () => {
     try {
-
+      if(network !== 'local') {
+        console.log('Not on local but on ' + network + ' instead')
+        return
+      }
       const uniswapFactory = await IUniswapFactory.at(uniswapFactoryAddress)
       const from = accounts[0]
 

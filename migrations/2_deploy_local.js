@@ -1,10 +1,14 @@
-var Arbitrage = artifacts.require('./Arbitrage.sol')
+var ArbitrageLocal = artifacts.require('./ArbitrageLocal.sol')
 var IUniswapFactory = artifacts.require('./IUniswapFactory.sol')
 let _ = '        '
 
 module.exports = (deployer, network, accounts) => {
   deployer.then(async () => {
     try {
+      if(network !== 'local') {
+        console.log('Not on local but on ' + network + ' instead')
+        return
+      }
 
       let tx = await web3.eth.sendTransaction({from: accounts[0], data: uniswapExchangeCode})
       let txReceipt = await web3.eth.getTransactionReceipt(tx.transactionHash);
@@ -18,20 +22,13 @@ module.exports = (deployer, network, accounts) => {
 
       let uniswapFactory = await IUniswapFactory.at(uniswapFactoryAddress)
       await uniswapFactory.initializeFactory(uniswapTemplateAddress)
-
-      params = [uniswapFactory.address, '0xa4392264a2d8c998901d10c154c91725b1bf0158']
-      // params = deployer.network_id === 4 ? [
-      //   '0xf5D915570BC477f9B8D6C0E980aA81757A3AaC36', // _uniFactory rinkeby
-      //   '0x4e69969d9270ff55fc7c5043b074d4e45f795587' //_dutchXProxy rinkeby
-      // ] : [
-      //   '0xc0a47dFe034B400B47bDaD5FecDa2621de6c4d95', // _uniFactory mainnet
-      //   '0xaf1745c0f8117384dfa5fff40f824057c70f2ed3' //_dutchXProxy mainnet
-      //  ]
  
-      // Deploy Arbitrage.sol
-      await deployer.deploy(Arbitrage, ...params)
-      let arbitrage = await Arbitrage.deployed()
-      console.log(_ + 'Arbitrage deployed at: ' + arbitrage.address)
+      const params = [uniswapFactory.address, '0xa4392264a2d8c998901d10c154c91725b1bf0158']
+      
+      // Deploy ArbitrageLocal.sol
+      await deployer.deploy(ArbitrageLocal, ...params)
+      let arbitrage = await ArbitrageLocal.deployed()
+      console.log(_ + 'ArbitrageLocal deployed at: ' + arbitrage.address)
 
     } catch (error) {
       console.log(error)

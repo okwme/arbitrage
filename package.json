@@ -14,6 +14,9 @@
     "networks-reset": "mkdir -p build/contracts && npx truffle networks --clean && npm run networks-inject",
     "networks": "npx truffle networks",
     "migrate": "npx truffle migrate --reset --compile-all",
+    "local": "yarn migrate --network development",
+    "rinkeby": "yarn migrate --network rinkeby",
+    "mainnet": "yarn migrate --network mainnet",
     "debug": "npx truffle compile --reset --compile-all && npx truffle test test/Debug.js"
   },
   "main": "index.js",
