@@ -37,7 +37,7 @@ contract Arbitrage is Ownable {
         uint wethBalance = ITokenMinimal(weth).balanceOf(address(this));
         uint allowance = ITokenMinimal(weth).allowance(address(this), address(dutchXProxy));
 
-        if (wethBalance > allowance) {
+        if (allowance < wethBalance) {
             // Approve max amount of WETH to be transferred by dutchX
             // Keeping it max will have same or similar costs to making it exact over and over again
             // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k

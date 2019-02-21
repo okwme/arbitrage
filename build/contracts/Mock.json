@@ -11,14 +11,14 @@
     "absolutePath": "/Users/billy/gnosis/arbitrage/contracts/Mock.sol",
     "exportedSymbols": {
       "Mock": [
-        1396
+        1400
       ]
     },
-    "id": 1397,
+    "id": 1401,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1394,
+        "id": 1398,
         "literals": [
           "solidity",
           "^",
@@ -31,10 +31,10 @@
       {
         "absolutePath": "/Users/billy/gnosis/arbitrage/node_modules/@gnosis.pm/mock-contract/contracts/MockContract.sol",
         "file": "../node_modules/@gnosis.pm/mock-contract/contracts/MockContract.sol",
-        "id": 1395,
+        "id": 1399,
         "nodeType": "ImportDirective",
-        "scope": 1397,
-        "sourceUnit": 2561,
+        "scope": 1401,
+        "sourceUnit": 2565,
         "src": "24:77:10",
         "symbolAliases": [],
         "unitAlias": ""
@@ -45,14 +45,14 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1396,
+        "id": 1400,
         "linearizedBaseContracts": [
-          1396
+          1400
         ],
         "name": "Mock",
         "nodeType": "ContractDefinition",
         "nodes": [],
-        "scope": 1397,
+        "scope": 1401,
         "src": "102:16:10"
       }
     ],
@@ -62,14 +62,14 @@
     "absolutePath": "/Users/billy/gnosis/arbitrage/contracts/Mock.sol",
     "exportedSymbols": {
       "Mock": [
-        1396
+        1400
       ]
     },
-    "id": 1397,
+    "id": 1401,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1394,
+        "id": 1398,
         "literals": [
           "solidity",
           "^",
@@ -82,10 +82,10 @@
       {
         "absolutePath": "/Users/billy/gnosis/arbitrage/node_modules/@gnosis.pm/mock-contract/contracts/MockContract.sol",
         "file": "../node_modules/@gnosis.pm/mock-contract/contracts/MockContract.sol",
-        "id": 1395,
+        "id": 1399,
         "nodeType": "ImportDirective",
-        "scope": 1397,
-        "sourceUnit": 2561,
+        "scope": 1401,
+        "sourceUnit": 2565,
         "src": "24:77:10",
         "symbolAliases": [],
         "unitAlias": ""
@@ -96,14 +96,14 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 1396,
+        "id": 1400,
         "linearizedBaseContracts": [
-          1396
+          1400
         ],
         "name": "Mock",
         "nodeType": "ContractDefinition",
         "nodes": [],
-        "scope": 1397,
+        "scope": 1401,
         "src": "102:16:10"
       }
     ],
@@ -115,7 +115,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.1",
-  "updatedAt": "2019-02-21T21:13:32.493Z",
+  "updatedAt": "2019-02-21T21:34:40.240Z",
   "devdoc": {
     "methods": {}
   },
