@@ -5,7 +5,7 @@ let _ = '        '
 module.exports = (deployer, network, accounts) => {
   deployer.then(async () => {
     try {
-      if(network !== 'local') {
+      if(network !== 'development') {
         console.log('Not on local but on ' + network + ' instead')
         return
       }

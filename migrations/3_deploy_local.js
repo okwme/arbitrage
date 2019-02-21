@@ -4,13 +4,12 @@ var IUniswapFactory = artifacts.require('./IUniswapFactory.sol')
 var IUniswapExchange = artifacts.require('./IUniswapExchange.sol')
 let _ = '        '
 
-const uniswapFactoryAddress = '0xdE5491f774F0Cb009ABcEA7326342E105dbb1B2E'
-const deadline = '1649626618' // 2022
+const uniswapFactoryAddress = '0x4e71920b7330515faf5EA0c690f1aD06a85fB60c'
+const deadline = '1649626618' // year 2022
 module.exports = (deployer, network, accounts) => {
-
   deployer.then(async () => {
     try {
-      if(network !== 'local') {
+      if(network !== 'development') {
         console.log('Not on local but on ' + network + ' instead')
         return
       }
@@ -20,19 +19,20 @@ module.exports = (deployer, network, accounts) => {
       let iToken = await IToken.new()
       console.log(_ + 'Uni Token Address: ' + iToken.address)
 
-      await iToken.deposit({value:1e18, from})
+      var tx = await iToken.deposit({value:1e18, from})
 
       await uniswapFactory.createExchange(iToken.address)
 
       let uniSwapExchangeAddress = await uniswapFactory.getExchange(iToken.address)
 
-      console.log({uniSwapExchangeAddress})
+      console.log(_ + 'uniSwapExchangeAddress: ' + uniSwapExchangeAddress)
 
       let uniswapExchange = await IUniswapExchange.at(uniSwapExchangeAddress)
       
       await iToken.approve(uniswapExchange.address, 1e18.toString(10))
 
       tx = await uniswapExchange.addLiquidity(0, 1e18.toString(10), deadline, {value: 1e18, from})
+
       // let balanceOf = await uniswapExchange.balanceOf(from)
       // console.log(balanceOf.toString(10))
 
@@ -41,14 +41,14 @@ module.exports = (deployer, network, accounts) => {
       // console.log(_ + 'tokensBought:' + tokensBought.toString())
       // function getEthToTokenInputPrice(uint256 eth_sold) external view returns (uint256 tokens_bought);
 
-      await iToken.deposit({value:1e18, from})
+      tx = await iToken.deposit({value:1e18, from})
 
       // tx = await uniswapExchange.ethToTokenSwapInput('1', deadline, {value: (1e18 / 2).toString(10)})
       // console.log({tx})
       // function ethToTokenSwapInput(uint256 min_tokens, uint256 deadline) external payable returns (uint256  tokens_bought);
 
       let balanceOf = await iToken.balanceOf(from)
-      console.log('UNI BALANCE:', balanceOf.toString(10))
+      console.log(_ + 'UNI BALANCE: ' + balanceOf.toString(10))
 
 
     } catch (error) {

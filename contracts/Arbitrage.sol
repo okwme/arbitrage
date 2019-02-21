@@ -12,8 +12,8 @@ contract Arbitrage is Ownable {
     
     uint constant max = uint(-1);
 
-    IUniswapFactory uniFactory; 
-    IDutchExchange dutchXProxy;
+    IUniswapFactory public uniFactory; 
+    IDutchExchange public dutchXProxy;
 
     event Profit(uint profit, bool wasDutchOpportunity);
 
@@ -26,8 +26,9 @@ contract Arbitrage is Ownable {
         require(address(this).balance > 0, "Balance must be greater than 0 to deposit");
         uint balance = address(this).balance;
 
-        // Deposit balance to WETH
+        // // Deposit balance to WETH
         address weth = dutchXProxy.ethToken();
+
         bytes memory payload = abi.encodeWithSignature("deposit()");
         // solium-disable-next-line security/no-call-value
         (bool success, ) = weth.call.value(balance).gas(200000)(payload);
@@ -35,7 +36,8 @@ contract Arbitrage is Ownable {
 
         uint wethBalance = ITokenMinimal(weth).balanceOf(address(this));
         uint allowance = ITokenMinimal(weth).allowance(address(this), address(dutchXProxy));
-        if (wethBalance < allowance) {
+
+        if (wethBalance > allowance) {
             // Approve max amount of WETH to be transferred by dutchX
             // Keeping it max will have same or similar costs to making it exact over and over again
             // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
@@ -138,14 +140,11 @@ contract Arbitrage is Ownable {
         require(newBalance >= amount, "deposit didn't work");
     }
 
-    event Debug(uint);
-    event DebugAdd(address);
-
     /// @dev Executes a trade opportunity on dutchX. Assumes that there is a balance of WETH already on the dutchX 
     /// @param arbToken Address of the token that should be arbitraged.
     /// @param amount Amount of Ether to use in arbitrage.
     /// @return Returns if transaction can be executed.
-    function dutchOpportunity(address arbToken, uint256 amount) external {
+    function dutchOpportunity(address arbToken, uint256 amount) external onlyOwner {
 
         address etherToken = dutchXProxy.ethToken();
 
@@ -194,7 +193,7 @@ contract Arbitrage is Ownable {
     /// @param arbToken Address of the token that should be arbitraged.
     /// @param amount Amount of Ether to use in arbitrage.
     /// @return Returns if transaction can be executed.
-    function uniswapOpportunity(address arbToken, uint256 amount) external {
+    function uniswapOpportunity(address arbToken, uint256 amount) external onlyOwner {
 
         // WETH must be converted to Eth for Uniswap trade
         // (Uniswap allows ERC20:ERC20 but most liquidity is on ETH:ERC20 markets)
