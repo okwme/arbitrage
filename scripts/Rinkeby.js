@@ -11,7 +11,7 @@ let gasPrice = 1000000000 // 1GWEI
 
 const _ = '        '
 const emptyAdd = '0x' + '0'.repeat(40)
-const deadline = '1649626618' // year 2022
+const deadline = '1749626618' // year 2022
 module.exports = async function(callback) {
   let arbitrage, tx
   let from = '0x5899c1651653E1e4A110Cd45C7f4E9F576dE0670'
@@ -45,16 +45,36 @@ module.exports = async function(callback) {
       // tx = await arbitrage.depositEther({value: 1e17})
       // console.log({tx})
 
-      tx = await uniswapFactory.createExchange(RDN)
+      // tx = await uniswapFactory.createExchange(RDN)
       // console.log('uniswapFactory.createExchange', tx)
 
       let uniSwapExchangeAddress = await uniswapFactory.getExchange(rdnToken.address)
       console.log(_ + 'uniSwapExchangeAddress: ' + uniSwapExchangeAddress)
 
       let uniswapExchange = await IUniswapExchange.at(uniSwapExchangeAddress)
-      tx = await iToken.approve(uniswapExchange.address, 1e21.toString(10))
+      
+      ethReserve = await web3.eth.getBalance(uniSwapExchangeAddress)
+      console.log({ethReserve})
 
-      tx = await uniswapExchange.addLiquidity(0, (1e18 / 2).toString(10), deadline, {value: (1e18 / 2), from})
+      tokenReserve = await rdnToken.balanceOf(uniSwapExchangeAddress)
+      console.log({tokenReserve})
+
+
+      allowance = await rdnToken.allowance(from, uniSwapExchangeAddress)
+      console.log({allowance})
+
+      tx = await rdnToken.approve(uniswapExchange.address, 1e20.toString(10))
+      console.log('rdnToken.approve', tx.receipt.status)
+
+
+      allowance = await rdnToken.allowance(from, uniSwapExchangeAddress)
+      console.log({allowance})
+
+      let balanceOf = await rdnToken.balanceOf(from)
+      console.log(_ + 'rdn BALANCE: ' + balanceOf.toString(10))
+      console.log(['0', (1e10).toString(10), deadline, {value: (1e10).toString(10)}])
+      tx = await uniswapExchange.addLiquidity('0', (1e10).toString(10), deadline, {value: (1e10).toString(10)})
+      console.log('uniswapExchange.addLiquidity', tx.receipt.status)
   
       let tokensBought = await uniswapExchange.getEthToTokenInputPrice((1e18 / 2).toString(10))
       console.log(_ + 'potential tokensBought for .5 ETH:' + tokensBought.toString())
