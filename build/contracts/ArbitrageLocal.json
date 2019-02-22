@@ -342,7 +342,7 @@
         ],
         "contractDependencies": [
           723,
-          4221
+          4227
         ],
         "contractKind": "contract",
         "documentation": "@title Uniswap Arbitrage Module - Executes arbitrage transactions between Uniswap and DutchX.\n @author Billy Rennekamp - <billy@gnosis.pm>",
@@ -351,7 +351,7 @@
         "linearizedBaseContracts": [
           745,
           723,
-          4221
+          4227
         ],
         "name": "ArbitrageLocal",
         "nodeType": "ContractDefinition",
@@ -379,7 +379,7 @@
                       "referencedDeclaration": 16,
                       "src": "522:10:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IUniswapFactory_$1339",
+                        "typeIdentifier": "t_contract$_IUniswapFactory_$1345",
                         "typeString": "contract IUniswapFactory"
                       }
                     },
@@ -394,13 +394,13 @@
                       "referencedDeclaration": 730,
                       "src": "535:11:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IUniswapFactory_$1339",
+                        "typeIdentifier": "t_contract$_IUniswapFactory_$1345",
                         "typeString": "contract IUniswapFactory"
                       }
                     },
                     "src": "522:24:1",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IUniswapFactory_$1339",
+                      "typeIdentifier": "t_contract$_IUniswapFactory_$1345",
                       "typeString": "contract IUniswapFactory"
                     }
                   },
@@ -425,7 +425,7 @@
                       "referencedDeclaration": 18,
                       "src": "556:11:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IDutchExchange_$929",
+                        "typeIdentifier": "t_contract$_IDutchExchange_$935",
                         "typeString": "contract IDutchExchange"
                       }
                     },
@@ -440,13 +440,13 @@
                       "referencedDeclaration": 732,
                       "src": "570:12:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IDutchExchange_$929",
+                        "typeIdentifier": "t_contract$_IDutchExchange_$935",
                         "typeString": "contract IDutchExchange"
                       }
                     },
                     "src": "556:26:1",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IDutchExchange_$929",
+                      "typeIdentifier": "t_contract$_IDutchExchange_$935",
                       "typeString": "contract IDutchExchange"
                     }
                   },
@@ -477,7 +477,7 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IUniswapFactory_$1339",
+                    "typeIdentifier": "t_contract$_IUniswapFactory_$1345",
                     "typeString": "contract IUniswapFactory"
                   },
                   "typeName": {
@@ -485,10 +485,10 @@
                     "id": 729,
                     "name": "IUniswapFactory",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 1339,
+                    "referencedDeclaration": 1345,
                     "src": "447:15:1",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IUniswapFactory_$1339",
+                      "typeIdentifier": "t_contract$_IUniswapFactory_$1345",
                       "typeString": "contract IUniswapFactory"
                     }
                   },
@@ -505,7 +505,7 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IDutchExchange_$929",
+                    "typeIdentifier": "t_contract$_IDutchExchange_$935",
                     "typeString": "contract IDutchExchange"
                   },
                   "typeName": {
@@ -513,10 +513,10 @@
                     "id": 731,
                     "name": "IDutchExchange",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 929,
+                    "referencedDeclaration": 935,
                     "src": "476:14:1",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IDutchExchange_$929",
+                      "typeIdentifier": "t_contract$_IDutchExchange_$935",
                       "typeString": "contract IDutchExchange"
                     }
                   },
@@ -600,7 +600,7 @@
         ],
         "contractDependencies": [
           723,
-          4221
+          4227
         ],
         "contractKind": "contract",
         "documentation": "@title Uniswap Arbitrage Module - Executes arbitrage transactions between Uniswap and DutchX.\n @author Billy Rennekamp - <billy@gnosis.pm>",
@@ -609,7 +609,7 @@
         "linearizedBaseContracts": [
           745,
           723,
-          4221
+          4227
         ],
         "name": "ArbitrageLocal",
         "nodeType": "ContractDefinition",
@@ -637,7 +637,7 @@
                       "referencedDeclaration": 16,
                       "src": "522:10:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IUniswapFactory_$1339",
+                        "typeIdentifier": "t_contract$_IUniswapFactory_$1345",
                         "typeString": "contract IUniswapFactory"
                       }
                     },
@@ -652,13 +652,13 @@
                       "referencedDeclaration": 730,
                       "src": "535:11:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IUniswapFactory_$1339",
+                        "typeIdentifier": "t_contract$_IUniswapFactory_$1345",
                         "typeString": "contract IUniswapFactory"
                       }
                     },
                     "src": "522:24:1",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IUniswapFactory_$1339",
+                      "typeIdentifier": "t_contract$_IUniswapFactory_$1345",
                       "typeString": "contract IUniswapFactory"
                     }
                   },
@@ -683,7 +683,7 @@
                       "referencedDeclaration": 18,
                       "src": "556:11:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IDutchExchange_$929",
+                        "typeIdentifier": "t_contract$_IDutchExchange_$935",
                         "typeString": "contract IDutchExchange"
                       }
                     },
@@ -698,13 +698,13 @@
                       "referencedDeclaration": 732,
                       "src": "570:12:1",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_IDutchExchange_$929",
+                        "typeIdentifier": "t_contract$_IDutchExchange_$935",
                         "typeString": "contract IDutchExchange"
                       }
                     },
                     "src": "556:26:1",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IDutchExchange_$929",
+                      "typeIdentifier": "t_contract$_IDutchExchange_$935",
                       "typeString": "contract IDutchExchange"
                     }
                   },
@@ -735,7 +735,7 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IUniswapFactory_$1339",
+                    "typeIdentifier": "t_contract$_IUniswapFactory_$1345",
                     "typeString": "contract IUniswapFactory"
                   },
                   "typeName": {
@@ -743,10 +743,10 @@
                     "id": 729,
                     "name": "IUniswapFactory",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 1339,
+                    "referencedDeclaration": 1345,
                     "src": "447:15:1",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IUniswapFactory_$1339",
+                      "typeIdentifier": "t_contract$_IUniswapFactory_$1345",
                       "typeString": "contract IUniswapFactory"
                     }
                   },
@@ -763,7 +763,7 @@
                   "stateVariable": false,
                   "storageLocation": "default",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_contract$_IDutchExchange_$929",
+                    "typeIdentifier": "t_contract$_IDutchExchange_$935",
                     "typeString": "contract IDutchExchange"
                   },
                   "typeName": {
@@ -771,10 +771,10 @@
                     "id": 731,
                     "name": "IDutchExchange",
                     "nodeType": "UserDefinedTypeName",
-                    "referencedDeclaration": 929,
+                    "referencedDeclaration": 935,
                     "src": "476:14:1",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_IDutchExchange_$929",
+                      "typeIdentifier": "t_contract$_IDutchExchange_$935",
                       "typeString": "contract IDutchExchange"
                     }
                   },
@@ -807,133 +807,9 @@
     "name": "solc",
     "version": "0.5.3+commit.10d17f24.Emscripten.clang"
   },
-  "networks": {
-    "1550776758714": {
-      "events": {
-        "0xc90a3c8cce5a6fc905b1c03c24729cd1e75337254f405872e01b21df6a5a123c": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "name": "profit",
-              "type": "uint256"
-            },
-            {
-              "indexed": false,
-              "name": "wasDutchOpportunity",
-              "type": "bool"
-            }
-          ],
-          "name": "Profit",
-          "type": "event",
-          "signature": "0xc90a3c8cce5a6fc905b1c03c24729cd1e75337254f405872e01b21df6a5a123c"
-        },
-        "0x8a36f5a234186d446e36a7df36ace663a05a580d9bea2dd899c6dd76a075d5fa": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "name": "",
-              "type": "uint256"
-            }
-          ],
-          "name": "Debug",
-          "type": "event",
-          "signature": "0x8a36f5a234186d446e36a7df36ace663a05a580d9bea2dd899c6dd76a075d5fa"
-        },
-        "0x69f6f7811dbe71e740020b61c8c72b4dd8efe368c9484c24bcb718cc8a1663df": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": false,
-              "name": "",
-              "type": "address"
-            }
-          ],
-          "name": "DebugAdd",
-          "type": "event",
-          "signature": "0x69f6f7811dbe71e740020b61c8c72b4dd8efe368c9484c24bcb718cc8a1663df"
-        },
-        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
-          "anonymous": false,
-          "inputs": [
-            {
-              "indexed": true,
-              "name": "previousOwner",
-              "type": "address"
-            },
-            {
-              "indexed": true,
-              "name": "newOwner",
-              "type": "address"
-            }
-          ],
-          "name": "OwnershipTransferred",
-          "type": "event",
-          "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
-        }
-      },
-      "links": {},
-      "address": "0x057D2360aBbe75F9fdF142f2CfE68cFC9a74EC12",
-      "transactionHash": "0x90eaadd457c116390c098b9ff82d83fa7a27fe711c4ed0bc19c9c89cf1d6c1ef"
-    },
-    "1550777166419": {
-      "events": {},
-      "links": {},
-      "address": "0xdE5491f774F0Cb009ABcEA7326342E105dbb1B2E",
-      "transactionHash": "0xa28cc717adc19d8553ea2c0c90351d384e5e181625b1a5f37380a134d0cf451d"
-    },
-    "1550777259479": {
-      "events": {},
-      "links": {},
-      "address": "0xdE5491f774F0Cb009ABcEA7326342E105dbb1B2E",
-      "transactionHash": "0xa28cc717adc19d8553ea2c0c90351d384e5e181625b1a5f37380a134d0cf451d"
-    },
-    "1550778115271": {
-      "events": {},
-      "links": {},
-      "address": "0xdE5491f774F0Cb009ABcEA7326342E105dbb1B2E",
-      "transactionHash": "0xa7cda152e3c605806b71a08cfe56fa6f9ca9ce67cd6785ff276c593fa8b556b3"
-    },
-    "1550781456288": {
-      "events": {},
-      "links": {},
-      "address": "0xdE5491f774F0Cb009ABcEA7326342E105dbb1B2E",
-      "transactionHash": "0xd47d29893a3c31786e1b4820a5f3f35860334fe40f0bc396af54688d2b72a223"
-    },
-    "1550781824460": {
-      "events": {},
-      "links": {},
-      "address": "0xdE5491f774F0Cb009ABcEA7326342E105dbb1B2E",
-      "transactionHash": "0xd47d29893a3c31786e1b4820a5f3f35860334fe40f0bc396af54688d2b72a223"
-    },
-    "1550782212138": {
-      "events": {},
-      "links": {},
-      "address": "0xdE5491f774F0Cb009ABcEA7326342E105dbb1B2E",
-      "transactionHash": "0xd47d29893a3c31786e1b4820a5f3f35860334fe40f0bc396af54688d2b72a223"
-    },
-    "1550782736169": {
-      "events": {},
-      "links": {},
-      "address": "0xdE5491f774F0Cb009ABcEA7326342E105dbb1B2E",
-      "transactionHash": "0xd47d29893a3c31786e1b4820a5f3f35860334fe40f0bc396af54688d2b72a223"
-    },
-    "1550782820548": {
-      "events": {},
-      "links": {},
-      "address": "0xdE5491f774F0Cb009ABcEA7326342E105dbb1B2E",
-      "transactionHash": "0xd47d29893a3c31786e1b4820a5f3f35860334fe40f0bc396af54688d2b72a223"
-    },
-    "1550783568805": {
-      "events": {},
-      "links": {},
-      "address": "0xdE5491f774F0Cb009ABcEA7326342E105dbb1B2E",
-      "transactionHash": "0xd47d29893a3c31786e1b4820a5f3f35860334fe40f0bc396af54688d2b72a223"
-    }
-  },
+  "networks": {},
   "schemaVersion": "3.0.1",
-  "updatedAt": "2019-02-21T21:35:00.590Z",
+  "updatedAt": "2019-02-22T12:58:35.443Z",
   "devdoc": {
     "author": "Billy Rennekamp - <billy@gnosis.pm>",
     "methods": {
