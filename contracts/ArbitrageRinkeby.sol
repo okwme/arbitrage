@@ -5,6 +5,6 @@ import "./Arbitrage.sol";
 contract ArbitrageRinkeby is Arbitrage {
     constructor() public {
         uniFactory = IUniswapFactory(0xf5D915570BC477f9B8D6C0E980aA81757A3AaC36); 
-        dutchXProxy = IDutchExchange(0x4e69969D9270fF55fc7c5043B074d4e45F795587);
+        dutchXProxy = IDutchExchange(0xaAEb2035FF394fdB2C879190f95e7676f1A9444B);
     }
 }

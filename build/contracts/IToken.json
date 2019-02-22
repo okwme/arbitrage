@@ -284,14 +284,14 @@
     "absolutePath": "/Users/billy/gnosis/arbitrage/contracts/IToken.sol",
     "exportedSymbols": {
       "IToken": [
-        947
+        985
       ]
     },
-    "id": 948,
+    "id": 986,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 937,
+        "id": 975,
         "literals": [
           "solidity",
           "^",
@@ -304,10 +304,10 @@
       {
         "absolutePath": "/Users/billy/gnosis/arbitrage/node_modules/@gnosis.pm/util-contracts/contracts/EtherToken.sol",
         "file": "../node_modules/@gnosis.pm/util-contracts/contracts/EtherToken.sol",
-        "id": 938,
+        "id": 976,
         "nodeType": "ImportDirective",
-        "scope": 948,
-        "sourceUnit": 2673,
+        "scope": 986,
+        "sourceUnit": 2711,
         "src": "24:76:5",
         "symbolAliases": [],
         "unitAlias": ""
@@ -318,47 +318,47 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 939,
+              "id": 977,
               "name": "EtherToken",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2672,
+              "referencedDeclaration": 2710,
               "src": "120:10:5",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_EtherToken_$2672",
+                "typeIdentifier": "t_contract$_EtherToken_$2710",
                 "typeString": "contract EtherToken"
               }
             },
-            "id": 940,
+            "id": 978,
             "nodeType": "InheritanceSpecifier",
             "src": "120:10:5"
           }
         ],
         "contractDependencies": [
-          2672,
-          2690,
-          2884,
-          4118
+          2710,
+          2728,
+          2922,
+          4156
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 947,
+        "id": 985,
         "linearizedBaseContracts": [
-          947,
-          2672,
-          2884,
-          2690,
-          4118
+          985,
+          2710,
+          2922,
+          2728,
+          4156
         ],
         "name": "IToken",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": true,
-            "id": 943,
+            "id": 981,
             "name": "symbol",
             "nodeType": "VariableDeclaration",
-            "scope": 947,
+            "scope": 985,
             "src": "137:37:5",
             "stateVariable": true,
             "storageLocation": "default",
@@ -367,7 +367,7 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 941,
+              "id": 979,
               "name": "string",
               "nodeType": "ElementaryTypeName",
               "src": "137:6:5",
@@ -379,7 +379,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "554e49",
-              "id": 942,
+              "id": 980,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -398,10 +398,10 @@
           },
           {
             "constant": true,
-            "id": 946,
+            "id": 984,
             "name": "name",
             "nodeType": "VariableDeclaration",
-            "scope": 947,
+            "scope": 985,
             "src": "180:41:5",
             "stateVariable": true,
             "storageLocation": "default",
@@ -410,7 +410,7 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 944,
+              "id": 982,
               "name": "string",
               "nodeType": "ElementaryTypeName",
               "src": "180:6:5",
@@ -422,7 +422,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "554e4920546f6b656e",
-              "id": 945,
+              "id": 983,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -440,7 +440,7 @@
             "visibility": "public"
           }
         ],
-        "scope": 948,
+        "scope": 986,
         "src": "101:123:5"
       }
     ],
@@ -450,14 +450,14 @@
     "absolutePath": "/Users/billy/gnosis/arbitrage/contracts/IToken.sol",
     "exportedSymbols": {
       "IToken": [
-        947
+        985
       ]
     },
-    "id": 948,
+    "id": 986,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 937,
+        "id": 975,
         "literals": [
           "solidity",
           "^",
@@ -470,10 +470,10 @@
       {
         "absolutePath": "/Users/billy/gnosis/arbitrage/node_modules/@gnosis.pm/util-contracts/contracts/EtherToken.sol",
         "file": "../node_modules/@gnosis.pm/util-contracts/contracts/EtherToken.sol",
-        "id": 938,
+        "id": 976,
         "nodeType": "ImportDirective",
-        "scope": 948,
-        "sourceUnit": 2673,
+        "scope": 986,
+        "sourceUnit": 2711,
         "src": "24:76:5",
         "symbolAliases": [],
         "unitAlias": ""
@@ -484,47 +484,47 @@
             "arguments": null,
             "baseName": {
               "contractScope": null,
-              "id": 939,
+              "id": 977,
               "name": "EtherToken",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 2672,
+              "referencedDeclaration": 2710,
               "src": "120:10:5",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_EtherToken_$2672",
+                "typeIdentifier": "t_contract$_EtherToken_$2710",
                 "typeString": "contract EtherToken"
               }
             },
-            "id": 940,
+            "id": 978,
             "nodeType": "InheritanceSpecifier",
             "src": "120:10:5"
           }
         ],
         "contractDependencies": [
-          2672,
-          2690,
-          2884,
-          4118
+          2710,
+          2728,
+          2922,
+          4156
         ],
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 947,
+        "id": 985,
         "linearizedBaseContracts": [
-          947,
-          2672,
-          2884,
-          2690,
-          4118
+          985,
+          2710,
+          2922,
+          2728,
+          4156
         ],
         "name": "IToken",
         "nodeType": "ContractDefinition",
         "nodes": [
           {
             "constant": true,
-            "id": 943,
+            "id": 981,
             "name": "symbol",
             "nodeType": "VariableDeclaration",
-            "scope": 947,
+            "scope": 985,
             "src": "137:37:5",
             "stateVariable": true,
             "storageLocation": "default",
@@ -533,7 +533,7 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 941,
+              "id": 979,
               "name": "string",
               "nodeType": "ElementaryTypeName",
               "src": "137:6:5",
@@ -545,7 +545,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "554e49",
-              "id": 942,
+              "id": 980,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -564,10 +564,10 @@
           },
           {
             "constant": true,
-            "id": 946,
+            "id": 984,
             "name": "name",
             "nodeType": "VariableDeclaration",
-            "scope": 947,
+            "scope": 985,
             "src": "180:41:5",
             "stateVariable": true,
             "storageLocation": "default",
@@ -576,7 +576,7 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 944,
+              "id": 982,
               "name": "string",
               "nodeType": "ElementaryTypeName",
               "src": "180:6:5",
@@ -588,7 +588,7 @@
             "value": {
               "argumentTypes": null,
               "hexValue": "554e4920546f6b656e",
-              "id": 945,
+              "id": 983,
               "isConstant": false,
               "isLValue": false,
               "isPure": true,
@@ -606,7 +606,7 @@
             "visibility": "public"
           }
         ],
-        "scope": 948,
+        "scope": 986,
         "src": "101:123:5"
       }
     ],
@@ -618,7 +618,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.1",
-  "updatedAt": "2019-02-22T12:58:36.519Z",
+  "updatedAt": "2019-02-22T17:49:07.631Z",
   "devdoc": {
     "methods": {
       "allowance(address,address)": {

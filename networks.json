@@ -1,10 +1,47 @@
 {
   "ArbitrageRinkeby": {
     "4": {
-      "events": {},
+      "events": {
+        "0xc90a3c8cce5a6fc905b1c03c24729cd1e75337254f405872e01b21df6a5a123c": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "name": "profit",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "name": "wasDutchOpportunity",
+              "type": "bool"
+            }
+          ],
+          "name": "Profit",
+          "type": "event",
+          "signature": "0xc90a3c8cce5a6fc905b1c03c24729cd1e75337254f405872e01b21df6a5a123c"
+        },
+        "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event",
+          "signature": "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0"
+        }
+      },
       "links": {},
-      "address": "0x2ad13A79a5FC67a39ba10e0315E26179C8873F3B",
-      "transactionHash": "0x0c489de453e074b93085a2df175112f1b7d02553c0422a8e3f44161a34001b59"
+      "address": "0x452e5D93fB1dAF9Aec92c66b5f60780989579a0D",
+      "transactionHash": "0x697cb1598dd7bdd294db46dff987c9270388640831ba56014c24a36a278f293e"
     }
   }
 }

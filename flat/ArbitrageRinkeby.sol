@@ -277,6 +277,16 @@ contract Arbitrage is Ownable {
         require(success, "Withdraw of Ether from WETH didn't work.");
     }
 
+    /// @dev Only owner can claim a token from an auction on the DutchX
+    /// @param token The token address that is being claimed.
+    /// @param dutchAuctionIndex The auction index of the token to be claimed.
+    /// @return Returns the amount actually claimed from the DutchX
+    function claimBuyerFunds(address token, uint dutchAuctionIndex) external onlyOwner returns (uint) {
+        address etherToken = dutchXProxy.ethToken();
+        (uint tokensClaimed, ) = dutchXProxy.claimBuyerFunds(token, etherToken, address(this), dutchAuctionIndex);
+        return tokensClaimed;
+    }
+
     /// @dev Only owner can withdraw a token from the DutchX
     /// @param token The token address that is being withdrawn.
     /// @param amount The amount of token to withdraw. Can be larger than available balance and maximum will be withdrawn.
@@ -427,6 +437,6 @@ pragma solidity ^0.5.0;
 contract ArbitrageRinkeby is Arbitrage {
     constructor() public {
         uniFactory = IUniswapFactory(0xf5D915570BC477f9B8D6C0E980aA81757A3AaC36); 
-        dutchXProxy = IDutchExchange(0x4e69969D9270fF55fc7c5043B074d4e45F795587);
+        dutchXProxy = IDutchExchange(0xaAEb2035FF394fdB2C879190f95e7676f1A9444B);
     }
 }
