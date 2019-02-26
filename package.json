@@ -36,7 +36,8 @@
   },
   "dependencies": {
     "@gnosis.pm/mock-contract": "^3.0.7",
-    "solc": "^0.5.2"
+    "solc": "^0.5.2",
+    "web3-provider-engine": "^14.1.0"
   },
   "repository": {
     "type": "git",

@@ -63,21 +63,26 @@ module.exports = async function(callback) {
       allowance = await rdnToken.allowance(from, uniSwapExchangeAddress)
       console.log({allowance})
 
-      tx = await rdnToken.approve(uniswapExchange.address, 1e20.toString(10))
-      console.log('rdnToken.approve', tx.receipt.status)
+      liquidity = await uniswapExchange.balanceOf(from)
+      console.log(_ + 'uniswapExchange liquidity: ' + liquidity.toString(10))
 
 
-      allowance = await rdnToken.allowance(from, uniSwapExchangeAddress)
-      console.log({allowance})
+
+      // tx = await rdnToken.approve(uniswapExchange.address, 1e20.toString(10))
+      // console.log('rdnToken.approve', tx.receipt.status)
+
+
+      // allowance = await rdnToken.allowance(from, uniSwapExchangeAddress)
+      // console.log({allowance})
 
       let balanceOf = await rdnToken.balanceOf(from)
       console.log(_ + 'rdn BALANCE: ' + balanceOf.toString(10))
-      console.log(['0', (1e10).toString(10), deadline, {value: (1e10).toString(10)}])
-      tx = await uniswapExchange.addLiquidity('0', (1e10).toString(10), deadline, {value: (1e10).toString(10)})
-      console.log('uniswapExchange.addLiquidity', tx.receipt.status)
+
+      // tx = await uniswapExchange.addLiquidity('0', (1e10).toString(10), deadline, {value: (1e10).toString(10)})
+      // console.log('uniswapExchange.addLiquidity', tx.receipt.status)
   
-      let tokensBought = await uniswapExchange.getEthToTokenInputPrice((1e18 / 2).toString(10))
-      console.log(_ + 'potential tokensBought for .5 ETH:' + tokensBought.toString())
+      // let tokensBought = await uniswapExchange.getEthToTokenInputPrice((1e18 / 2).toString(10))
+      // console.log(_ + 'potential tokensBought for .5 ETH:' + tokensBought.toString())
 
       // let balanceOf = await iToken.balanceOf(from)
       // console.log(_ + 'OMG BALANCE: ' + balanceOf.toString(10))

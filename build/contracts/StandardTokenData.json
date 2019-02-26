@@ -1,11 +1,11 @@
 {
   "contractName": "StandardTokenData",
   "abi": [],
-  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3fe6080604052600080fdfea165627a7a723058205046769d0da0c7220ebb6f8641b82acf5e1e5aeb838506d3f7b16ce66086d2590029",
-  "deployedBytecode": "0x6080604052600080fdfea165627a7a723058205046769d0da0c7220ebb6f8641b82acf5e1e5aeb838506d3f7b16ce66086d2590029",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3fe6080604052600080fdfea165627a7a72305820ed5b9e405946d3685c2582042277b5eba03530344f4a57d0a6e70361d9480fa60029",
+  "deployedBytecode": "0x6080604052600080fdfea165627a7a72305820ed5b9e405946d3685c2582042277b5eba03530344f4a57d0a6e70361d9480fa60029",
   "sourceMap": "144:183:13:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;144:183:13;;;;;;;",
   "deployedSourceMap": "144:183:13:-;;;;;",
-  "source": "pragma solidity ^0.5.0;\nimport \"./Token.sol\";\nimport \"./Math.sol\";\nimport \"./Proxy.sol\";\n\n/**\n * Deprecated: Use Open Zeppeling one instead\n */\ncontract StandardTokenData {\n    /*\n     *  Storage\n     */\n    mapping(address => uint) balances;\n    mapping(address => mapping(address => uint)) allowances;\n    uint totalTokens;\n}\n\n/**\n * Deprecated: Use Open Zeppeling one instead\n */\n/// @title Standard token contract with overflow protection\ncontract GnosisStandardToken is Token, StandardTokenData {\n    using GnosisMath for *;\n\n    /*\n     *  Public functions\n     */\n    /// @dev Transfers sender's tokens to a given address. Returns success\n    /// @param to Address of token receiver\n    /// @param value Number of tokens to transfer\n    /// @return Was transfer successful?\n    function transfer(address to, uint value) public returns (bool) {\n        if (!balances[msg.sender].safeToSub(value) || !balances[to].safeToAdd(value)) {\n            return false;\n        }\n\n        balances[msg.sender] -= value;\n        balances[to] += value;\n        emit Transfer(msg.sender, to, value);\n        return true;\n    }\n\n    /// @dev Allows allowed third party to transfer tokens from one address to another. Returns success\n    /// @param from Address from where tokens are withdrawn\n    /// @param to Address to where tokens are sent\n    /// @param value Number of tokens to transfer\n    /// @return Was transfer successful?\n    function transferFrom(address from, address to, uint value) public returns (bool) {\n        if (!balances[from].safeToSub(value) || !allowances[from][msg.sender].safeToSub(\n            value\n        ) || !balances[to].safeToAdd(value)) {\n            return false;\n        }\n        balances[from] -= value;\n        allowances[from][msg.sender] -= value;\n        balances[to] += value;\n        emit Transfer(from, to, value);\n        return true;\n    }\n\n    /// @dev Sets approved amount of tokens for spender. Returns success\n    /// @param spender Address of allowed account\n    /// @param value Number of approved tokens\n    /// @return Was approval successful?\n    function approve(address spender, uint value) public returns (bool) {\n        allowances[msg.sender][spender] = value;\n        emit Approval(msg.sender, spender, value);\n        return true;\n    }\n\n    /// @dev Returns number of allowed tokens for given address\n    /// @param owner Address of token owner\n    /// @param spender Address of token spender\n    /// @return Remaining allowance for spender\n    function allowance(address owner, address spender) public view returns (uint) {\n        return allowances[owner][spender];\n    }\n\n    /// @dev Returns number of tokens owned by given address\n    /// @param owner Address of token owner\n    /// @return Balance of owner\n    function balanceOf(address owner) public view returns (uint) {\n        return balances[owner];\n    }\n\n    /// @dev Returns total supply of tokens\n    /// @return Total supply\n    function totalSupply() public view returns (uint) {\n        return totalTokens;\n    }\n}\n",
+  "source": "pragma solidity ^0.5.2;\nimport \"./Token.sol\";\nimport \"./Math.sol\";\nimport \"./Proxy.sol\";\n\n/**\n * Deprecated: Use Open Zeppeling one instead\n */\ncontract StandardTokenData {\n    /*\n     *  Storage\n     */\n    mapping(address => uint) balances;\n    mapping(address => mapping(address => uint)) allowances;\n    uint totalTokens;\n}\n\n/**\n * Deprecated: Use Open Zeppeling one instead\n */\n/// @title Standard token contract with overflow protection\ncontract GnosisStandardToken is Token, StandardTokenData {\n    using GnosisMath for *;\n\n    /*\n     *  Public functions\n     */\n    /// @dev Transfers sender's tokens to a given address. Returns success\n    /// @param to Address of token receiver\n    /// @param value Number of tokens to transfer\n    /// @return Was transfer successful?\n    function transfer(address to, uint value) public returns (bool) {\n        if (!balances[msg.sender].safeToSub(value) || !balances[to].safeToAdd(value)) {\n            return false;\n        }\n\n        balances[msg.sender] -= value;\n        balances[to] += value;\n        emit Transfer(msg.sender, to, value);\n        return true;\n    }\n\n    /// @dev Allows allowed third party to transfer tokens from one address to another. Returns success\n    /// @param from Address from where tokens are withdrawn\n    /// @param to Address to where tokens are sent\n    /// @param value Number of tokens to transfer\n    /// @return Was transfer successful?\n    function transferFrom(address from, address to, uint value) public returns (bool) {\n        if (!balances[from].safeToSub(value) || !allowances[from][msg.sender].safeToSub(\n            value\n        ) || !balances[to].safeToAdd(value)) {\n            return false;\n        }\n        balances[from] -= value;\n        allowances[from][msg.sender] -= value;\n        balances[to] += value;\n        emit Transfer(from, to, value);\n        return true;\n    }\n\n    /// @dev Sets approved amount of tokens for spender. Returns success\n    /// @param spender Address of allowed account\n    /// @param value Number of approved tokens\n    /// @return Was approval successful?\n    function approve(address spender, uint value) public returns (bool) {\n        allowances[msg.sender][spender] = value;\n        emit Approval(msg.sender, spender, value);\n        return true;\n    }\n\n    /// @dev Returns number of allowed tokens for given address\n    /// @param owner Address of token owner\n    /// @param spender Address of token spender\n    /// @return Remaining allowance for spender\n    function allowance(address owner, address spender) public view returns (uint) {\n        return allowances[owner][spender];\n    }\n\n    /// @dev Returns number of tokens owned by given address\n    /// @param owner Address of token owner\n    /// @return Balance of owner\n    function balanceOf(address owner) public view returns (uint) {\n        return balances[owner];\n    }\n\n    /// @dev Returns total supply of tokens\n    /// @return Total supply\n    function totalSupply() public view returns (uint) {\n        return totalTokens;\n    }\n}\n",
   "sourcePath": "/Users/billy/gnosis/arbitrage/node_modules/@gnosis.pm/util-contracts/contracts/GnosisStandardToken.sol",
   "ast": {
     "absolutePath": "/Users/billy/gnosis/arbitrage/node_modules/@gnosis.pm/util-contracts/contracts/GnosisStandardToken.sol",
@@ -26,7 +26,7 @@
           "solidity",
           "^",
           "0.5",
-          ".0"
+          ".2"
         ],
         "nodeType": "PragmaDirective",
         "src": "0:23:13"
@@ -2723,7 +2723,7 @@
           "solidity",
           "^",
           "0.5",
-          ".0"
+          ".2"
         ],
         "nodeType": "PragmaDirective",
         "src": "0:23:13"
@@ -5407,7 +5407,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.1",
-  "updatedAt": "2019-02-22T17:48:45.695Z",
+  "updatedAt": "2019-02-26T11:34:05.242Z",
   "devdoc": {
     "methods": {}
   },

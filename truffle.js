@@ -1,5 +1,8 @@
 require('dotenv').config()
 const HDWalletProvider = require('truffle-hdwallet-provider')
+
+var NonceTrackerSubprovider = require("web3-provider-engine/subproviders/nonce-tracker")
+
 module.exports = {
   compilers: {
     solc: {
@@ -9,10 +12,15 @@ module.exports = {
   networks: {
     development: {
       provider() {
-        return new HDWalletProvider(
+        var wallet = new HDWalletProvider(
           process.env.TRUFFLE_MNEMONIC,
           'http://localhost:8545/'
         )
+        
+        var nonceTracker = new NonceTrackerSubprovider()
+        wallet.engine._providers.unshift(nonceTracker)
+        nonceTracker.setEngine(wallet.engine)
+        return wallet
       },
       host: 'localhost',
       port: 8545,
@@ -20,10 +28,14 @@ module.exports = {
     },
     ganache: {
       provider() {
-        return new HDWalletProvider(
+        var wallet = new HDWalletProvider(
           process.env.GANACHE_MNEMONIC,
           'http://localhost:7545'
-        )
+        )        
+        var nonceTracker = new NonceTrackerSubprovider()
+        wallet.engine._providers.unshift(nonceTracker)
+        nonceTracker.setEngine(wallet.engine)
+        return wallet
       },
       host: 'localhost',
       port: 7545,
@@ -34,11 +46,15 @@ module.exports = {
     mainnet: {
       provider() {
         // using wallet at index 1 ----------------------------------------------------------------------------------------v
-        return new HDWalletProvider(
+        var wallet = new HDWalletProvider(
           process.env.MAINNET_MNEMONIC,
           'https://mainnet.infura.io/v3/' + process.env.INFURA_API_KEY,
           1
-        )
+        )        
+        var nonceTracker = new NonceTrackerSubprovider()
+        wallet.engine._providers.unshift(nonceTracker)
+        nonceTracker.setEngine(wallet.engine)
+        return wallet
       },
       network_id: 1
       // gas: 5561260
@@ -46,52 +62,75 @@ module.exports = {
     kovan: {
       provider() {
         // using wallet at index 1 ----------------------------------------------------------------------------------------v
-        return new HDWalletProvider(
+        var wallet = new HDWalletProvider(
           process.env.TESTNET_MNEMONIC,
           'https://kovan.infura.io/v3/' + process.env.INFURA_API_KEY,
           1
-        )
+        )        
+        var nonceTracker = new NonceTrackerSubprovider()
+        wallet.engine._providers.unshift(nonceTracker)
+        nonceTracker.setEngine(wallet.engine)
+        return wallet
       },
       network_id: 42
       // gas: 5561260
     },
     rinkeby: {
       provider() {
-        return new HDWalletProvider(
+        var wallet = new HDWalletProvider(
           process.env.TESTNET_MNEMONIC,
-          'https://rinkeby.infura.io/v3/' + process.env.INFURA_API_KEY
-        )
+          'https://node.rinkeby.gnosisdev.com'
+          // 'https://rinkeby.infura.io/v3/' + process.env.INFURA_API_KEY
+        )        
+        var nonceTracker = new NonceTrackerSubprovider()
+        wallet.engine._providers.unshift(nonceTracker)
+        nonceTracker.setEngine(wallet.engine)
+        return wallet
       },
       network_id: 4,
+      // confirmations: 3,
+      // websockets: true,
       // gas: 4700000,
       gasPrice: 20000000000 // 20 GWEI
     },
     ropsten: {
       provider() {
-        return new HDWalletProvider(
+        var wallet = new HDWalletProvider(
           process.env.TESTNET_MNEMONIC,
           'https://ropsten.infura.io/v3/' + process.env.INFURA_API_KEY
-        )
+        )        
+        var nonceTracker = new NonceTrackerSubprovider()
+        wallet.engine._providers.unshift(nonceTracker)
+        nonceTracker.setEngine(wallet.engine)
+        return wallet
       },
       network_id: 2
       // gas: 4700000
     },
     sokol: {
       provider() {
-        return new HDWalletProvider(
+        var wallet = new HDWalletProvider(
           process.env.TESTNET_MNEMONIC,
           'https://sokol.poa.network'
-        )
+        )        
+        var nonceTracker = new NonceTrackerSubprovider()
+        wallet.engine._providers.unshift(nonceTracker)
+        nonceTracker.setEngine(wallet.engine)
+        return wallet
       },
       gasPrice: 1000000000,
       network_id: 77
     },
     poa: {
       provider() {
-        return new HDWalletProvider(
+        var wallet = new HDWalletProvider(
           process.env.TESTNET_MNEMONIC,
           'https://core.poa.network'
-        )
+        )        
+        var nonceTracker = new NonceTrackerSubprovider()
+        wallet.engine._providers.unshift(nonceTracker)
+        nonceTracker.setEngine(wallet.engine)
+        return wallet
       },
       gasPrice: 1000000000,
       network_id: 99

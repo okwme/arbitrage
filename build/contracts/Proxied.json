@@ -16,11 +16,11 @@
       "type": "function"
     }
   ],
-  "bytecode": "0x608060405234801561001057600080fd5b5060e38061001f6000396000f3fe6080604052348015600f57600080fd5b50600436106045576000357c010000000000000000000000000000000000000000000000000000000090048063a619486e14604a575b600080fd5b60506092565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff168156fea165627a7a72305820d9fe1c474d522f11b37e8ad0e569ee8d47d0f4d32f4fa1480baa4dae8f835b020029",
-  "deployedBytecode": "0x6080604052348015600f57600080fd5b50600436106045576000357c010000000000000000000000000000000000000000000000000000000090048063a619486e14604a575b600080fd5b60506092565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff168156fea165627a7a72305820d9fe1c474d522f11b37e8ad0e569ee8d47d0f4d32f4fa1480baa4dae8f835b020029",
+  "bytecode": "0x608060405234801561001057600080fd5b5060e38061001f6000396000f3fe6080604052348015600f57600080fd5b50600436106045576000357c010000000000000000000000000000000000000000000000000000000090048063a619486e14604a575b600080fd5b60506092565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff168156fea165627a7a72305820458a0c1388624cd7cfc0ac5bea5d667a9ee41ec435b3db73372afa6dbf4d41f40029",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b50600436106045576000357c010000000000000000000000000000000000000000000000000000000090048063a619486e14604a575b600080fd5b60506092565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff168156fea165627a7a72305820458a0c1388624cd7cfc0ac5bea5d667a9ee41ec435b3db73372afa6dbf4d41f40029",
   "sourceMap": "173:51:15:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;173:51:15;;;;;;;",
   "deployedSourceMap": "173:51:15:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;173:51:15;;;;;;;;;;;;;;;;;;;;196:25;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
-  "source": "pragma solidity ^0.5.0;\n\n/// @title Proxied - indicates that a contract will be proxied. Also defines storage requirements for Proxy.\n/// @author Alan Lu - <alan@gnosis.pm>\ncontract Proxied {\n    address public masterCopy;\n}\n\n/// @title Proxy - Generic proxy contract allows to execute all transactions applying the code of a master contract.\n/// @author Stefan George - <stefan@gnosis.pm>\ncontract Proxy is Proxied {\n    /// @dev Constructor function sets address of master copy contract.\n    /// @param _masterCopy Master copy address.\n    constructor(address _masterCopy) public {\n        require(_masterCopy != address(0), \"The master copy is required\");\n        masterCopy = _masterCopy;\n    }\n\n    /// @dev Fallback function forwards all transactions and returns all received return data.\n    function() external payable {\n        address _masterCopy = masterCopy;\n        assembly {\n            calldatacopy(0, 0, calldatasize)\n            let success := delegatecall(not(0), _masterCopy, 0, calldatasize, 0, 0)\n            returndatacopy(0, 0, returndatasize)\n            switch success\n                case 0 {\n                    revert(0, returndatasize)\n                }\n                default {\n                    return(0, returndatasize)\n                }\n        }\n    }\n}\n",
+  "source": "pragma solidity ^0.5.2;\n\n/// @title Proxied - indicates that a contract will be proxied. Also defines storage requirements for Proxy.\n/// @author Alan Lu - <alan@gnosis.pm>\ncontract Proxied {\n    address public masterCopy;\n}\n\n/// @title Proxy - Generic proxy contract allows to execute all transactions applying the code of a master contract.\n/// @author Stefan George - <stefan@gnosis.pm>\ncontract Proxy is Proxied {\n    /// @dev Constructor function sets address of master copy contract.\n    /// @param _masterCopy Master copy address.\n    constructor(address _masterCopy) public {\n        require(_masterCopy != address(0), \"The master copy is required\");\n        masterCopy = _masterCopy;\n    }\n\n    /// @dev Fallback function forwards all transactions and returns all received return data.\n    function() external payable {\n        address _masterCopy = masterCopy;\n        assembly {\n            calldatacopy(0, 0, calldatasize)\n            let success := delegatecall(not(0), _masterCopy, 0, calldatasize, 0, 0)\n            returndatacopy(0, 0, returndatasize)\n            switch success\n                case 0 {\n                    revert(0, returndatasize)\n                }\n                default {\n                    return(0, returndatasize)\n                }\n        }\n    }\n}\n",
   "sourcePath": "/Users/billy/gnosis/arbitrage/node_modules/@gnosis.pm/util-contracts/contracts/Proxy.sol",
   "ast": {
     "absolutePath": "/Users/billy/gnosis/arbitrage/node_modules/@gnosis.pm/util-contracts/contracts/Proxy.sol",
@@ -41,7 +41,7 @@
           "solidity",
           "^",
           "0.5",
-          ".0"
+          ".2"
         ],
         "nodeType": "PragmaDirective",
         "src": "0:23:15"
@@ -512,7 +512,7 @@
           "solidity",
           "^",
           "0.5",
-          ".0"
+          ".2"
         ],
         "nodeType": "PragmaDirective",
         "src": "0:23:15"
@@ -970,7 +970,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.1",
-  "updatedAt": "2019-02-22T17:48:45.551Z",
+  "updatedAt": "2019-02-26T11:34:05.204Z",
   "devdoc": {
     "author": "Alan Lu - <alan@gnosis.pm>",
     "methods": {},
