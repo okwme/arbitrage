@@ -13,8 +13,7 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "signature": "0x1c2bbd18"
+      "type": "function"
     },
     {
       "constant": true,
@@ -28,8 +27,7 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "signature": "0x9f181b5e"
+      "type": "function"
     },
     {
       "constant": false,
@@ -48,8 +46,7 @@
       ],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0x1648f38e"
+      "type": "function"
     },
     {
       "constant": true,
@@ -68,8 +65,7 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "signature": "0x06f2bf62"
+      "type": "function"
     },
     {
       "constant": true,
@@ -88,8 +84,7 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "signature": "0x59770438"
+      "type": "function"
     },
     {
       "constant": true,
@@ -108,8 +103,7 @@
       ],
       "payable": false,
       "stateMutability": "view",
-      "type": "function",
-      "signature": "0xaa65a6c0"
+      "type": "function"
     },
     {
       "constant": false,
@@ -123,8 +117,7 @@
       "outputs": [],
       "payable": false,
       "stateMutability": "nonpayable",
-      "type": "function",
-      "signature": "0x538a3f0e"
+      "type": "function"
     }
   ],
   "bytecode": "0x",
@@ -1099,7 +1092,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.1",
-  "updatedAt": "2019-03-06T15:49:06.920Z",
+  "updatedAt": "2019-03-06T19:47:44.008Z",
   "devdoc": {
     "methods": {}
   },

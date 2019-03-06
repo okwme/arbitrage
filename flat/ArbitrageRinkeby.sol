@@ -47,6 +47,7 @@ contract IUniswapExchange {
     function approve(address _spender, uint256 _value) external returns (bool);
     function allowance(address _owner, address _spender) external view returns (uint256);
     function balanceOf(address _owner) external view returns (uint256);
+    function totalSupply() public view returns (uint256);
     // Never use
     function setup(address token_addr) external;
 }
@@ -107,6 +108,142 @@ pragma solidity ^0.5.0;
 contract ITokenMinimal {
     function allowance(address tokenOwner, address spender) public view returns (uint remaining);
     function balanceOf(address tokenOwner) public view returns (uint balance);
+    function deposit() public payable;
+    function withdraw(uint value) public;
+}
+
+// File: openzeppelin-solidity/contracts/utils/Address.sol
+
+pragma solidity ^0.5.0;
+
+/**
+ * Utility library of inline functions on addresses
+ */
+library Address {
+    /**
+     * Returns whether the target address is a contract
+     * @dev This function will return false if invoked during the constructor of a contract,
+     * as the code is not actually created until after the constructor finishes.
+     * @param account address of the account to check
+     * @return whether the target address is a contract
+     */
+    function isContract(address account) internal view returns (bool) {
+        uint256 size;
+        // XXX Currently there is no better way to check if there is a contract in an address
+        // than to check the size of the code at that address.
+        // See https://ethereum.stackexchange.com/a/14016/36603
+        // for more details about how this works.
+        // TODO Check this again before the Serenity release, because all addresses will be
+        // contracts then.
+        // solhint-disable-next-line no-inline-assembly
+        assembly { size := extcodesize(account) }
+        return size > 0;
+    }
+}
+
+// File: openzeppelin-solidity/contracts/token/ERC20/IERC20.sol
+
+pragma solidity ^0.5.0;
+
+/**
+ * @title ERC20 interface
+ * @dev see https://github.com/ethereum/EIPs/issues/20
+ */
+interface IERC20 {
+    function transfer(address to, uint256 value) external returns (bool);
+
+    function approve(address spender, uint256 value) external returns (bool);
+
+    function transferFrom(address from, address to, uint256 value) external returns (bool);
+
+    function totalSupply() external view returns (uint256);
+
+    function balanceOf(address who) external view returns (uint256);
+
+    function allowance(address owner, address spender) external view returns (uint256);
+
+    event Transfer(address indexed from, address indexed to, uint256 value);
+
+    event Approval(address indexed owner, address indexed spender, uint256 value);
+}
+
+// File: contracts/SafeERC20.sol
+
+/*
+
+SafeERC20 by daostack.
+The code is based on a fix by SECBIT Team.
+
+USE WITH CAUTION & NO WARRANTY
+
+REFERENCE & RELATED READING
+- https://github.com/ethereum/solidity/issues/4116
+- https://medium.com/@chris_77367/explaining-unexpected-reverts-starting-with-solidity-0-4-22-3ada6e82308c
+- https://medium.com/coinmonks/missing-return-value-bug-at-least-130-tokens-affected-d67bf08521ca
+- https://gist.github.com/BrendanChou/88a2eeb80947ff00bcf58ffdafeaeb61
+
+*/
+pragma solidity ^0.5.0;
+
+
+
+library SafeERC20 {
+    using Address for address;
+
+    bytes4 constant private TRANSFER_SELECTOR = bytes4(keccak256(bytes("transfer(address,uint256)")));
+    bytes4 constant private TRANSFERFROM_SELECTOR = bytes4(keccak256(bytes("transferFrom(address,address,uint256)")));
+    bytes4 constant private APPROVE_SELECTOR = bytes4(keccak256(bytes("approve(address,uint256)")));
+
+    function safeTransfer(address _erc20Addr, address _to, uint256 _value) internal {
+
+        // Must be a contract addr first!
+        require(_erc20Addr.isContract(), "ERC20 is not a contract");
+
+        (bool success, bytes memory returnValue) =
+        // solhint-disable-next-line avoid-low-level-calls
+        _erc20Addr.call(abi.encodeWithSelector(TRANSFER_SELECTOR, _to, _value));
+        // call return false when something wrong
+        require(success, "safeTransfer must succeed");
+        //check return value
+        require(returnValue.length == 0 || (returnValue.length == 32 && (returnValue[31] != 0)), "safeTransfer must return nothing or true");
+    }
+
+    function safeTransferFrom(address _erc20Addr, address _from, address _to, uint256 _value) internal {
+
+        // Must be a contract addr first!
+        require(_erc20Addr.isContract(), "ERC20 is not a contract");
+
+        (bool success, bytes memory returnValue) =
+        // solhint-disable-next-line avoid-low-level-calls
+        _erc20Addr.call(abi.encodeWithSelector(TRANSFERFROM_SELECTOR, _from, _to, _value));
+        // call return false when something wrong
+        require(success, "safeTransferFrom must succeed");
+        //check return value
+        require(returnValue.length == 0 || (returnValue.length == 32 && (returnValue[31] != 0)), "safeTransferFrom must return nothing or true");
+    }
+
+    function safeApprove(address _erc20Addr, address _spender, uint256 _value) internal {
+
+        // Must be a contract addr first!
+        require(_erc20Addr.isContract(), "ERC20 is not a contract");
+
+        // vvv
+        // This section has been commented out because it is not a necesarry safeguard
+        // vvv
+        /*        
+        // safeApprove should only be called when setting an initial allowance,
+        // or when resetting it to zero.
+        require((_value == 0) || (IERC20(_erc20Addr).allowance(address(this), _spender) == 0), "safeApprove should only be called when setting an initial allowance, or when resetting it to zero.");
+        */
+
+        (bool success, bytes memory returnValue) =
+        // solhint-disable-next-line avoid-low-level-calls
+        _erc20Addr.call(abi.encodeWithSelector(APPROVE_SELECTOR, _spender, _value));
+        // call return false when something wrong
+        require(success, "safeApprove must succeed");
+        //check return value
+        require(returnValue.length == 0 || (returnValue.length == 32 && (returnValue[31] != 0)),  "safeApprove must return nothing or true");
+    }
 }
 
 // File: openzeppelin-solidity/contracts/ownership/Ownable.sol
@@ -193,7 +330,8 @@ pragma solidity ^0.5.0;
 
 
 
-/// @title Uniswap Arbitrage Module - Executes arbitrage transactions between Uniswap and DutchX.
+
+/// @title Uniswap Arbitrage - Executes arbitrage transactions between Uniswap and DutchX.
 /// @author Billy Rennekamp - <billy@gnosis.pm>
 contract Arbitrage is Ownable {
     
@@ -215,11 +353,7 @@ contract Arbitrage is Ownable {
 
         // // Deposit balance to WETH
         address weth = dutchXProxy.ethToken();
-
-        bytes memory payload = abi.encodeWithSignature("deposit()");
-        // solium-disable-next-line security/no-call-value
-        (bool success, ) = weth.call.value(balance).gas(200000)(payload);
-        require(success, "Converting Ether to WETH didn't work.");
+        ITokenMinimal(weth).deposit.value(balance)();
 
         uint wethBalance = ITokenMinimal(weth).balanceOf(address(this));
         uint allowance = ITokenMinimal(weth).allowance(address(this), address(dutchXProxy));
@@ -227,13 +361,7 @@ contract Arbitrage is Ownable {
         if (allowance < wethBalance) {
             // Approve max amount of WETH to be transferred by dutchX
             // Keeping it max will have same or similar costs to making it exact over and over again
-            // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
-            // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
-            payload = abi.encodeWithSignature("approve(address,uint256)", address(dutchXProxy), max);
-            // solium-disable-next-line security/no-call-value
-            (bool secondSuccess, bytes memory returnData) = weth.call.value(0).gas(200000)(payload);
-            require(secondSuccess, "Approve WETH to be transferred by DutchX didn't work.");
-            require(returnData.length == 0 || (returnData.length == 32 && (returnData[31] != 0)), "Approve WETH to be transferred by DutchX didn't return true.");
+            SafeERC20.safeApprove(weth, address(dutchXProxy), max);
         }
 
         // Deposit new amount on dutchX, confirm there's at least the amount we just deposited
@@ -254,7 +382,6 @@ contract Arbitrage is Ownable {
         // If amount is zero, deposit the entire contract balance.
         address(uint160(owner())).transfer(amount == 0 ? address(this).balance : amount);
     }
-
     
     /// @dev Only owner function to withdraw WETH from the DutchX, convert it to Ether and keep it in contract
     /// @param amount The amount of WETH to withdraw and convert.
@@ -265,16 +392,17 @@ contract Arbitrage is Ownable {
     /// @dev Internal function to withdraw WETH from the DutchX, convert it to Ether and keep it in contract
     /// @param amount The amount of WETH to withdraw and convert.
     function _withdrawEther(uint amount) internal {
-
         address weth = dutchXProxy.ethToken();
         dutchXProxy.withdraw(weth, amount);
+        ITokenMinimal(weth).withdraw(amount);
+    }
 
-        // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
-        // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
-        bytes memory payload = abi.encodeWithSignature("withdraw(uint256)", amount);
-        // solium-disable-next-line security/no-call-value
-        (bool success, ) = weth.call.value(0).gas(200000)(payload);
-        require(success, "Withdraw of Ether from WETH didn't work.");
+    /// @dev Only owner can withdraw a token from the DutchX
+    /// @param token The token address that is being withdrawn.
+    /// @param amount The amount of token to withdraw. Can be larger than available balance and maximum will be withdrawn.
+    /// @return Returns the amount actually withdrawn from the DutchX
+    function withdrawToken(address token, uint amount) external onlyOwner returns (uint) {
+        return dutchXProxy.withdraw(token, amount);
     }
 
     /// @dev Only owner can claim a token from an auction on the DutchX
@@ -287,26 +415,11 @@ contract Arbitrage is Ownable {
         return tokensClaimed;
     }
 
-    /// @dev Only owner can withdraw a token from the DutchX
-    /// @param token The token address that is being withdrawn.
-    /// @param amount The amount of token to withdraw. Can be larger than available balance and maximum will be withdrawn.
-    /// @return Returns the amount actually withdrawn from the DutchX
-    function withdrawToken(address token, uint amount) external onlyOwner returns (uint) {
-        return dutchXProxy.withdraw(token, amount);
-    }
-
     /// @dev Only owner can transfer tokens to the owner that belong to this contract
     /// @param token The token address that is being transferred.
     /// @param amount The amount of token to transfer.
     function transferToken(address token, uint amount) external onlyOwner {
-
-        // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
-        // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
-        bytes memory payload = abi.encodeWithSignature("transfer(address,uint256)", owner(), amount);
-        // solium-disable-next-line security/no-call-value
-        (bool success, bytes memory returnData) = token.call.value(0).gas(200000)(payload);
-        require(success, "Transfer token didn't work.");
-        require(returnData.length == 0 || (returnData.length == 32 && (returnData[31] != 0)), "Transfer token return true.");
+        SafeERC20.safeTransfer(token, owner(), amount);
     }
 
     /// @dev Only owner can deposit token to the DutchX
@@ -323,13 +436,7 @@ contract Arbitrage is Ownable {
 
         uint allowance = ITokenMinimal(token).allowance(address(this), address(dutchXProxy));
         if (allowance < amount) {
-            // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
-            // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
-            bytes memory payload = abi.encodeWithSignature("approve(address,uint256)", address(dutchXProxy), max);
-            // solium-disable-next-line security/no-call-value
-            (bool success, bytes memory returnData) = token.call.value(0).gas(200000)(payload);
-            require(success, "Approve token to be transferred by DutchX didn't work.");
-            require(returnData.length == 0 || (returnData.length == 32 && (returnData[31] != 0)), "Approve token to be transferred by DutchX didn't return true.");
+            SafeERC20.safeApprove(token, address(dutchXProxy), max);
         }
 
         // Confirm that the balance of the token on the DutchX is at least how much was deposited
@@ -363,13 +470,7 @@ contract Arbitrage is Ownable {
         if (allowance < tokensBought) {
             // Approve Uniswap to transfer arbToken on contract's behalf
             // Keeping it max will have same or similar costs to making it exact over and over again
-            // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
-            // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
-            bytes memory payload = abi.encodeWithSignature("approve(address,uint256)", address(uniswapExchange), max);
-            // solium-disable-next-line security/no-call-value
-            (bool success, bytes memory returnData) = arbToken.call.value(0).gas(200000)(payload);
-            require(success, "Approve arbToken to be transferred by Uniswap didn't work");
-            require(returnData.length == 0 || (returnData.length == 32 && (returnData[31] != 0)), "Approve arbToken to be transferred by Uniswap didn't return true");
+            SafeERC20.safeApprove(arbToken, address(uniswapExchange), max);
         }
 
         // tokenToEthSwapInput(inputToken, minimumReturn, timeToLive)
@@ -422,7 +523,6 @@ contract Arbitrage is Ownable {
         // best worst case scenario the profit from the trade alleviates part of the gas costs even if still no total profit
         require(etherReturned >= amount, "no profit");
         emit Profit(etherReturned, false);
-
         // Ether returned is already in dutchX balance where Ether is assumed to be stored when not being used.
     }
     

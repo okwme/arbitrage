@@ -10,9 +10,9 @@ module.exports = (deployer, network, accounts) => {
         return
       }
 
-      // Deploy SafeERC20 and link to ArbitrageLocal.sol
+      // Deploy SafeERC20 and link to ArbitrageMainnet.sol
       await deployer.deploy(SafeERC20);
-      await deployer.link(SafeERC20, ArbitrageLocal);
+      await deployer.link(SafeERC20, ArbitrageMainnet);
  
       // Deploy ArbitrageMainnet.sol
       await deployer.deploy(ArbitrageMainnet)
