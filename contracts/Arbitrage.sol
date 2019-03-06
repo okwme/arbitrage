@@ -4,9 +4,10 @@ import "./IUniswapExchange.sol";
 import "./IUniswapFactory.sol";
 import "./IDutchExchange.sol";
 import "./ITokenMinimal.sol";
+import "./SafeERC20.sol";
 import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
 
-/// @title Uniswap Arbitrage Module - Executes arbitrage transactions between Uniswap and DutchX.
+/// @title Uniswap Arbitrage - Executes arbitrage transactions between Uniswap and DutchX.
 /// @author Billy Rennekamp - <billy@gnosis.pm>
 contract Arbitrage is Ownable {
     
@@ -28,11 +29,7 @@ contract Arbitrage is Ownable {
 
         // // Deposit balance to WETH
         address weth = dutchXProxy.ethToken();
-
-        bytes memory payload = abi.encodeWithSignature("deposit()");
-        // solium-disable-next-line security/no-call-value
-        (bool success, ) = weth.call.value(balance).gas(200000)(payload);
-        require(success, "Converting Ether to WETH didn't work.");
+        ITokenMinimal(weth).deposit.value(balance)();
 
         uint wethBalance = ITokenMinimal(weth).balanceOf(address(this));
         uint allowance = ITokenMinimal(weth).allowance(address(this), address(dutchXProxy));
@@ -40,13 +37,7 @@ contract Arbitrage is Ownable {
         if (allowance < wethBalance) {
             // Approve max amount of WETH to be transferred by dutchX
             // Keeping it max will have same or similar costs to making it exact over and over again
-            // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
-            // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
-            payload = abi.encodeWithSignature("approve(address,uint256)", address(dutchXProxy), max);
-            // solium-disable-next-line security/no-call-value
-            (bool secondSuccess, bytes memory returnData) = weth.call.value(0).gas(200000)(payload);
-            require(secondSuccess, "Approve WETH to be transferred by DutchX didn't work.");
-            require(returnData.length == 0 || (returnData.length == 32 && (returnData[31] != 0)), "Approve WETH to be transferred by DutchX didn't return true.");
+            SafeERC20.safeApprove(weth, address(dutchXProxy), max);
         }
 
         // Deposit new amount on dutchX, confirm there's at least the amount we just deposited
@@ -67,7 +58,6 @@ contract Arbitrage is Ownable {
         // If amount is zero, deposit the entire contract balance.
         address(uint160(owner())).transfer(amount == 0 ? address(this).balance : amount);
     }
-
     
     /// @dev Only owner function to withdraw WETH from the DutchX, convert it to Ether and keep it in contract
     /// @param amount The amount of WETH to withdraw and convert.
@@ -78,16 +68,17 @@ contract Arbitrage is Ownable {
     /// @dev Internal function to withdraw WETH from the DutchX, convert it to Ether and keep it in contract
     /// @param amount The amount of WETH to withdraw and convert.
     function _withdrawEther(uint amount) internal {
-
         address weth = dutchXProxy.ethToken();
         dutchXProxy.withdraw(weth, amount);
+        ITokenMinimal(weth).withdraw(amount);
+    }
 
-        // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
-        // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
-        bytes memory payload = abi.encodeWithSignature("withdraw(uint256)", amount);
-        // solium-disable-next-line security/no-call-value
-        (bool success, ) = weth.call.value(0).gas(200000)(payload);
-        require(success, "Withdraw of Ether from WETH didn't work.");
+    /// @dev Only owner can withdraw a token from the DutchX
+    /// @param token The token address that is being withdrawn.
+    /// @param amount The amount of token to withdraw. Can be larger than available balance and maximum will be withdrawn.
+    /// @return Returns the amount actually withdrawn from the DutchX
+    function withdrawToken(address token, uint amount) external onlyOwner returns (uint) {
+        return dutchXProxy.withdraw(token, amount);
     }
 
     /// @dev Only owner can claim a token from an auction on the DutchX
@@ -100,26 +91,11 @@ contract Arbitrage is Ownable {
         return tokensClaimed;
     }
 
-    /// @dev Only owner can withdraw a token from the DutchX
-    /// @param token The token address that is being withdrawn.
-    /// @param amount The amount of token to withdraw. Can be larger than available balance and maximum will be withdrawn.
-    /// @return Returns the amount actually withdrawn from the DutchX
-    function withdrawToken(address token, uint amount) external onlyOwner returns (uint) {
-        return dutchXProxy.withdraw(token, amount);
-    }
-
     /// @dev Only owner can transfer tokens to the owner that belong to this contract
     /// @param token The token address that is being transferred.
     /// @param amount The amount of token to transfer.
     function transferToken(address token, uint amount) external onlyOwner {
-
-        // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
-        // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
-        bytes memory payload = abi.encodeWithSignature("transfer(address,uint256)", owner(), amount);
-        // solium-disable-next-line security/no-call-value
-        (bool success, bytes memory returnData) = token.call.value(0).gas(200000)(payload);
-        require(success, "Transfer token didn't work.");
-        require(returnData.length == 0 || (returnData.length == 32 && (returnData[31] != 0)), "Transfer token return true.");
+        SafeERC20.safeTransfer(token, owner(), amount);
     }
 
     /// @dev Only owner can deposit token to the DutchX
@@ -136,13 +112,7 @@ contract Arbitrage is Ownable {
 
         uint allowance = ITokenMinimal(token).allowance(address(this), address(dutchXProxy));
         if (allowance < amount) {
-            // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
-            // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
-            bytes memory payload = abi.encodeWithSignature("approve(address,uint256)", address(dutchXProxy), max);
-            // solium-disable-next-line security/no-call-value
-            (bool success, bytes memory returnData) = token.call.value(0).gas(200000)(payload);
-            require(success, "Approve token to be transferred by DutchX didn't work.");
-            require(returnData.length == 0 || (returnData.length == 32 && (returnData[31] != 0)), "Approve token to be transferred by DutchX didn't return true.");
+            SafeERC20.safeApprove(token, address(dutchXProxy), max);
         }
 
         // Confirm that the balance of the token on the DutchX is at least how much was deposited
@@ -176,13 +146,7 @@ contract Arbitrage is Ownable {
         if (allowance < tokensBought) {
             // Approve Uniswap to transfer arbToken on contract's behalf
             // Keeping it max will have same or similar costs to making it exact over and over again
-            // 200000 was common gas amount added to similar transactions although typically used only ~30k—50k
-            // success is not guaranteed by success boolean, returnData deemed unnecessary to decode
-            bytes memory payload = abi.encodeWithSignature("approve(address,uint256)", address(uniswapExchange), max);
-            // solium-disable-next-line security/no-call-value
-            (bool success, bytes memory returnData) = arbToken.call.value(0).gas(200000)(payload);
-            require(success, "Approve arbToken to be transferred by Uniswap didn't work");
-            require(returnData.length == 0 || (returnData.length == 32 && (returnData[31] != 0)), "Approve arbToken to be transferred by Uniswap didn't return true");
+            SafeERC20.safeApprove(arbToken, address(uniswapExchange), max);
         }
 
         // tokenToEthSwapInput(inputToken, minimumReturn, timeToLive)
@@ -235,7 +199,6 @@ contract Arbitrage is Ownable {
         // best worst case scenario the profit from the trade alleviates part of the gas costs even if still no total profit
         require(etherReturned >= amount, "no profit");
         emit Profit(etherReturned, false);
-
         // Ether returned is already in dutchX balance where Ether is assumed to be stored when not being used.
     }
     

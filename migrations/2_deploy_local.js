@@ -1,3 +1,4 @@
+var SafeERC20 = artifacts.require('./SafeERC20.sol')
 var ArbitrageLocal = artifacts.require('./ArbitrageLocal.sol')
 var IUniswapFactory = artifacts.require('./IUniswapFactory.sol')
 let _ = '        '
@@ -6,7 +7,7 @@ module.exports = (deployer, network, accounts) => {
   deployer.then(async () => {
     try {
       if(network !== 'development') {
-        console.log('Not on local but on ' + network + ' instead')
+        console.log(_ + 'Skip Migration: Not on local but on ' + network + ' instead')
         return
       }
 
@@ -25,7 +26,11 @@ module.exports = (deployer, network, accounts) => {
  
       const params = [uniswapFactory.address, '0xa4392264a2d8c998901d10c154c91725b1bf0158']
       
-      // Deploy ArbitrageLocal.sol
+      // Deploy SafeERC20 and link to ArbitrageLocal.sol
+      await deployer.deploy(SafeERC20);
+      await deployer.link(SafeERC20, ArbitrageLocal);
+
+      // deploy ArbitrageLocal.sol
       await deployer.deploy(ArbitrageLocal, ...params)
       let arbitrage = await ArbitrageLocal.deployed()
       console.log(_ + 'ArbitrageLocal deployed at: ' + arbitrage.address)

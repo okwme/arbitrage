@@ -1,18 +1,23 @@
-var ArbitrageRinkeby = artifacts.require('./ArbitrageRinkeby.sol')
+var ArbitrageMainnet = artifacts.require('./ArbitrageMainnet.sol')
+var SafeERC20 = artifacts.require('./SafeERC20.sol')
 let _ = '        '
 
 module.exports = (deployer, network, accounts) => {
   deployer.then(async () => {
     try {
       if(network !== 'mainnet') {
-        console.log('Not on mainnet but on ' + network + ' instead')
+        console.log(_ + 'Skip Migration: Not on mainnet but on ' + network + ' instead')
         return
       }
+
+      // Deploy SafeERC20 and link to ArbitrageLocal.sol
+      await deployer.deploy(SafeERC20);
+      await deployer.link(SafeERC20, ArbitrageLocal);
  
-      // Deploy ArbitrageRinkeby.sol
-      await deployer.deploy(ArbitrageRinkeby)
-      let arbitrage = await ArbitrageRinkeby.deployed()
-      console.log(_ + 'ArbitrageRinkeby deployed at: ' + arbitrage.address)
+      // Deploy ArbitrageMainnet.sol
+      await deployer.deploy(ArbitrageMainnet)
+      let arbitrage = await ArbitrageMainnet.deployed()
+      console.log(_ + 'ArbitrageMainnet deployed at: ' + arbitrage.address)
 
     } catch (error) {
       console.log(error)

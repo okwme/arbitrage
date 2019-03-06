@@ -13,17 +13,16 @@ module.exports = {
     development: {
       provider() {
         var wallet = new HDWalletProvider(
-          process.env.TRUFFLE_MNEMONIC,
+          process.env.GANACHE_MNEMONIC,
           'http://localhost:8545/'
         )
-        
         var nonceTracker = new NonceTrackerSubprovider()
         wallet.engine._providers.unshift(nonceTracker)
         nonceTracker.setEngine(wallet.engine)
         return wallet
       },
       host: 'localhost',
-      port: 8545,
+      port: 9545,
       network_id: '*'
     },
     ganache: {
